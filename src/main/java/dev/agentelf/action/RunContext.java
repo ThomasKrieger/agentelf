@@ -1,4 +1,4 @@
 package dev.agentelf.action;
 
-public class ActionContext {
+public class RunContext {
 }
