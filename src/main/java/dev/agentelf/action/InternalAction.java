@@ -1,6 +1,6 @@
 package dev.agentelf.action;
 
-public interface Action {
+public interface InternalAction {
 
     void execute(RunContext runContext);
     void executeAlternative(RunContext runContext, int numberOfAlternative);
