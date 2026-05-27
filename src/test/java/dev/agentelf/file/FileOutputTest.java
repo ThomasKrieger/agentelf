@@ -13,7 +13,6 @@ class FileOutputTest {
 
     @Test
     void shouldWriteUndoAndRedoFile() throws Exception {
-
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             Path dir = fs.getPath("/test");
             Files.createDirectories(dir);
@@ -53,7 +52,6 @@ class FileOutputTest {
 
     @Test
     void shouldUndoCreatedFileByDeletingIt() throws Exception {
-
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             Path dir = fs.getPath("/test");
             Files.createDirectories(dir);
