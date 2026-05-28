@@ -1,7 +1,0 @@
-exampleTask:
-    description: "description"
-    tasks:
-      - addToPrompt:
-          text: "added value"
-      - callLLM
-      - writeToFile

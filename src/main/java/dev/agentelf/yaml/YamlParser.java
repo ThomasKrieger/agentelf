@@ -29,39 +29,38 @@ public class YamlParser {
         Parser parser = new ParserImpl(new StreamReader(reader),new LoaderOptions());
         Deque<YamlParserState> stack = new ArrayDeque<>();
 
+        String currentValue = null;
         while (parser.peekEvent() != null) {
             Event event = parser.getEvent();
-            String previousValue = null;
 
             if (event instanceof ScalarEvent scalarEvent) {
-
-
-
-
-                String value = scalarEvent.getValue();
-
-                if(stack.isEmpty()) {
-                    TaskOrAction root = builder.create(value);
-                    stack.push(new StateAction(root));
+                currentValue = scalarEvent.getValue();
+                if(!stack.isEmpty()) {
+                    stack.peek().processScalarEvent(currentValue,builder);
                 }
-                else if ("tasks".equals(value)) {
-                    stack.push(new StateActionList(stack.peek().taskOrAction()));
-                }  else {
-                    stack.peek().process(value,stack,builder);
+            } else if (event instanceof MappingEndEvent ) {
+                if(! stack.isEmpty()) {
+                    stack.pop();
                 }
-            } else if (event instanceof MappingEndEvent) {
-                stack.pop();
             }  else if (event instanceof MappingStartEvent) {
-                if(previousValue != null) {
-                    if ("tasks".equals(previousValue)) {
+                if(stack.isEmpty()) {
+                    if(currentValue != null) {
+                        if("tasks".equals(currentValue)) {
+                            stack.push(new StateActionList(stack.peek().taskOrAction()));
+                        }
+                        else {
+                            stack.push(new StateAction(builder.create(currentValue)));
+                        }
 
                     }
+                } else {
+                    stack.push(stack.peek().processMappingStart(currentValue,builder));
                 }
             }
-            else if (event instanceof SequenceEndEvent
+            else if(event instanceof DocumentStartEvent
+                    || event instanceof DocumentEndEvent
                     || event instanceof SequenceStartEvent
-                    || event instanceof DocumentStartEvent
-                    || event instanceof DocumentEndEvent) {
+                    || event instanceof SequenceEndEvent) {
                 // ignore structural events
             }
 

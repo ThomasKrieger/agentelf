@@ -19,8 +19,12 @@ public class StateKeyValue implements YamlParserState {
     }
 
     @Override
-    public void process(String value, Deque<YamlParserState> stack, TaskOrActionBuilder builder) {
+    public void processScalarEvent(String value, TaskOrActionBuilder builder) {
         taskOrAction.setProperty(key,value);
-        stack.pop();
+    }
+
+    @Override
+    public YamlParserState processMappingStart(String value, TaskOrActionBuilder builder) {
+        return this;
     }
 }

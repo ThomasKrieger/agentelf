@@ -5,6 +5,7 @@ import java.util.Deque;
 public class StateActionList implements YamlParserState {
 
     private final TaskOrAction taskOrAction;
+    private TaskOrAction lastAdded;
 
     public StateActionList(TaskOrAction taskOrAction) {
         this.taskOrAction = taskOrAction;
@@ -16,9 +17,14 @@ public class StateActionList implements YamlParserState {
     }
 
     @Override
-    public void process(String value, Deque<YamlParserState> stack, TaskOrActionBuilder builder) {
+    public void processScalarEvent(String value, TaskOrActionBuilder builder) {
         TaskOrAction newAction = builder.create(value);
         taskOrAction.addTask(newAction);
-        stack.push(new StateAction(newAction));
+        lastAdded = newAction;
+    }
+
+    @Override
+    public YamlParserState processMappingStart(String value, TaskOrActionBuilder builder) {
+        return new StateAction(lastAdded);
     }
 }

@@ -1,10 +1,9 @@
 package dev.agentelf.yaml;
 
-import java.util.Deque;
-
 public interface YamlParserState {
 
     TaskOrAction taskOrAction();
-    void process(String value, Deque<YamlParserState> stack, TaskOrActionBuilder builder);
+    void processScalarEvent(String value, TaskOrActionBuilder builder);
+    YamlParserState processMappingStart(String value, TaskOrActionBuilder builder);
 
 }
