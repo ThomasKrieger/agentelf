@@ -35,14 +35,17 @@ public class YamlParser {
 
             if (event instanceof ScalarEvent scalarEvent) {
                 currentValue = scalarEvent.getValue();
+                System.out.println(currentValue);
                 if(!stack.isEmpty()) {
                     stack.peek().processScalarEvent(currentValue,builder);
                 }
             } else if (event instanceof MappingEndEvent ) {
+                System.out.println("MappingEndEvent");
                 if(! stack.isEmpty()) {
                     stack.pop();
                 }
             }  else if (event instanceof MappingStartEvent) {
+                System.out.println("MappingStartEvent");
                 if(stack.isEmpty()) {
                     if(currentValue != null) {
                         if("tasks".equals(currentValue)) {
