@@ -14,7 +14,6 @@ public class AgentElf {
                 
                  It uses a stack to store the created TaskOrAction.
                 """;
-
         String classes = """
                 public interface TaskOrAction {
     
@@ -26,7 +25,6 @@ public class AgentElf {
                         TaskOrAction create(String name);
                 }
                 """;
-
         String command = """
                 implement
                 public class YamlParser {
@@ -34,11 +32,8 @@ public class AgentElf {
                 }
                 Output exactly one compilable Java class and nothing else.
                 """;
-       // String result =
-       // new CallLLM().call(prompt + classes + command);
-        System.out.println(prompt + classes + command);
-
+        String result = new CallLLM().call(prompt + classes + command);
+        System.out.println(result);
     }
-
 
 }

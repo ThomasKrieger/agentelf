@@ -17,56 +17,47 @@ import java.io.Reader;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-public class YamlParser {
+public class YamlParser implements TaskOrActionParent {
 
     private final TaskOrActionBuilder builder;
+    private TaskOrAction task;
 
     public YamlParser(TaskOrActionBuilder builder) {
         this.builder = builder;
     }
 
-    public void parse(Reader reader) {
+    public TaskOrAction parse(Reader reader) {
         Parser parser = new ParserImpl(new StreamReader(reader),new LoaderOptions());
         Deque<YamlParserState> stack = new ArrayDeque<>();
 
-        String currentValue = null;
         while (parser.peekEvent() != null) {
             Event event = parser.getEvent();
-
+            System.out.println(event);
             if (event instanceof ScalarEvent scalarEvent) {
-                currentValue = scalarEvent.getValue();
-                System.out.println(currentValue);
-                if(!stack.isEmpty()) {
-                    stack.peek().processScalarEvent(currentValue,builder);
-                }
-            } else if (event instanceof MappingEndEvent ) {
-                System.out.println("MappingEndEvent");
-                if(! stack.isEmpty()) {
-                    stack.pop();
-                }
+                String currentValue = scalarEvent.getValue();
+                stack.peek().processScalarEvent(currentValue,builder);
+            } else if (event instanceof MappingEndEvent
+                    || event instanceof SequenceEndEvent) {
+                stack.pop();
             }  else if (event instanceof MappingStartEvent) {
-                System.out.println("MappingStartEvent");
                 if(stack.isEmpty()) {
-                    if(currentValue != null) {
-                        if("tasks".equals(currentValue)) {
-                            stack.push(new StateActionList(stack.peek().taskOrAction()));
-                        }
-                        else {
-                            stack.push(new StateAction(builder.create(currentValue)));
-                        }
-
-                    }
+                    stack.push(new StateAction(this));
                 } else {
-                    stack.push(stack.peek().processMappingStart(currentValue,builder));
+                    stack.push(stack.peek().processMappingStart());
                 }
+            } else if(event instanceof SequenceStartEvent) {
+                stack.push(stack.peek().processSequenceStart());
             }
             else if(event instanceof DocumentStartEvent
-                    || event instanceof DocumentEndEvent
-                    || event instanceof SequenceStartEvent
-                    || event instanceof SequenceEndEvent) {
-                // ignore structural events
+                    || event instanceof DocumentEndEvent) {
+                // ignore Document Start And End
             }
-
         }
+        return task;
+    }
+
+    @Override
+    public void addTask(TaskOrAction task) {
+        this.task = task;
     }
 }

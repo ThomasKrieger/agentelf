@@ -12,7 +12,27 @@ import static org.mockito.Mockito.when;
 public class YamlParserTest {
 
     @Test
-    void parseYaml() {
+    void parseYamlInitial() {
+        String yaml = """
+                exampleTask:
+                    description: "description"
+                """;
+        TaskOrActionBuilder builder = mock(TaskOrActionBuilder.class);
+        TaskOrAction exampleTask = mock(TaskOrAction.class);
+        when(builder.create("exampleTask")).thenReturn(exampleTask);
+
+        YamlParser parser = new YamlParser(builder);
+        parser.parse(new StringReader(yaml));
+
+        var order = inOrder(builder,
+                exampleTask);
+        order.verify(builder).create("exampleTask");
+        order.verify(exampleTask)
+                .setProperty(eq("description"), eq("description"));
+    }
+
+    @Test
+    void parseYamlWithTasks() {
         String yaml = """
                 exampleTask:
                     description: "description"

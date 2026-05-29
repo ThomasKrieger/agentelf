@@ -5,26 +5,28 @@ import java.util.Deque;
 public class StateKeyValue implements YamlParserState {
 
     private final TaskOrAction taskOrAction;
-    private final String key;
+    private String key = null;
 
-    public StateKeyValue(TaskOrAction taskOrAction,
-                         String key) {
+    public StateKeyValue(TaskOrAction taskOrAction) {
         this.taskOrAction = taskOrAction;
-        this.key = key;
-    }
-
-    @Override
-    public TaskOrAction taskOrAction() {
-        throw new RuntimeException("should not called");
     }
 
     @Override
     public void processScalarEvent(String value, TaskOrActionBuilder builder) {
-        taskOrAction.setProperty(key,value);
+        if(key == null) {
+            key = value;
+        } else {
+            taskOrAction.setProperty(key,value);
+        }
     }
 
     @Override
-    public YamlParserState processMappingStart(String value, TaskOrActionBuilder builder) {
-        return this;
+    public YamlParserState processMappingStart() {
+        throw new RuntimeException("should not happen");
+    }
+
+    @Override
+    public YamlParserState processSequenceStart() {
+        return new StateActionList(taskOrAction);
     }
 }

@@ -1,28 +1,31 @@
 package dev.agentelf.yaml;
 
-import java.util.Deque;
-
 public class StateAction  implements YamlParserState {
 
-    private final TaskOrAction taskOrAction;
+    private final TaskOrActionParent parent;
+    private TaskOrAction taskOrAction;
 
-    public StateAction(TaskOrAction taskOrAction) {
-        this.taskOrAction = taskOrAction;
-    }
-
-    @Override
-    public TaskOrAction taskOrAction() {
-        return taskOrAction;
+    public StateAction(TaskOrActionParent parent) {
+        this.parent = parent;
     }
 
     @Override
     public void processScalarEvent(String value, TaskOrActionBuilder builder) {
-
+        if(taskOrAction == null) {
+            taskOrAction = builder.create(value);
+            parent.addTask(taskOrAction);
+        } else {
+            throw new RuntimeException("should not happen");
+        }
     }
 
     @Override
-    public YamlParserState processMappingStart(String value, TaskOrActionBuilder builder) {
-        return new StateKeyValue(taskOrAction,value);
+    public YamlParserState processMappingStart() {
+        return new StateKeyValue(taskOrAction);
     }
 
+    @Override
+    public YamlParserState processSequenceStart() {
+        return new StateActionList(taskOrAction);
+    }
 }
