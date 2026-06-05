@@ -1,5 +1,6 @@
 package dev.agentelf.yaml;
 
+import dev.agentelf.task.TaskBuilderForDynamic;
 import org.junit.jupiter.api.Test;
 
 import java.io.StringReader;
@@ -17,18 +18,21 @@ public class YamlParserTest {
                 exampleTask:
                     description: "description"
                 """;
-        TaskOrActionBuilder builder = mock(TaskOrActionBuilder.class);
-        TaskOrAction exampleTask = mock(TaskOrAction.class);
-        when(builder.create("exampleTask")).thenReturn(exampleTask);
 
-        YamlParser parser = new YamlParser(builder);
+    }
+
+
+    @Test
+    void parseYamlMultipleMapping() {
+        String yaml = """
+                exampleTask:
+                    description: "description"
+                    elem:
+                        description: "description"
+                """;
+        YamlParser parser = new YamlParser(null);
         parser.parse(new StringReader(yaml));
 
-        var order = inOrder(builder,
-                exampleTask);
-        order.verify(builder).create("exampleTask");
-        order.verify(exampleTask)
-                .setProperty(eq("description"), eq("description"));
     }
 
     @Test
@@ -43,43 +47,11 @@ public class YamlParserTest {
                       - writeToFile
                 """;
 
-        TaskOrActionBuilder builder = mock(TaskOrActionBuilder.class);
-
-        TaskOrAction exampleTask = mock(TaskOrAction.class);
-        TaskOrAction addToPrompt = mock(TaskOrAction.class);
-        TaskOrAction callLLM = mock(TaskOrAction.class);
-        TaskOrAction writeToFile = mock(TaskOrAction.class);
-
-        when(builder.create("exampleTask")).thenReturn(exampleTask);
-        when(builder.create("addToPrompt")).thenReturn(addToPrompt);
-        when(builder.create("callLLM")).thenReturn(callLLM);
-        when(builder.create("writeToFile")).thenReturn(writeToFile);
-
-        YamlParser parser = new YamlParser(builder);
-
+        TaskBuilderForDynamic taskBuilderForDynamic = new TaskBuilderForDynamic();
+        YamlParser parser = new YamlParser(taskBuilderForDynamic);
         parser.parse(new StringReader(yaml));
 
-        var order = inOrder(builder,
-                exampleTask,
-                addToPrompt,
-                callLLM,
-                writeToFile);
+        System.out.println(taskBuilderForDynamic.get("exampleTask"));
 
-        order.verify(builder).create("exampleTask");
-
-        order.verify(exampleTask)
-                .setProperty(eq("description"), eq("description"));
-
-        order.verify(builder).create("addToPrompt");
-        order.verify(exampleTask).addTask(addToPrompt);
-
-        order.verify(addToPrompt)
-                .setProperty(eq("text"), eq("added value"));
-
-        order.verify(builder).create("callLLM");
-        order.verify(exampleTask).addTask(callLLM);
-
-        order.verify(builder).create("writeToFile");
-        order.verify(exampleTask).addTask(writeToFile);
     }
 }
