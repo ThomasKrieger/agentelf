@@ -1,57 +1,66 @@
 package dev.agentelf.yaml;
 
-import dev.agentelf.task.TaskBuilderForDynamic;
+
+import dev.agentelf.task.Task;
+import dev.agentelf.task.TaskDynamic;
+import dev.agentelf.task.TaskFactoryForDynamic;
 import org.junit.jupiter.api.Test;
 
 import java.io.StringReader;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.inOrder;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class YamlParserTest {
-
-    @Test
-    void parseYamlInitial() {
-        String yaml = """
-                exampleTask:
-                    description: "description"
-                """;
-
-    }
-
+class YamlParserTest {
 
     @Test
-    void parseYamlMultipleMapping() {
-        String yaml = """
-                exampleTask:
-                    description: "description"
-                    elem:
-                        description: "description"
-                """;
-        YamlParser parser = new YamlParser(null);
-        parser.parse(new StringReader(yaml));
+    void parsesYamlAndBuildsTaskTree() {
 
-    }
-
-    @Test
-    void parseYamlWithTasks() {
-        String yaml = """
-                exampleTask:
-                    description: "description"
+        // given
+        String yaml =
+                """
+                name: create
+                tasks:
+                  - name: read
+                  - name: write
                     tasks:
-                      - addToPrompt:
-                          text: "added value"
-                      - callLLM
-                      - writeToFile
+                      - name: validate
                 """;
 
-        TaskBuilderForDynamic taskBuilderForDynamic = new TaskBuilderForDynamic();
-        YamlParser parser = new YamlParser(taskBuilderForDynamic);
-        parser.parse(new StringReader(yaml));
+        TaskFactoryForDynamic factory = new TaskFactoryForDynamic();
+        YamlParser parser = new YamlParser(factory);
 
-        System.out.println(taskBuilderForDynamic.get("exampleTask"));
+        // when
+        Task root = parser.parse(new StringReader(yaml));
+
+        // then
+        assertNotNull(root);
+        assertTrue(root instanceof TaskDynamic);
+
+        TaskDynamic rootDynamic = factory.get("create");
+        assertNotNull(rootDynamic);
+
+        // root properties
+        assertEquals("create", rootDynamic.getName());
+
+        // children should also be created via factory
+        TaskDynamic read = factory.get("read");
+        TaskDynamic write = factory.get("write");
+        TaskDynamic validate = factory.get("validate");
+
+        assertNotNull(read);
+        assertNotNull(write);
+        assertNotNull(validate);
+
+        Set<String> actual = rootDynamic.getTasks().stream()
+                .map((task) -> ((TaskDynamic) task).getName())
+                .collect(Collectors.toSet());
+
+        Set<String> expected = Set.of("read", "write");
+
+        assertEquals(expected, actual);
+
 
     }
 }

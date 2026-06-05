@@ -1,17 +1,17 @@
 package dev.agentelf.task;
 
-import dev.agentelf.yaml.TaskBuilder;
+import dev.agentelf.yaml.TaskFactory;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class TaskBuilderForDynamic implements TaskBuilder {
+public class TaskFactoryForDynamic implements TaskFactory {
 
     private Map<String,TaskDynamic>  nameToDynamic = new HashMap<>();
 
     @Override
     public Task create(String name) {
-        TaskDynamic taskDynamic = new TaskDynamic();
+        TaskDynamic taskDynamic = new TaskDynamic(name);
         nameToDynamic.put(name,taskDynamic);
         return taskDynamic;
     }
