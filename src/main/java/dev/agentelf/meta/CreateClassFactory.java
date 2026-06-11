@@ -34,20 +34,21 @@ public class CreateClassFactory {
         VariabelModel llmResponse = new VariabelModel("llmResponse" ,STRING );
         VariabelModel packageName = new VariabelModel("packageName" ,STRING );
         VariabelModel className = new VariabelModel("className" ,STRING );
+        VariabelModel potentialFile = new VariabelModel("className" ,STRING );
 
       /*  ClassModel classModel = new ClassModel("RemoveUnnecessaryText" , "RemoveUnnecessaryText remove removes all ''' using regexp");
         MethodModel methodModel = new MethodModel("remove" , STRING);
         methodModel.getArguments().add(llmResponse);
-
-        ClassModel classModel = new ClassModel("LoadContext" , "LoadContext loads all files from the contextFolder " +
-                ", adds them to the prompt variable and returns the new prompt");
-        MethodModel methodModel = new MethodModel("loadContext" , STRING);
-        methodModel.getArguments().add(prompt);
+*/
+        ClassModel classModel = new ClassModel("LoadIfFile" , "CheckForFile checks if potentialFile is an existing file  " +
+                ", if yes it loads the file and returns the loaded text if not it returns the unchanged potentialFile");
+        MethodModel methodModel = new MethodModel("loadIfFile" , STRING);
+        methodModel.getArguments().add(potentialFile);
 
         classModel.getMethods().add(methodModel);
-        classModel.getFields().add(new VariabelModel("contextFolder","Path"));
-       */
 
+
+/*
         ClassModel classModel = new ClassModel("RemoveMarkdownTags" ,
                 """ 
                         RemoveMarkdownTags removes all lines from llmResponse
@@ -57,7 +58,7 @@ public class CreateClassFactory {
         methodModel.getArguments().add(llmResponse);
 
         classModel.getMethods().add(methodModel);
-
+*/
 
         umlModel.getClasses().add(classModel);
         return umlModel;

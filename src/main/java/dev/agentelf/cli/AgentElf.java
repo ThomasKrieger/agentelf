@@ -72,7 +72,7 @@ public class AgentElf {
         var stopCommand = " Output exactly one compilable Java class and nothing else";
 
         var fileOutput = new FileOutput();
-        var dir = Paths.get("/Users/thomas/workspace/agentelf/src/main/java/dev/agentelf/action/");
+        var dir = Paths.get("/Users/thomas/workspace/agentelf/src/main/java/dev/agentelf/cli/");
 
         List<ClassAndPrompt> classAndPromptList = new LinkedList<>();
 

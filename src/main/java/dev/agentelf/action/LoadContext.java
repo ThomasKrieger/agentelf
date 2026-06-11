@@ -1,6 +1,8 @@
 package dev.agentelf.action;
 
 
+import lombok.Data;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -11,13 +13,11 @@ import java.util.stream.Stream;
  * LoadContext loads all files from the contextFolder
  *  adds them to the prompt variable and returns the new prompt
  */
+
+@Data
 public class LoadContext {
 
     private Path contextFolder;
-
-    public LoadContext(Path contextFolder) {
-        this.contextFolder = contextFolder;
-    }
 
     public String loadContext(String prompt) {
         if (contextFolder == null || !Files.exists(contextFolder) || !Files.isDirectory(contextFolder)) {
