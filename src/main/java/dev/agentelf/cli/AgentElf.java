@@ -1,13 +1,19 @@
 package dev.agentelf.cli;
 
+import com.github.mustachejava.DefaultMustacheFactory;
+import com.github.mustachejava.Mustache;
 import dev.agentelf.file.FileOutput;
-import dev.agentelf.llm.CallLLM;
-import dev.agentelf.meta.BuilderStateFactory;
-import dev.agentelf.meta.ParserStateFactory;
-import dev.agentelf.model.ClassNameAndText;
+import dev.agentelf.llm.CallGemini;
+import dev.agentelf.meta.CreateClassFactory;
+import dev.agentelf.model.ClassAndPrompt;
+import dev.agentelf.model.uml.ClassModel;
 
-import java.nio.file.Path;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.nio.file.Paths;
+import java.util.LinkedList;
+import java.util.List;
 
 public class AgentElf {
 
@@ -56,16 +62,41 @@ public class AgentElf {
 
          */
 
+        DefaultMustacheFactory mustacheFactory = new DefaultMustacheFactory();
+        Mustache mustache = mustacheFactory.compile("template/initialClass.mustache");
+
+
+        Writer writer = new StringWriter();
+        PrintWriter print = new PrintWriter(writer);
+        var command = " Implement the following class";
         var stopCommand = " Output exactly one compilable Java class and nothing else";
 
         var fileOutput = new FileOutput();
-        var dir = Paths.get("/Users/thomas/workspace/agentelf/src/main/java/dev/agentelf/yaml/builderstate/");
+        var dir = Paths.get("/Users/thomas/workspace/agentelf/src/main/java/dev/agentelf/action/");
 
-        var list =  new BuilderStateFactory().create().toClassNameAndTextList();
-        for(ClassNameAndText cl : list) {
-            String result = new CallLLM().call( classes + cl.getText() + stopCommand);
+        List<ClassAndPrompt> classAndPromptList = new LinkedList<>();
+
+        var list = new CreateClassFactory().create();
+        for(ClassModel elem : list.getClasses()) {
+            print.println(command);
+            mustache.execute(writer, elem);
+            print.println();
+            print.println(elem.getDocumentation());
+            print.println(stopCommand);
+            classAndPromptList.add(new ClassAndPrompt(""  , elem.getName(),  writer.toString()));
+        }
+
+
+        for(ClassAndPrompt classAndPrompt :classAndPromptList ) {
+            System.out.println(classAndPrompt.getPrompt());
+        }
+
+
+        for(ClassAndPrompt cl : classAndPromptList) {
+            String result = new CallGemini().call(  cl.getPrompt() );
             fileOutput.writeFile(result, cl.getName() + ".java" , dir);
-            //System.out.println(classes + cl.getText() + stopCommand);
+
+           // System.out.println(result);
         }
     }
 

@@ -9,4 +9,8 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Target(METHOD)
 @Retention(RUNTIME)
 public @interface Action {
+
+    String[] arguments();
+    String returnVariable() default "";
+
 }

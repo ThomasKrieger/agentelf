@@ -1,5 +1,7 @@
 package dev.agentelf.task;
 
+import dev.agentelf.api.RunVariables;
+
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -26,6 +28,11 @@ public class TaskDynamic implements Task {
     @Override
     public void addProperty(String name, String value) {
         properties.put(name,value);
+    }
+
+    @Override
+    public void execute(RunVariables runVariables) {
+
     }
 
     @Override

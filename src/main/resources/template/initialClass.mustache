@@ -1,0 +1,16 @@
+public class {{name}} {
+
+
+    {{#fields}}
+        private  {{variableType}}  {{name}};
+    {{/fields}}
+
+{{#methods}}
+    public {{returnType}} {{name}} (
+    {{#arguments}}
+        {{variableType}}  {{name}} ,
+    {{/arguments}}
+    ) {
+    }
+{{/methods}}
+}
