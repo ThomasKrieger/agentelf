@@ -27,10 +27,16 @@
             <version>1.15.0</version>
         </dependency>
         <dependency>
+            <groupId>io.github.classgraph</groupId>
+            <artifactId>classgraph</artifactId>
+            <version>4.8.184</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
             <groupId>org.jcommander</groupId>
             <artifactId>jcommander</artifactId>
             <version>3.0</version>
-            <scope>runtime</scope>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>

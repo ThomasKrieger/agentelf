@@ -40,10 +40,10 @@ public class CreateClassFactory {
         MethodModel methodModel = new MethodModel("remove" , STRING);
         methodModel.getArguments().add(llmResponse);
 */
-        ClassModel classModel = new ClassModel("LoadIfFile" , "CheckForFile checks if potentialFile is an existing file  " +
-                ", if yes it loads the file and returns the loaded text if not it returns the unchanged potentialFile");
-        MethodModel methodModel = new MethodModel("loadIfFile" , STRING);
-        methodModel.getArguments().add(potentialFile);
+        ClassModel classModel = new ClassModel("LoadTasks" , "Creates a reader for each yaml file in  " +
+                "working dir/.agentelf/task ");
+        MethodModel methodModel = new MethodModel("intitalize" , "void");
+      //  methodModel.getArguments().add(potentialFile);
 
         classModel.getMethods().add(methodModel);
 
