@@ -1,6 +1,7 @@
 package dev.agentelf.cli;
 
 import dev.agentelf.yaml.TaskDescription;
+import dev.agentelf.yaml.YamlParser;
 
 import java.io.File;
 import java.io.FileReader;
@@ -10,7 +11,7 @@ import java.util.Map;
 
 public class LoadTasks {
 
-    public void loadTasks() {
+    public Map<String, TaskDescription> loadTasks() {
         Map<String, TaskDescription> nameToTaskDescription = new HashMap<>();
 
         String path = ".agentelf" + File.separator + "task";
@@ -22,13 +23,15 @@ public class LoadTasks {
             if (yamlFiles != null) {
                 for (File file : yamlFiles) {
                     try {
-                        new FileReader(file);
+                       var description =  new YamlParser().parse(new FileReader(file));
+                       nameToTaskDescription.put(description.getName(),description);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
             }
         }
+        return nameToTaskDescription;
     }
 
 }

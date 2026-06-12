@@ -1,9 +1,12 @@
 package dev.agentelf.action;
 
+import org.springframework.stereotype.Component;
+
 import java.nio.file.Path;
 import java.nio.file.Files;
 import java.io.IOException;
 
+@Component
 public class LoadFile {
 
     private Path path;

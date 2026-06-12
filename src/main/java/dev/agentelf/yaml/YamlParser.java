@@ -1,9 +1,12 @@
 package dev.agentelf.yaml;
 
 
-import tools.jackson.databind.ObjectMapper;
-import tools.jackson.dataformat.yaml.YAMLFactory;
 
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+
+import java.io.IOException;
 import java.io.Reader;
 
 public class YamlParser {
@@ -14,7 +17,7 @@ public class YamlParser {
         this.mapper = new ObjectMapper(new YAMLFactory());
     }
 
-    public TaskDescription parse(Reader reader) {
+    public TaskDescription parse(Reader reader) throws IOException {
         return mapper.readValue(reader, TaskDescription.class);
     }
 

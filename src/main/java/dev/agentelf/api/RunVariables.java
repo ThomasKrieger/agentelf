@@ -15,5 +15,8 @@ public class RunVariables {
     private String llmResponse;
     private String packageName;
     private String className;
+    private String firstParameter;
+    private String secondParameter;
+
 
 }

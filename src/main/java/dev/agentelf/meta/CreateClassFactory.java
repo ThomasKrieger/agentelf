@@ -31,6 +31,10 @@ public class CreateClassFactory {
         UMLModel umlModel = new UMLModel();
 
         VariabelModel prompt = new VariabelModel("prompt" ,STRING );
+
+        VariabelModel firstParameter = new VariabelModel("firstParameter" ,STRING );
+        VariabelModel secondParameter = new VariabelModel("secondParameter" ,STRING );
+
         VariabelModel llmResponse = new VariabelModel("llmResponse" ,STRING );
         VariabelModel packageName = new VariabelModel("packageName" ,STRING );
         VariabelModel className = new VariabelModel("className" ,STRING );
@@ -40,10 +44,11 @@ public class CreateClassFactory {
         MethodModel methodModel = new MethodModel("remove" , STRING);
         methodModel.getArguments().add(llmResponse);
 */
-        ClassModel classModel = new ClassModel("LoadTasks" , "Creates a reader for each yaml file in  " +
-                "working dir/.agentelf/task ");
-        MethodModel methodModel = new MethodModel("intitalize" , "void");
-      //  methodModel.getArguments().add(potentialFile);
+        ClassModel classModel = new ClassModel("AddParameterToPrompt" , "Adds the firstParameter and secondParameter to the prompt and return the new prompt");
+        MethodModel methodModel = new MethodModel("addParameterToPrompt" , STRING);
+        methodModel.getArguments().add(prompt);
+        methodModel.getArguments().add(firstParameter);
+        methodModel.getArguments().add(secondParameter);
 
         classModel.getMethods().add(methodModel);
 

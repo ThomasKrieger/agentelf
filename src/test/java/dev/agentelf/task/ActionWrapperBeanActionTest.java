@@ -6,13 +6,13 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-class TaskBeanActionTest {
+class ActionWrapperBeanActionTest {
 
     @Test
     void execute_shouldInvokeActionAndWriteReturnVariable() {
         // arrange
         ActionGuineaPig bean = new ActionGuineaPig();
-        TaskBean executor = new TaskBean(bean);
+        ActionWrapperBean executor = new ActionWrapperBean(bean);
 
         RunVariables vars = new RunVariables();
         vars.setPrompt("hello");

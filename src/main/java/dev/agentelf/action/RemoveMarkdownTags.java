@@ -1,9 +1,12 @@
 package dev.agentelf.action;
 
+import org.springframework.stereotype.Component;
+
 /**
  * RemoveMarkdownTags removes all lines from llmResponse
  * starting with ``` using regexp  and returns the new llmResponse
  */
+@Component
 public class RemoveMarkdownTags {
 
     public String removeMarkdownTags(String llmResponse) {

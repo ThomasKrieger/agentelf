@@ -10,12 +10,12 @@ import java.util.List;
 public class TaskDescription {
 
     private String name;
-    private List<TaskDescription> tasks = new ArrayList<>();
+    private List<ActionDescription> actions = new ArrayList<>();
 
-    public Task build(TaskFactory taskFactory) {
-        Task task = taskFactory.create(name);
-        for(TaskDescription child : tasks) {
-            task.addTask(child.build(taskFactory));
+    public Task build(TaskAndActionFactory taskAndActionFactory) {
+        Task task = taskAndActionFactory.createTask(name);
+        for(ActionDescription child : actions) {
+            task.addAction(child.build(taskAndActionFactory));
         }
         return task;
     }

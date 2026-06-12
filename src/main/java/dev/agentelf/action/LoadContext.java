@@ -2,6 +2,7 @@ package dev.agentelf.action;
 
 
 import lombok.Data;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -15,6 +16,7 @@ import java.util.stream.Stream;
  */
 
 @Data
+@Component
 public class LoadContext {
 
     private Path contextFolder;
