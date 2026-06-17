@@ -1,0 +1,7 @@
+name: createClass
+actions:
+    - addParameterToPrompt
+    - loadContext
+    - callLargeLLM
+    - removeMarkdownTags
+    - saveClass
