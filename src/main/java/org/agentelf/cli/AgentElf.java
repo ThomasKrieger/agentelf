@@ -22,18 +22,13 @@ public class AgentElf {
 
     public void run(String[] commandLine) throws IOException {
         new Initialize().initialize();
-
-
         String taskNameOrFile = commandLine[0];
-
-
-
         TaskVariables taskVariables = new TaskVariables();
-            ConfigDescription config = new ConfigParser().parse(Files.newBufferedReader(Paths.get(taskNameOrFile)));
-            taskVariables.setParameter(config.getPrompt());
-            taskVariables.setPackageName(config.getPackageName());
-            taskVariables.setClassName(config.getClassName());
-         String   taskName = config.getTask();
+        ConfigDescription config = new ConfigParser().parse(Files.newBufferedReader(Paths.get(taskNameOrFile)));
+        taskVariables.setParameter(config.getPrompt());
+        taskVariables.setPackageName(config.getPackageName());
+        taskVariables.setClassName(config.getClassName());
+        String taskName = config.getTask();
 
         Map<String, TaskDescription> taskMap = new LoadTasks().loadTasks();
 
