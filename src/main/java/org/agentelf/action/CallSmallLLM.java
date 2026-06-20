@@ -5,18 +5,18 @@ import org.agentelf.llm.CallLLMList;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CallLargeLLM {
+public class CallSmallLLM {
 
     private final CallLLMList callLLMList;
 
-    public CallLargeLLM(CallLLMList callLLMList) {
+    public CallSmallLLM(CallLLMList callLLMList) {
         this.callLLMList = callLLMList;
     }
 
     @Action(arguments = {"prompt"},
             returnVariable = "llmResponse")
     public String callLLM(String prompt) {
-        return callLLMList.large().call(prompt);
+        return callLLMList.small().call(prompt);
     }
 
 }

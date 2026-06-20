@@ -1,7 +1,7 @@
 package org.agentelf.task;
 
-import org.agentelf.api.RunVariables;
 import lombok.Getter;
+import org.agentelf.api.RunVariables;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -17,9 +17,7 @@ public class Task {
     }
 
     public void execute(TaskVariables taskVariables) {
-        RunVariables runVariables = new RunVariables();
-        runVariables.setFirstParameter(taskVariables.getFirstParameter());
-        runVariables.setSecondParameter(taskVariables.getSecondParameter());
+        RunVariables runVariables = taskVariables.toRunVariables();
         for(ActionWrapper actionWrapper : actions) {
             actionWrapper.execute(runVariables);
         }

@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * LoadContext loads all files from the contextFolder
+ * LoadContext loads all files from the contextDir
  *  adds them to the prompt variable and returns the new prompt
  */
 @Data
@@ -26,7 +26,6 @@ public class LoadContext {
     @Action(arguments = {"prompt"},
             returnVariable = "prompt")
     public String loadContext(String prompt) {
-        System.out.println(contextDir);
         if (contextDir == null || !Files.exists(contextDir) || !Files.isDirectory(contextDir)) {
             return prompt;
         }

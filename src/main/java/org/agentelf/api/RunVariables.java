@@ -8,15 +8,14 @@ import java.io.File;
 @Data
 public class RunVariables {
 
-    private FileOutput fileOutput;
+    private FileOutput fileOutput = new FileOutput();
 
     private String prompt;
     private File generatedDir;
     private String llmResponse;
     private String packageName;
     private String className;
-    private String firstParameter;
-    private String secondParameter;
+    private String parameter;
 
 
 }

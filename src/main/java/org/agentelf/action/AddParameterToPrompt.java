@@ -6,17 +6,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class AddParameterToPrompt {
 
-    @Action(arguments = {"prompt","firstParameter","secondParameter"},
+    @Action(arguments = {"prompt","parameter"},
             returnVariable = "prompt")
-    public String addParameterToPrompt(
-        String prompt,
-        String firstParameter,
-        String secondParameter
-    ) {
+    public String addParameterToPrompt(String prompt, String parameter) {
         return prompt + System.lineSeparator()
-                + replaceNullWithBlank(firstParameter)
-                + System.lineSeparator()
-                + replaceNullWithBlank(secondParameter);
+                + replaceNullWithBlank(parameter)
+                + System.lineSeparator();
     }
 
     private String replaceNullWithBlank(String string) {

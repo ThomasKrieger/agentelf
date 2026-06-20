@@ -1,7 +1,7 @@
 package org.agentelf.cli;
 
 import org.agentelf.yaml.TaskDescription;
-import org.agentelf.yaml.YamlParser;
+import org.agentelf.yaml.TaskParser;
 
 import java.io.File;
 import java.io.FileReader;
@@ -23,7 +23,7 @@ public class LoadTasks {
             if (yamlFiles != null) {
                 for (File file : yamlFiles) {
                     try {
-                       var description =  new YamlParser().parse(new FileReader(file));
+                       var description =  new TaskParser().parse(new FileReader(file));
                        nameToTaskDescription.put(description.getName(),description);
                     } catch (IOException e) {
                         e.printStackTrace();

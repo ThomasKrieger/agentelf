@@ -8,7 +8,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.FileSystemResource;
 
 @Configuration
-@ComponentScan(basePackages = "dev.agentelf")
+@ComponentScan(basePackages = "org.agentelf")
 public class SpringConfig {
 
 

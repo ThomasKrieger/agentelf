@@ -8,7 +8,7 @@ import java.io.StringReader;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class YamlParserTest {
+class TaskParserTest {
 
     @Test
     void parsesYamlAndBuildsTaskTree() throws IOException {
@@ -22,7 +22,7 @@ class YamlParserTest {
                   - name: write
                 """;
 
-        YamlParser parser = new YamlParser();
+        TaskParser parser = new TaskParser();
 
         // when
         TaskDescription root = parser.parse(new StringReader(yaml));

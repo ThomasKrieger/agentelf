@@ -3,7 +3,6 @@ package org.agentelf.cli;
 import com.github.mustachejava.DefaultMustacheFactory;
 import com.github.mustachejava.Mustache;
 import org.agentelf.file.FileOutput;
-import org.agentelf.llm.CallGemini;
 import org.agentelf.meta.CreateClassFactory;
 import org.agentelf.model.ClassAndPrompt;
 import org.agentelf.model.uml.ClassModel;
@@ -93,8 +92,8 @@ public class CreateClass {
 
 
         for(ClassAndPrompt cl : classAndPromptList) {
-            String result = new CallGemini().call(  cl.getPrompt() );
-            fileOutput.writeFile(result, cl.getName() + ".java" , dir);
+          //  String result = new CallGemini().call(  cl.getPrompt() );
+          //  fileOutput.writeFile(result, cl.getName() + ".java" , dir);
 
             // System.out.println(result);
         }
