@@ -12,9 +12,11 @@ public class JavaClass {
     private String documentation;
     private JavaClass superClass;
 
+    private final List<JavaClass> extendsClass = new ArrayList<>();
+    private final List<JavaInterface> implementsInterface = new ArrayList<>();
+
     private final List<JavaField> fields = new ArrayList<>();
     private final List<JavaMethod> methods = new ArrayList<>();
 
-    private final List<JavaInterface> implementedInterfaces = new ArrayList<>();
 
 }

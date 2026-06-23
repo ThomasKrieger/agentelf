@@ -10,6 +10,6 @@ public class JavaInterface {
 
     private String name;
     private String documentation;
-    private final List<JavaInterface> extendedInterfaces = new ArrayList<>();
+    private final List<JavaInterface> extendsInterface = new ArrayList<>();
 
 }

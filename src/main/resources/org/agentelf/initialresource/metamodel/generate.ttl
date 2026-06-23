@@ -128,7 +128,7 @@ generate:extendsInterface
     rdfs:domain generate:Interface ;
     rdfs:range generate:Interface .
 
-generate:implements
+generate:implementsInterface
     rdf:type owl:ObjectProperty ;
     rdfs:domain generate:JavaClass ;
     rdfs:range generate:Interface .
