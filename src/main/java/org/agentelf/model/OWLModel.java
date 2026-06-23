@@ -1,28 +1,37 @@
 package org.agentelf.model;
 
 import org.apache.jena.rdf.model.Model;
-import org.apache.jena.rdf.model.ModelFactory;
-import org.apache.jena.riot.Lang;
-import org.apache.jena.riot.RDFDataMgr;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import org.apache.jena.rdf.model.Property;
 
 public class OWLModel {
 
+    private static final String NS = "http://agentelf.org/generate#";
+
+    public final Property NAME;
+    public final Property DOCUMENTATION;
+    public final Property DECLARATION;
+    public final Property HAS_FIELD;
+    public final Property HAS_METHOD;
+    public final Property EXTENDS_CLASS;
+    public final Property EXTENDS_INTERFACE;
+    public final Property IMPLEMENTS_INTERFACE;
+
+
+
+
     private final Model model;
 
-    public OWLModel() {
-        this.model = ModelFactory.createDefaultModel();
+
+    public OWLModel(Model model) {
+        this.model = model;
+        this.NAME = model.createProperty(NS, "name");
+        this.DOCUMENTATION = model.createProperty(NS, "documentation");
+        this.DECLARATION = model.createProperty(NS, "declaration");
+        this.HAS_FIELD = model.createProperty(NS, "hasField");
+        this.HAS_METHOD = model.createProperty(NS, "hasMethod");
+        this.EXTENDS_CLASS = model.createProperty(NS, "extendsClass");
+        this.EXTENDS_INTERFACE = model.createProperty(NS, "extendsInterface");
+        this.IMPLEMENTS_INTERFACE = model.createProperty(NS, "implementsInterface");
+
     }
-
-    public void load(Path turtleFile) throws IOException {
-        try (InputStream in = Files.newInputStream(turtleFile)) {
-            RDFDataMgr.read(model, in, Lang.TURTLE);
-        }
-    }
-
-
 }
