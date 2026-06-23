@@ -18,15 +18,22 @@ public class OWLModelBuilder {
         this.model = ModelFactory.createDefaultModel();
     }
 
-    public void load(Path turtleFile) throws IOException {
+    public OWLModelBuilder load(Path turtleFile) throws IOException {
         try (InputStream in = Files.newInputStream(turtleFile)) {
             RDFDataMgr.read(model, in, Lang.TURTLE);
         }
+        return this;
+    }
+
+    public OWLModelBuilder load(InputStream stream) throws IOException {
+        RDFDataMgr.read(model, stream, Lang.TURTLE);
+        return this;
     }
 
     public OWLModel build() {
         return new OWLModel(model);
     }
+
 
 
 }
