@@ -1,6 +1,9 @@
 name: createClass
+profiles:
+    - main
 actions:
     - addParameterToPrompt
+    - addDefaultPrompt
     - loadContext
     - callLargeLLM
     - removeMarkdownTags

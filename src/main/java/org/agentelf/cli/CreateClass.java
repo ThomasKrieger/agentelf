@@ -62,7 +62,7 @@ public class CreateClass {
          */
 
         DefaultMustacheFactory mustacheFactory = new DefaultMustacheFactory();
-        Mustache mustache = mustacheFactory.compile("org/agentelf/template/initialClass.mustache");
+        Mustache mustache = mustacheFactory.compile("org/agentelf/initialresource/metamodel/generateToInitialClass.mustache");
 
 
         Writer writer = new StringWriter();

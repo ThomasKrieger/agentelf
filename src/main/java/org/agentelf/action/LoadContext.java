@@ -20,7 +20,7 @@ import java.util.stream.Stream;
 @Component
 public class LoadContext {
 
-    @Value("${agentelf.context-dir}")
+    @Value("${context-dir}")
     private Path contextDir;
 
     @Action(arguments = {"prompt"},

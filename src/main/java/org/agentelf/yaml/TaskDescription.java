@@ -11,6 +11,7 @@ public class TaskDescription {
 
     private String name;
     private List<ActionDescription> actions = new ArrayList<>();
+    private List<String> profiles = new ArrayList<>();
 
     public Task build(TaskAndActionFactory taskAndActionFactory) {
         Task task = taskAndActionFactory.createTask(name);

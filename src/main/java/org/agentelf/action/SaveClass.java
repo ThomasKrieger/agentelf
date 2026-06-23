@@ -13,7 +13,7 @@ import java.nio.file.Path;
 @Component
 public class SaveClass {
 
-    @Value("${agentelf.target-dir}")
+    @Value("${target-dir}")
     private Path targetDir;
 
     @Action(arguments = {"llmResponse", "className", "packageName", "fileOutput"  })

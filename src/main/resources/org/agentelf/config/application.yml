@@ -1,3 +1,0 @@
-agentelf:
-  context-dir: .agentelf/context
-  target-dir: src/main/java

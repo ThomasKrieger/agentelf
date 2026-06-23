@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class AddDefaultPrompt {
 
-    @Value("${agentelf.default-prompt}")
+    @Value("${default-prompt}")
     private String defaultPrompt;
 
     @Action(arguments = {"prompt"},

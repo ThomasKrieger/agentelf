@@ -1,4 +1,4 @@
 task:    createClass
-prompt:  "write a test for ConfigParser using the given yml"
-class:   ConfigParserTest
-package: org.agentelf.yaml
+prompt:  "write a class XYZClass"
+class:   XYZClass
+package: org.agentelf

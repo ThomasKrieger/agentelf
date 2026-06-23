@@ -6,7 +6,6 @@ import org.agentelf.yaml.ConfigDescription;
 import org.agentelf.yaml.ConfigParser;
 import org.agentelf.yaml.TaskAndActionFactorySpring;
 import org.agentelf.yaml.TaskDescription;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.io.IOException;
@@ -44,10 +43,16 @@ public class AgentElf {
                             + String.join(", ", taskMap.keySet()));
         }
 
+        PropertyBuilder propertyBuilder = new PropertyBuilder();
+        propertyBuilder.addProfile("default");
+        for(String profile : taskDescription.getProfiles()) {
+            propertyBuilder.addProfile(profile);
+        }
 
-        System.out.println(taskVariables.getParameter());
-
-        ApplicationContext ctx = new AnnotationConfigApplicationContext(SpringConfig.class);
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
+        ctx.addBeanFactoryPostProcessor(propertyBuilder.build());
+        ctx.register(SpringConfig.class);
+        ctx.refresh();
 
         TaskAndActionFactorySpring taskAndActionFactorySpring = new TaskAndActionFactorySpring(ctx);
         Task task = taskDescription.build(taskAndActionFactorySpring);

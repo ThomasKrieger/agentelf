@@ -1,8 +1,8 @@
 package org.agentelf.yaml;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import org.agentelf.task.ActionWrapper;
 import lombok.Data;
+import org.agentelf.task.ActionWrapper;
 
 @Data
 public class ActionDescription {

@@ -26,12 +26,12 @@ public class Initialize {
                 subDir.mkdir();
 
                 try (ScanResult scanResult = new ClassGraph()
-                        .acceptPaths("org/agentelf/" + subDirName)
+                        .acceptPaths("/org/agentelf/initialresource/" + subDirName)
                         .scan()) {
                     for (Resource resource :
                             scanResult.getAllResources()) {
                         Path target = Paths.get(".agentelf" )
-                                .resolve(resource.getPathRelativeToClasspathElement().substring("/org/agentelf".length()));
+                                .resolve(resource.getPathRelativeToClasspathElement().substring("/org/agentelf/initialresource".length()));
                         try (InputStream in = resource.open()) {
                             Files.copy(in, target, StandardCopyOption.REPLACE_EXISTING);
                         }
@@ -42,5 +42,8 @@ public class Initialize {
         }
     }
 
+    public static void main(String[] args) throws IOException {
+        new Initialize().initialize();
+    }
 
 }
