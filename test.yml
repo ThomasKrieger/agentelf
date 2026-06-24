@@ -1,4 +1,4 @@
 task:    createClass
-prompt:  "write a class XYZClass"
-class:   XYZClass
-package: org.agentelf
+prompt:  "implement JavaClass"
+class:   JavaClass
+package: org.agentelf.model.generate

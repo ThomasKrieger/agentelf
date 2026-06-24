@@ -19,66 +19,40 @@
 generate:NamedElement
     rdf:type owl:Class .
 
-generate:FullQualifiedElement
+generate:WithDocumentation
     rdf:type owl:Class .
 
 generate:WithDeclaration
     rdf:type owl:Class .
 
-generate:WithDocumentation
-    rdf:type owl:Class .
+generate:ExternalOrGeneratedClass
+     rdf:type owl:Class .
 
-generate:TypeDeclaration
-    rdf:type owl:Class ;
-    rdfs:subClassOf generate:NamedElement;
-    rdfs:label "Type Declarations" .
 
-generate:Generate
+generate:JavaType
     rdf:type owl:Class ;
-    rdfs:subClassOf generate:TypeDeclaration,
-                    generate:WithDocumentation;
-    rdfs:label "Either an interface or class to be generated" .
+    rdfs:subClassOf  generate:NamedElement,
+                     generate:ExternalOrGeneratedClass,
+                     generate:WithDocumentation;
+    rdfs:label "A Class, interface  to be generated" .
 
-generate:JavaClass
-    rdf:type owl:Class ;
-    rdfs:subClassOf generate:Generate;
-    rdfs:label "A Class to be generated" .
 
-generate:JavaInterface
+generate:ExternalType
     rdf:type owl:Class ;
-    rdfs:subClassOf generate:Generate;
-    rdfs:label "An Interface to be generated" .
-
-generate:PrimitiveType
-    rdf:type owl:Class ;
-    rdfs:subClassOf generate:TypeDeclaration;
-    rdfs:label "A primitive type like int. Classes inside java.lang are also treated as primitive types" .
-
-generate:ExternalClass
-    rdf:type owl:Class ;
-    rdfs:subClassOf generate:TypeDeclaration,
-                    generate:FullQualifiedElement;
+    rdfs:subClassOf generate:WithDeclaration,
+                    generate:ExternalOrGeneratedClass;
     rdfs:label "An external Class" .
-
-generate:ExternalGenericClass
-    rdf:type owl:Class ;
-    rdfs:subClassOf generate:TypeDeclaration,
-                    generate:FullQualifiedElement;
-    rdfs:label "An external generic Class" .
 
 generate:JavaField
     rdf:type owl:Class ;
-    rdfs:subClassOf generate:NamedElement,
-                    generate:WithDeclaration,
-                    generate:WithDocumentation;
+    rdfs:subClassOf generate:WithDeclaration;
     rdfs:label "Field" .
 
 generate:JavaMethod
     rdf:type owl:Class ;
-    rdfs:subClassOf generate:NamedElement,
-                    generate:WithDeclaration,
-                    generate:WithDocumentation;
+    rdfs:subClassOf generate:WithDeclaration;
     rdfs:label "Method" .
+
 
 #################################################################
 # Properties
@@ -87,11 +61,6 @@ generate:JavaMethod
 generate:name
     rdf:type owl:DatatypeProperty ;
     rdfs:domain generate:NamedElement ;
-    rdfs:range xsd:string .
-
-generate:package
-    rdf:type owl:ObjectProperty ;
-    rdfs:domain generate:FullQualifiedElement ;
     rdfs:range xsd:string .
 
 generate:documentation
@@ -104,31 +73,27 @@ generate:declaration
     rdfs:domain generate:WithDeclaration ;
     rdfs:range xsd:string .
 
+generate:type
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain generate:JavaType ;
+    rdfs:range xsd:string ;
+    rdfs:label "The type of the class for example class or interface" .
+
 #################################################################
 # Relations
 #################################################################
 
 generate:hasField
     rdf:type owl:ObjectProperty ;
-    rdfs:domain generate:JavaClass ;
+    rdfs:domain generate:JavaType ;
     rdfs:range generate:JavaField .
 
 generate:hasMethod
     rdf:type owl:ObjectProperty ;
-    rdfs:domain generate:Generate ;
+    rdfs:domain generate:JavaType ;
     rdfs:range generate:JavaMethod .
 
-generate:extendsClass
+generate:extends
     rdf:type owl:ObjectProperty ;
-    rdfs:domain generate:JavaClass ;
-    rdfs:range generate:JavaClass .
-
-generate:extendsInterface
-    rdf:type owl:ObjectProperty ;
-    rdfs:domain generate:Interface ;
-    rdfs:range generate:Interface .
-
-generate:implementsInterface
-    rdf:type owl:ObjectProperty ;
-    rdfs:domain generate:JavaClass ;
-    rdfs:range generate:Interface .
+    rdfs:domain generate:JavaType ;
+    rdfs:range generate:ExternalOrGeneratedClass .

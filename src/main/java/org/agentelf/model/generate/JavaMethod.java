@@ -1,8 +1,8 @@
 package org.agentelf.model.generate;
 
-import lombok.Getter;
+import lombok.Data;
 
-@Getter
+@Data
 public class JavaMethod {
 
     private String name;
