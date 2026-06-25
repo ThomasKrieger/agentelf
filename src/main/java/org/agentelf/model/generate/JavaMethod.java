@@ -3,10 +3,8 @@ package org.agentelf.model.generate;
 import lombok.Data;
 
 @Data
-public class JavaMethod {
+public class JavaMethod implements WithDeclaration {
 
-    private String name;
     private String declaration;
-    private String documentation;
 
 }

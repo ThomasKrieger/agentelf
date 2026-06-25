@@ -3,6 +3,9 @@ package org.agentelf.yaml;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 public class ConfigDescription {
 
@@ -12,5 +15,6 @@ public class ConfigDescription {
     private String packageName = "";
     @JsonProperty("class")
     private String className;
+    private List<String> uses = new ArrayList<>();
 
 }

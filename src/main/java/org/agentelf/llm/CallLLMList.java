@@ -20,7 +20,7 @@ public class CallLLMList {
         callLLMList.sort(new Comparator<CallLLM>() {
             @Override
             public int compare(CallLLM left, CallLLM rigth) {
-                return Integer.compare(left.size(),rigth.size());
+                return Integer.compare(rigth.size(),left.size());
             }
         });
         return callLLMList.getFirst();
@@ -30,7 +30,7 @@ public class CallLLMList {
         callLLMList.sort(new Comparator<CallLLM>() {
             @Override
             public int compare(CallLLM left, CallLLM rigth) {
-                return Integer.compare(rigth.size(),left.size());
+                return Integer.compare(left.size(),rigth.size());
             }
         });
         return callLLMList.getFirst();

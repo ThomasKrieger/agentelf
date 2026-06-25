@@ -27,6 +27,8 @@ public class AgentElf {
         taskVariables.setParameter(config.getPrompt());
         taskVariables.setPackageName(config.getPackageName());
         taskVariables.setClassName(config.getClassName());
+        taskVariables.setUses(config.getUses());
+
         String taskName = config.getTask();
 
         Map<String, TaskDescription> taskMap = new LoadTasks().loadTasks();

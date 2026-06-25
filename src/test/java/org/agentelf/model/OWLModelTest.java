@@ -11,7 +11,7 @@ public class OWLModelTest {
     @Test
     public void createInterface() throws IOException {
         try(InputStream stream = this.getClass()
-                .getResourceAsStream("/org/agentelf/initialresource/metamodel/generate.ttl")) {
+                .getResourceAsStream("/org/agentelf/metamodel/generate.ttl")) {
             var model = new OWLModelBuilder().load(stream).build();
             model.createJavaInterface("FirstInterface");
             model.internalModel().write(new OutputStreamWriter(System.out), "TURTLE");

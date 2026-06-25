@@ -1,4 +1,4 @@
 task:    createClass
 prompt:  "implement JavaClass"
-class:   JavaClass
-package: org.agentelf.model.generate
+class:   WriteUsesToContext
+package: org.agentelf.action

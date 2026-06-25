@@ -3,11 +3,8 @@ package org.agentelf.model.generate;
 import lombok.Data;
 
 @Data
-public class JavaField {
+public class JavaField implements WithDeclaration {
 
-    private String name;
     private String declaration;
-    private String documentation;
-
 
 }

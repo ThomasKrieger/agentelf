@@ -26,10 +26,14 @@ public class LoadContext {
     @Action(arguments = {"prompt"},
             returnVariable = "prompt")
     public String loadContext(String prompt) {
-        if (contextDir == null || !Files.exists(contextDir) || !Files.isDirectory(contextDir)) {
+       return loadFromDir(prompt,contextDir);
+    }
+
+    public static String loadFromDir(String prompt, Path dir) {
+        if (dir == null || !Files.exists(dir) || !Files.isDirectory(dir)) {
             return prompt;
         }
-        try (Stream<Path> paths = Files.walk(contextDir)) {
+        try (Stream<Path> paths = Files.walk(dir)) {
             String filesContent = paths
                     .filter(Files::isRegularFile)
                     .map(path -> {
@@ -45,4 +49,5 @@ public class LoadContext {
             return prompt;
         }
     }
+
 }

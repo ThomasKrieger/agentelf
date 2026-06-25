@@ -25,14 +25,13 @@ generate:WithDocumentation
 generate:WithDeclaration
     rdf:type owl:Class .
 
-generate:ExternalOrGeneratedClass
+generate:ExternalOrJavaClass
      rdf:type owl:Class .
-
 
 generate:JavaType
     rdf:type owl:Class ;
     rdfs:subClassOf  generate:NamedElement,
-                     generate:ExternalOrGeneratedClass,
+                     generate:ExternalOrJavaClass,
                      generate:WithDocumentation;
     rdfs:label "A Class, interface  to be generated" .
 
@@ -40,7 +39,7 @@ generate:JavaType
 generate:ExternalType
     rdf:type owl:Class ;
     rdfs:subClassOf generate:WithDeclaration,
-                    generate:ExternalOrGeneratedClass;
+                    generate:ExternalOrJavaClass;
     rdfs:label "An external Class" .
 
 generate:JavaField
@@ -96,4 +95,9 @@ generate:hasMethod
 generate:extends
     rdf:type owl:ObjectProperty ;
     rdfs:domain generate:JavaType ;
-    rdfs:range generate:ExternalOrGeneratedClass .
+    rdfs:range generate:ExternalOrJavaClass .
+
+generate:uses
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain generate:JavaType ;
+    rdfs:range generate:ExternalOrJavaClass .
