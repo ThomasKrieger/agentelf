@@ -1,0 +1,15 @@
+@startuml
+'https://plantuml.com/component-diagram
+
+[Class Diagram] --> [Generate]
+[Generate] --> [Source Code]
+
+[Activity Diagram] -->  [Generate]
+[Sequence Diagram] -->  [Generate]
+[YAML] -->  [Generate]
+
+[Class Diagram]  --> [YAML]
+[Activity Diagram] -->  [YAML]
+[Sequence Diagram] -->  [YAML]
+
+@enduml

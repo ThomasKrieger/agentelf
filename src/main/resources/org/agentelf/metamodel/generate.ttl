@@ -33,7 +33,7 @@ generate:JavaType
     rdfs:subClassOf  generate:NamedElement,
                      generate:ExternalOrJavaClass,
                      generate:WithDocumentation;
-    rdfs:label "A Class, interface  to be generated" .
+    rdfs:label "A Class, interface to be generated" .
 
 
 generate:ExternalType

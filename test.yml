@@ -1,4 +1,4 @@
 task:    createClass
-prompt:  "implement JavaClass"
-class:   WriteUsesToContext
-package: org.agentelf.action
+prompt:  "implement TestClass"
+class:   TestClass
+package: org.agentelf

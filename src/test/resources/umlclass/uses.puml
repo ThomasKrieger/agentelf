@@ -1,0 +1,10 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface Interface
+
+Interface <-- Class
+SecondClass <-- Class
+ThirdClass -> Class
+
+@enduml
