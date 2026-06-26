@@ -2,9 +2,9 @@ package org.agentelf.model.generate;
 
 import java.util.function.Function;
 
-public interface ExternalOrJavaType {
+public interface ExternalOrGenerateType {
 
     Object onExternalClass(Function<ExternalType,Object> onExternal);
-    Object onGeneratedClass(Function<JavaType,Object> onGenerated);
+    Object onGenerateClass(Function<GenerateType,Object> onGenerated);
 
 }

@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.function.Function;
 
 @Data
-public class ExternalType implements WithDeclaration, ExternalOrJavaType {
+public class ExternalType implements WithDeclaration, ExternalOrGenerateType {
 
     private String declaration;
 
@@ -15,7 +15,7 @@ public class ExternalType implements WithDeclaration, ExternalOrJavaType {
     }
 
     @Override
-    public Object onGeneratedClass(Function<JavaType, Object> onGenerated) {
+    public Object onGenerateClass(Function<GenerateType, Object> onGenerated) {
         return null;
     }
 }
