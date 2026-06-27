@@ -6,7 +6,6 @@ import org.agentelf.model.common.WithDocumentation;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
 
 @Data
 public class GenerateType implements NamedElement, WithDocumentation, ExternalOrGenerateType {
@@ -20,7 +19,6 @@ public class GenerateType implements NamedElement, WithDocumentation, ExternalOr
     private final List<GenerateMethod> methods = new ArrayList<>();
     private final List<ExternalOrGenerateType> extendsTypes = new ArrayList<>();
     private final List<ExternalOrGenerateType> uses = new ArrayList<>();
-
 
     public void addField(GenerateField field) {
         fields.add(field);
@@ -38,13 +36,4 @@ public class GenerateType implements NamedElement, WithDocumentation, ExternalOr
         uses.add(type);
     }
 
-    @Override
-    public Object onExternalClass(Function<ExternalType, Object> onExternal) {
-        return null;
-    }
-
-    @Override
-    public Object onGenerateClass(Function<GenerateType, Object> onGenerated) {
-        return onGenerated.apply(this);
-    }
 }

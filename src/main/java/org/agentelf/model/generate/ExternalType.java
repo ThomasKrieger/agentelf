@@ -1,22 +1,11 @@
 package org.agentelf.model.generate;
 
 import lombok.Data;
-import org.agentelf.model.common.WithDeclaration;
-
-import java.util.function.Function;
+import org.agentelf.model.common.NamedElement;
 
 @Data
-public class ExternalType implements WithDeclaration, ExternalOrGenerateType {
+public class ExternalType implements NamedElement, ExternalOrGenerateType {
 
-    private String declaration;
+    private String name;
 
-    @Override
-    public Object onExternalClass(Function<ExternalType, Object> onExternal) {
-        return onExternal.apply(this);
-    }
-
-    @Override
-    public Object onGenerateClass(Function<GenerateType, Object> onGenerated) {
-        return null;
-    }
 }
