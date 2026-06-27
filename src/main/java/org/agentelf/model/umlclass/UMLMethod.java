@@ -1,4 +1,4 @@
-package org.agentelf.model.uml;
+package org.agentelf.model.umlclass;
 
 import lombok.Getter;
 
@@ -6,13 +6,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Getter
-public class MethodModel {
+public class UMLMethod {
 
    private final String name;
    private final String returnType;
-   private final List<VariabelModel> arguments = new LinkedList<>();
+   private final List<UMLFiled> arguments = new LinkedList<>();
 
-    public MethodModel(String name, String returnType) {
+    public UMLMethod(String name, String returnType) {
         this.name = name;
         this.returnType = returnType;
     }

@@ -1,6 +1,8 @@
 package org.agentelf.model.generate;
 
 import lombok.Data;
+import org.agentelf.model.common.NamedElement;
+import org.agentelf.model.common.WithDocumentation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,10 +14,6 @@ public class GenerateType implements NamedElement, WithDocumentation, ExternalOr
     private String name;
     private String documentation;
     private String declaration;
-
-    /**
-     * "class" or "interface"
-     */
     private String type;
 
     private final List<GenerateField> fields = new ArrayList<>();

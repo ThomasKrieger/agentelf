@@ -1,6 +1,7 @@
 package org.agentelf.model.generate;
 
 import lombok.Data;
+import org.agentelf.model.common.WithDeclaration;
 
 import java.util.function.Function;
 

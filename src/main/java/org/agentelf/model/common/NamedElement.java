@@ -1,4 +1,4 @@
-package org.agentelf.model.generate;
+package org.agentelf.model.common;
 
 public interface NamedElement {
     String getName();
