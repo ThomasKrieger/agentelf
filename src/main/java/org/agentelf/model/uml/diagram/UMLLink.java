@@ -7,6 +7,6 @@ public class UMLLink {
 
     private UMLComponent incoming;
     private UMLComponent outgoing;
-    private String linkType;
+    private String type;
 
 }
