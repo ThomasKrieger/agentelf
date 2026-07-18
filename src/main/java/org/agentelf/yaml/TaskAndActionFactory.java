@@ -1,7 +1,7 @@
 package org.agentelf.yaml;
 
-import org.agentelf.task.ActionWrapper;
-import org.agentelf.task.Task;
+import org.agentelf.taskandaction.task.ActionWrapper;
+import org.agentelf.taskandaction.task.Task;
 
 public interface TaskAndActionFactory {
 

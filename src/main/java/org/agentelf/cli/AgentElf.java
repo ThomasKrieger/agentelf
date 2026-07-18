@@ -1,7 +1,7 @@
 package org.agentelf.cli;
 
-import org.agentelf.task.Task;
-import org.agentelf.task.TaskVariables;
+import org.agentelf.taskandaction.task.Task;
+import org.agentelf.taskandaction.task.TaskVariables;
 import org.agentelf.yaml.ConfigDescription;
 import org.agentelf.yaml.ConfigParser;
 import org.agentelf.yaml.TaskAndActionFactorySpring;

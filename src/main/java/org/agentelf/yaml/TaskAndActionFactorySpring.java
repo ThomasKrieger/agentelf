@@ -1,8 +1,8 @@
 package org.agentelf.yaml;
 
-import org.agentelf.task.ActionWrapper;
-import org.agentelf.task.ActionWrapperBean;
-import org.agentelf.task.Task;
+import org.agentelf.taskandaction.task.ActionWrapper;
+import org.agentelf.taskandaction.task.ActionWrapperBean;
+import org.agentelf.taskandaction.task.Task;
 import org.springframework.context.ApplicationContext;
 
 public class TaskAndActionFactorySpring implements TaskAndActionFactory  {

@@ -1,6 +1,6 @@
 package org.agentelf.yaml;
 
-import org.agentelf.task.Task;
+import org.agentelf.taskandaction.task.Task;
 import lombok.Data;
 
 import java.util.ArrayList;

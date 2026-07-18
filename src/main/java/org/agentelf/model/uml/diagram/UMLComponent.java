@@ -8,6 +8,7 @@ import java.util.List;
 public class UMLComponent {
 
     private String name;
+    private String type;
     private List<UMLLink> outgoing;
 
 }

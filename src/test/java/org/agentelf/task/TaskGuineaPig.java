@@ -1,5 +1,7 @@
 package org.agentelf.task;
 
+import org.agentelf.taskandaction.task.Task;
+
 import java.util.List;
 
 public class TaskGuineaPig {

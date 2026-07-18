@@ -1,7 +1,0 @@
-@startuml
-'https://plantuml.com/component-diagram
-
-[Action DSL] -->  [Class Diagram]
-[Action DSL] -->  [YAML]
-
-@enduml
