@@ -29,5 +29,4 @@ import java.io.IOException;
         assertEquals(withoutMarkdown , result);
     }
 
-
 }
