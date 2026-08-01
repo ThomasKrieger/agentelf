@@ -6,16 +6,18 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import java.io.IOException;
 import java.io.Reader;
 
-public class TaskParser {
+public class GenericParser<RESULT> {
 
     private final ObjectMapper mapper;
+    private final Class<RESULT> classOfResult;
 
-    public TaskParser() {
+    public GenericParser(Class<RESULT> classOfResult) {
+        this.classOfResult = classOfResult;
         this.mapper = new ObjectMapper(new YAMLFactory());
     }
 
-    public TaskDescription parse(Reader reader) throws IOException {
-        return mapper.readValue(reader, TaskDescription.class);
+    public RESULT parse(Reader reader) throws IOException {
+        return mapper.readValue(reader, classOfResult);
     }
 
 }

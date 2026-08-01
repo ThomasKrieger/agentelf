@@ -1,4 +1,4 @@
-package org.agentelf.model.generateclass.llm;
+package org.agentelf.model.generatetype.llm;
 
 import java.util.List;
 
