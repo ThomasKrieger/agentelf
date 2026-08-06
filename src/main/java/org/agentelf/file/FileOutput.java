@@ -1,5 +1,7 @@
 package org.agentelf.file;
 
+import org.springframework.stereotype.Component;
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -7,7 +9,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Component
 public class FileOutput {
 
     private final List<FileState> previousState = new ArrayList<>();

@@ -1,4 +1,4 @@
-name: createClass
+name: transformGenerate
 actions:
     - addPromptOnlyClass
     - loadContext

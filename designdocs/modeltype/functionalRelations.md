@@ -24,9 +24,17 @@ void save(Repo repo, Action action) {
 
 }
 
+void save(Repo repo, SubType of  action) {
+
+}
+
 usage:
 a = save(...)
 a = save(repo,data)
+
+open marker for labels for example pure
+exception handling
+cross cutting concerns
 
 
 
@@ -45,5 +53,17 @@ Examples
 template for llm:
 mustache
 open method calls, so that a method call gets correctly 
+
+support for structural types?
+Pattern implementation by using structura types?
+List... Collections, mathematical structures by structural types (Generics?)
+Concepts?
+
+open: Modules
+open Modules/Closed Modules/Layers
+
+open functions on Data or methods(labels)
+Macros, Meta programming?
+
 
 

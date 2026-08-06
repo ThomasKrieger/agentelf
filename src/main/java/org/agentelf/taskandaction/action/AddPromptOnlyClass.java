@@ -5,15 +5,15 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AddDefaultPrompt {
+public class AddPromptOnlyClass extends AddPromptAbstract{
 
-    @Value("${default-prompt}")
-    private String defaultPrompt;
+    @Value("${prompt-only-class}")
+    private String promptOnlyClass;
 
     @Action(arguments = {"prompt"},
             returnVariable = "prompt")
-    public String addDefaultPrompt(String prompt) {
-        return  prompt + System.lineSeparator() + defaultPrompt + System.lineSeparator();
+    public String addPromptOnlyClass(String prompt) {
+        return  addPrompt(prompt,promptOnlyClass);
     }
 
 }

@@ -8,18 +8,18 @@ import org.springframework.stereotype.Component;
 import java.nio.file.Path;
 
 @Component
-public class SaveClass extends AbstractSaveClass{
+public class SaveTest extends AbstractSaveClass{
 
     private final Path targetDir;
     private final FileOutput fileOutput;
 
-    public SaveClass(FileOutput fileOutput, @Value("${main-target-dir}") Path targetDir) {
+    public SaveTest(FileOutput fileOutput, @Value("${test-target-dir}") Path targetDir) {
         this.fileOutput = fileOutput;
         this.targetDir = targetDir;
     }
 
     @Action(arguments = {"llmResponse", "className", "packageName" })
-    public void saveClass(String llmResponse, String className, String packageName) {
+    public void saveTest(String llmResponse, String className, String packageName) {
         save(llmResponse,className,packageName,fileOutput,targetDir);
     }
 

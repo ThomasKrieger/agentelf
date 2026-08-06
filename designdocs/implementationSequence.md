@@ -1,13 +1,11 @@
-Action/Tasks Model per Hand (Java Classes)
-teile über generate (context)
-
 Transform Action Model -> Generate per Hand
+teile über generate (context)
 Generate -> Source Code per Hand
 
 Actions
 e2e Test start
 
-Algebaric Data Type Modell per Hand
+Data Modell per Hand
 
 UML Class Description anhand Algebaric Data Type Modell
 

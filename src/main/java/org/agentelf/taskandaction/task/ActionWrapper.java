@@ -1,6 +1,6 @@
 package org.agentelf.taskandaction.task;
 
-import org.agentelf.api.RunVariables;
+import org.agentelf.taskandaction.RunVariables;
 
 public interface ActionWrapper {
 

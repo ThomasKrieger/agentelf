@@ -16,7 +16,16 @@ public class CallLLMList {
         callLLMList.addAll(callGeminiList.getCallLLMList());
     }
 
-    public CallLLM large() {
+    public String callLarge(String prompt) {
+        return large().call(prompt);
+    }
+
+    public String callSmall(String prompt) {
+        return small().call(prompt);
+    }
+
+
+    private CallLLM large() {
         callLLMList.sort(new Comparator<CallLLM>() {
             @Override
             public int compare(CallLLM left, CallLLM rigth) {
@@ -26,7 +35,7 @@ public class CallLLMList {
         return callLLMList.getFirst();
     }
 
-    public CallLLM small() {
+    private CallLLM small() {
         callLLMList.sort(new Comparator<CallLLM>() {
             @Override
             public int compare(CallLLM left, CallLLM rigth) {

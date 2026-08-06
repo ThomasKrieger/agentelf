@@ -16,7 +16,7 @@ public class CallSmallLLM {
     @Action(arguments = {"prompt"},
             returnVariable = "llmResponse")
     public String callLLM(String prompt) {
-        return callLLMList.small().call(prompt);
+        return callLLMList.callSmall(prompt);
     }
 
 }

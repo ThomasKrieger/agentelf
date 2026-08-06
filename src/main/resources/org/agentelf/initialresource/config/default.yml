@@ -1,2 +1,0 @@
-context-dir: .agentelf/context
-default-prompt: "Output exactly one compilable Java class and nothing else."

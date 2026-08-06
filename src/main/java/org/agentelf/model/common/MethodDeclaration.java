@@ -1,4 +1,6 @@
 package org.agentelf.model.common;
 
-public record MethodDeclaration(String declaration, String id, String documentation, String prompt) {
+public record MethodDeclaration(String declaration,
+                                String documentation,
+                                String prompt) {
 }

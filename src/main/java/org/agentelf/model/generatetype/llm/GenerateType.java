@@ -7,7 +7,6 @@ import java.util.List;
 
 public record GenerateType(String name,
                            String packageName,
-                           String id,
                            String typeDeclaration,
                            String documentation,
                            String prompt,

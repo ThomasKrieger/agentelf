@@ -1,7 +1,7 @@
 package org.agentelf.taskandaction.task;
 
 import org.agentelf.api.Action;
-import org.agentelf.api.RunVariables;
+import org.agentelf.taskandaction.RunVariables;
 import org.apache.commons.beanutils2.PropertyUtils;
 
 import java.lang.reflect.InvocationTargetException;

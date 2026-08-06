@@ -16,15 +16,12 @@ public class Initialize {
 
     public void initialize() throws IOException {
         File rootDir = new File(".agentelf");
-        String[] subDirs = {"config", "template", "context", "task" };
-
+        String[] subDirs = { "template", "context", "task" };
         if (!rootDir.exists()) {
             rootDir.mkdir();
-
             for (String subDirName : subDirs) {
                 File subDir = new File(rootDir, subDirName);
                 subDir.mkdir();
-
                 try (ScanResult scanResult = new ClassGraph()
                         .acceptPaths("/org/agentelf/initialresource/" + subDirName)
                         .scan()) {
@@ -35,15 +32,12 @@ public class Initialize {
                         try (InputStream in = resource.open()) {
                             Files.copy(in, target, StandardCopyOption.REPLACE_EXISTING);
                         }
-
                     }
                 }
             }
+            InputStream in = this.getClass().getResourceAsStream("/org/agentelf/initialresource/config.yml");
+            Files.copy(in, Paths.get(".agentelf" ).resolve("config.yml"));
         }
-    }
-
-    public static void main(String[] args) throws IOException {
-        new Initialize().initialize();
     }
 
 }

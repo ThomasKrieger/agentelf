@@ -1,6 +1,6 @@
 package org.agentelf.task;
 
-import org.agentelf.api.RunVariables;
+import org.agentelf.taskandaction.RunVariables;
 import org.agentelf.taskandaction.task.ActionWrapperBean;
 import org.junit.jupiter.api.Test;
 

@@ -1,7 +1,7 @@
 package org.agentelf.taskandaction.task;
 
 import lombok.Getter;
-import org.agentelf.api.RunVariables;
+import org.agentelf.taskandaction.RunVariables;
 
 import java.util.LinkedList;
 import java.util.List;

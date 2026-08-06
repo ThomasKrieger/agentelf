@@ -16,7 +16,7 @@ public class CallLargeLLM {
     @Action(arguments = {"prompt"},
             returnVariable = "llmResponse")
     public String callLLM(String prompt) {
-        return callLLMList.large().call(prompt);
+        return callLLMList.callLarge(prompt);
     }
 
 }

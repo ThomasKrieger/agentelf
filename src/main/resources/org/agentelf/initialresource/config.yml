@@ -1,0 +1,4 @@
+context-dir: .agentelf/context
+main-target-dir: src/main/java
+test-target-dir: src/test/java
+prompt-only-class: "Output exactly one compilable Java class and nothing else."
