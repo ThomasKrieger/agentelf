@@ -19,7 +19,7 @@ public class SaveClass extends AbstractSaveClass{
     }
 
     @Action(arguments = {"llmResponse", "className", "packageName" })
-    public void saveClass(String llmResponse, String className, String packageName) {
+    public void saveClass(String llmResponse, String className, String packageName) throws Exception {
         save(llmResponse,className,packageName,fileOutput,targetDir);
     }
 

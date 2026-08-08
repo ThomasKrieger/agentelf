@@ -1,7 +1,6 @@
-package org.agentelf.task;
+package org.agentelf.taskandaction.task;
 
 import org.agentelf.taskandaction.RunVariables;
-import org.agentelf.taskandaction.task.ActionWrapperBean;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

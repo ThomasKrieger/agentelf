@@ -1,32 +1,38 @@
-Transform Action Model -> Generate per Hand
-teile über generate (context)
-Generate -> Source Code per Hand
-
-Actions
-e2e Test start
-
-Data Modell per Hand
-
-UML Class Description anhand Algebaric Data Type Modell
-
-UML Class Description -> Generate (Actions)
-
-Helper Classes Based on UML Class Description
-
-Actions 
-und Helper Classes
-
-e2e und Integrations Tests
+per hand
+Intermediate -> Source
+Intermediate -> Test 
+unit test task
 
 
-UML Class Description basierend auf Algebraic Data Types
+based on intermediate
+action -> intermediate
+javaparser
+search, include
+path, correct dir
+uml diagram -> uml description
+uml -> Intermediate
+extends, implements, uses
+based on graph
+sorting
 
-Algebraic Data Types for Data/Modells
-State Modell for State Based
+-> resolve prompts
+-> super in prompts?
+resolve @ in prompt
+pattern support?
 
-open: What other constellations/Types?
-for example how to describe Java Parser
-or Mapping Task Variables to Action Variables?
+
+data -> Intermediate
+function call resolution
+based on graph
+
+unit tests for actions
+
+
+
+
+next: Usage Model, Change Model, Update mechanism, modules, model for e2e test, e2e tests for task
+update mechanism
+
 
 
 

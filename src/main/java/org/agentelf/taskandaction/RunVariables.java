@@ -1,13 +1,12 @@
 package org.agentelf.taskandaction;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class RunVariables {
+public class RunVariables extends TaskOrRunVariables {
 
-    private String prompt;
     private String llmResponse;
-    private String packageName;
-    private String className;
 
 }

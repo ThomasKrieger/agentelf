@@ -10,6 +10,9 @@ public abstract class AbstractTypeIntermediate {
 
     private String packageName;
     private String name;
+    private String prompt;
+    private String documentation;
+    private UnitTestIntermediate unitTest;
     private final List<MethodIntermediate> methods = new ArrayList<>();
 
 }

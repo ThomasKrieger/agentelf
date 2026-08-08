@@ -17,7 +17,7 @@ public class Task {
     }
 
     public void execute(TaskVariables taskVariables) {
-        RunVariables runVariables = taskVariables.toRunVariables();
+        RunVariables runVariables = TaskVariablesMapper.INSTANCE.toRunVariables(taskVariables);
         for(ActionWrapper actionWrapper : actions) {
             actionWrapper.execute(runVariables);
         }

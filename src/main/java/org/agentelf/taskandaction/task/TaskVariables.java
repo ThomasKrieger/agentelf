@@ -1,24 +1,20 @@
 package org.agentelf.taskandaction.task;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.agentelf.taskandaction.RunVariables;
+import org.agentelf.taskandaction.TaskOrRunVariables;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class TaskVariables {
+public class TaskVariables extends TaskOrRunVariables {
 
     private String task;
-    private String prompt;
-    @JsonProperty("package")
-    private String packageName = "";
-    @JsonProperty("class")
-    private String className;
+
 
     public RunVariables toRunVariables() {
         RunVariables runVariables = new RunVariables();
-        runVariables.setPrompt(prompt);
-        runVariables.setPackageName(packageName);
-        runVariables.setClassName(className);
+
         return runVariables;
     }
 

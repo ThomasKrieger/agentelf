@@ -25,11 +25,11 @@ public class LoadContext {
 
     @Action(arguments = {"prompt"},
             returnVariable = "prompt")
-    public String loadContext(String prompt) {
+    public String loadContext(String prompt) throws Exception {
        return loadFromDir(prompt,contextDir);
     }
 
-    public static String loadFromDir(String prompt, Path dir) {
+    public static String loadFromDir(String prompt, Path dir) throws Exception{
         if (dir == null || !Files.exists(dir) || !Files.isDirectory(dir)) {
             return prompt;
         }
@@ -45,8 +45,6 @@ public class LoadContext {
                     })
                     .collect(Collectors.joining(System.lineSeparator()));
             return prompt + System.lineSeparator() + filesContent;
-        } catch (IOException e) {
-            return prompt;
         }
     }
 

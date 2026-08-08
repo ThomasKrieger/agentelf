@@ -16,7 +16,7 @@ public class Initialize {
 
     public void initialize() throws IOException {
         File rootDir = new File(".agentelf");
-        String[] subDirs = { "template", "context", "task" };
+        String[] subDirs = {"context", "task" };
         if (!rootDir.exists()) {
             rootDir.mkdir();
             for (String subDirName : subDirs) {

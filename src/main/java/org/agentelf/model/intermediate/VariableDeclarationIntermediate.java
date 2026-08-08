@@ -3,7 +3,7 @@ package org.agentelf.model.intermediate;
 import lombok.Data;
 
 @Data
-public class FieldIntermediate {
+public class VariableDeclarationIntermediate {
 
     private TypeDescriptionIntermediate type;
     private String name;

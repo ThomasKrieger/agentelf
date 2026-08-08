@@ -1,6 +1,4 @@
-package org.agentelf.task;
-
-import org.agentelf.taskandaction.task.Task;
+package org.agentelf.taskandaction.task;
 
 import java.util.List;
 

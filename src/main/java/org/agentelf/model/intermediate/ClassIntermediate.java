@@ -7,6 +7,8 @@ import lombok.EqualsAndHashCode;
 @Data
 public class ClassIntermediate extends AbstractTypeWithDataIntermediate{
 
-    private TypeDescriptionIntermediate extendsClass;
+    public String getType() {
+        return "class";
+    }
 
 }
