@@ -5,7 +5,9 @@ Factory
 Create -> Based On Task call in client
 
 CreateIntermediateModel
-   inheritance graph
+   inheritance graph:
+      parent to child for sorting 
+      child to parent for method resolution
    map handle -> type
 
 create order based on inheritance graph
