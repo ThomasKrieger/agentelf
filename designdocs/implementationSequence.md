@@ -4,6 +4,11 @@ Intermediate -> Test
 unit test task
 
 
+modellierung anhand function modell
+usage from sequence diagram?
+test modell ausarbeiten
+variationen?
+
 based on intermediate
 action -> intermediate
 javaparser
@@ -12,8 +17,7 @@ path, correct dir
 uml diagram -> uml description
 uml -> Intermediate
 extends, implements, uses
-based on graph
-sorting
+based on graph sorting
 
 -> resolve prompts
 -> super in prompts?

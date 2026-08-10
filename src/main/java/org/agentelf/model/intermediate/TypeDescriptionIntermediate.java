@@ -1,8 +1,8 @@
 package org.agentelf.model.intermediate;
 
 /**
- * A fully qualified Name used in extends and implements class.
- * For Generic Classes it contains the resolved types.
+ * either a primitive type or a reference type
  */
-public class TypeDescriptionIntermediate {
+public interface TypeDescriptionIntermediate {
+    String getLabelForTemplate();
 }

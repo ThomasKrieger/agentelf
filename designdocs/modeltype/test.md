@@ -20,6 +20,16 @@ names: ...
 methods:
 combinatoric...
 
+first pattern
+given/when/then tests based on testbuilder
+assertions and probably mocks
+
+
+probably easy to formulate checks for rule based:
+1) No Exception, pure, complete
+2) if value x than result y based on good data structures on the input and output
+3) 
+
 
 Open: How to check the Texts
 Types of checks

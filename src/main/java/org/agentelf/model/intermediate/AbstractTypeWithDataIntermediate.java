@@ -11,7 +11,31 @@ import java.util.List;
 public abstract class AbstractTypeWithDataIntermediate extends AbstractTypeIntermediate {
 
     private final List<FieldIntermediate> fields = new ArrayList<>();
-    private final List<TypeDescriptionIntermediate> implementsList = new ArrayList<>();
+    private final List<ReferenceTypeDescriptionIntermediate> implementList = new ArrayList<>();
 
+    public FieldIntermediate addField(TypeDescriptionIntermediate type, String name) {
+        FieldIntermediate fieldIntermediate = new FieldIntermediate();
+        fieldIntermediate.setType(type);
+        fieldIntermediate.setName(name);
+        fields.add(fieldIntermediate);
+        return fieldIntermediate;
+    }
+
+    public void addImplements(ReferenceTypeDescriptionIntermediate referenceTypeDescriptionIntermediate) {
+        implementList.add(referenceTypeDescriptionIntermediate);
+    }
+
+    public String getImplementForTemplate() {
+        if(implementList.isEmpty()) {
+            return "";
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("implements ");
+        for(ReferenceTypeDescriptionIntermediate  referenceTypeDescriptionIntermediate : implementList ) {
+            stringBuilder.append(referenceTypeDescriptionIntermediate.getLabelForTemplate());
+            stringBuilder.append(", ");
+        }
+        return stringBuilder.toString();
+    }
 
 }

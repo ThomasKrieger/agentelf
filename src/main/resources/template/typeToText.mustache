@@ -1,7 +1,28 @@
 package {{packageName}};
 
-public {{type}} {{name}} {
 
+{{documentation}}
+{{promptForTemplate}}
 
+public {{type}} {{name}}
+{{#extendsType}}
+extends {{extendsType}}
+{{/extendsType}}
+{{implementForTemplate}}
+{
+
+{{#fields}}
+private {{labelForTemplate}} {{name}};
+{{/fields}}
+
+{{#methods}}
+    {{documentation}}
+    {{promptForTemplate}}
+    public  {{returnType.labelForTemplate}} {{name}} (
+    {{#parameterList}}
+        {{type.labelForTemplate}} {{name}}
+    {{/parameterList}},
+    )
+{{/methods}}
 
 }

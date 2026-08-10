@@ -7,6 +7,11 @@ import lombok.EqualsAndHashCode;
 @Data
 public class ClassIntermediate extends AbstractTypeWithDataIntermediate{
 
+    /**
+     * is null if this class does not extend another class
+     */
+    private ReferenceTypeDescriptionIntermediate extendsType;
+
     public String getType() {
         return "class";
     }
