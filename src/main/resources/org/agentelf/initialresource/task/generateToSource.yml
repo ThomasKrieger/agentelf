@@ -1,7 +1,0 @@
-name: transformGenerate
-actions:
-    - addPromptOnlyClass
-    - loadContext
-    - callLargeLLM
-    - removeMarkdownTags
-    - saveClass

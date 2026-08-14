@@ -2,7 +2,6 @@ package org.agentelf.taskandaction.task;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.agentelf.taskandaction.RunVariables;
 import org.agentelf.taskandaction.TaskOrRunVariables;
 
 @EqualsAndHashCode(callSuper = true)
@@ -10,12 +9,5 @@ import org.agentelf.taskandaction.TaskOrRunVariables;
 public class TaskVariables extends TaskOrRunVariables {
 
     private String task;
-
-
-    public RunVariables toRunVariables() {
-        RunVariables runVariables = new RunVariables();
-
-        return runVariables;
-    }
 
 }

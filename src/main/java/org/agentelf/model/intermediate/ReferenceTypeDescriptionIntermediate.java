@@ -1,5 +1,6 @@
 package org.agentelf.model.intermediate;
 
+import lombok.AllArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
@@ -12,12 +13,13 @@ import java.util.Map;
  * For Generic Classes it contains the resolved types.
  */
 @Setter
+@AllArgsConstructor
 public class ReferenceTypeDescriptionIntermediate implements TypeDescriptionIntermediate{
 
     private String packageName;
     private String name;
-    private List<String> genericPlaceholderNames = new ArrayList<>();
-    private Map<String,ReferenceTypeDescriptionIntermediate> genericPlaceholderNameToResolvedType = new HashMap<>();
+    private final List<String> genericPlaceholderNames = new ArrayList<>();
+    private final Map<String,ReferenceTypeDescriptionIntermediate> genericPlaceholderNameToResolvedType = new HashMap<>();
 
 
     @Override

@@ -1,7 +1,7 @@
-name: createClass
+name: createUnitTest
 actions:
     - addPromptOnlyClass
     - loadContext
     - callLargeLLM
     - removeMarkdownTags
-    - saveClass
+    - saveTest

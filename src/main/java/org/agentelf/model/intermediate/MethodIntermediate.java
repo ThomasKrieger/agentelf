@@ -1,7 +1,9 @@
 package org.agentelf.model.intermediate;
 
 import lombok.Data;
+import org.agentelf.mustache.ApplyTemplate;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +29,16 @@ public class MethodIntermediate {
          return prompt;
       }
       return "";
+   }
+
+   public void addImplementMethodToPrompt()  {
+       String addToPrompt = null;
+       try {
+            addToPrompt = new ApplyTemplate().apply(this, "promptImplementMethod.mustache");
+            prompt = addToPrompt + System.lineSeparator() + prompt;
+       } catch (IOException e) {
+          throw new RuntimeException(e);
+       }
    }
 
 }

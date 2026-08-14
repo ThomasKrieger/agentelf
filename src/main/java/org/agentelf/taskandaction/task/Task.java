@@ -23,4 +23,10 @@ public class Task {
         }
     }
 
+    public void execute(RunVariables runVariables) {
+        for(ActionWrapper actionWrapper : actions) {
+            actionWrapper.execute(runVariables);
+        }
+    }
+
 }

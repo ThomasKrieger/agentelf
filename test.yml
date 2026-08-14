@@ -1,4 +1,4 @@
 task:    createClass
-prompt:  "create a unit test for ApplyTemplate using test.mustache and ContextGuineaPig, write one test for true and one for false"
-class:   ApplyTemplateTest
-package: org.agentelf.mustache
+prompt:  "implement class ForEachModelCallCreateClass"
+class:   ForEachModelCallCreateClass
+package: org.agentelf.taskandaction.action

@@ -1,0 +1,6 @@
+name: intermediateToSource
+actions:
+    - addImplementMethodPromptToIntermediateModel
+    - intermediateTypeListToModel
+    - forEachModelCallCreateClass
+    - forEachModelCallCreateTest

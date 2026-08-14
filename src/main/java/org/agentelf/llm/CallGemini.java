@@ -22,7 +22,6 @@ public class CallGemini implements CallLLM {
                 .apiKey(apiKey)
                 .modelName(modelName)
                 .build();
-        System.out.println(apiKey);
         System.out.println(modelName);
         ChatResponse response = model.chat(ChatRequest.builder().messages(UserMessage.from(prompt)).build());
         System.out.println(response.tokenUsage());

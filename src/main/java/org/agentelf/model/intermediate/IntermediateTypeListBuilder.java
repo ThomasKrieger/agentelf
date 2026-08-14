@@ -15,6 +15,25 @@ public class IntermediateTypeListBuilder {
         return classIntermediate;
     }
 
+    public ClassIntermediate addClassAndPrompt(String packageName, String name,String prompt) {
+        ClassIntermediate classIntermediate = addClass(packageName,name);
+        classIntermediate.setPrompt(prompt);
+        return classIntermediate;
+    }
+
+    public ClassIntermediate addClassDocumentationAndPrompt(String packageName, String name, String documentation, String prompt) {
+        ClassIntermediate classIntermediate = addClass(packageName,name);
+        classIntermediate.setDocumentation(documentation);
+        classIntermediate.setPrompt(prompt);
+        return classIntermediate;
+    }
+
+    public ClassIntermediate addClassAndDocumentation(String packageName, String name, String documentation) {
+        ClassIntermediate classIntermediate = addClass(packageName,name);
+        classIntermediate.setDocumentation(documentation);
+        return classIntermediate;
+    }
+
     public List<AbstractTypeIntermediate> build() {
         return typeList;
     }

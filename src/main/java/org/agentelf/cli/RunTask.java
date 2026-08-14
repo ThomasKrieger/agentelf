@@ -19,11 +19,14 @@ public class RunTask {
     public void run(Reader configYml,
                     Reader[] yamlFiles,
                     ApplicationContext ctx) throws IOException {
-
-
         TaskVariables taskVariables = new GenericParser<>(TaskVariables.class)
                 .parse(configYml);
+        run(taskVariables,yamlFiles,ctx);
+    }
 
+    public void run(TaskVariables taskVariables,
+                    Reader[] yamlFiles,
+                    ApplicationContext ctx) throws IOException {
         String taskName = taskVariables.getTask();
         Map<String, TaskDescription> taskMap = new LoadTasks().loadTasks(yamlFiles);
         TaskDescription taskDescription = taskMap.get(taskName);

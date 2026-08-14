@@ -4,6 +4,15 @@ Intermediate -> Test
 unit test task
 
 
+templates from .agentelf template folder
+
+tests on method basis?
+
+
+explain, create doku
+which questions?
+
+
 modellierung anhand function modell
 usage from sequence diagram?
 test modell ausarbeiten
@@ -32,11 +41,12 @@ based on graph
 unit tests for actions
 
 
-
-
 next: Usage Model, Change Model, Update mechanism, modules, model for e2e test, e2e tests for task
 update mechanism
 
+
+build, retry?
+other llm calls?
 
 
 

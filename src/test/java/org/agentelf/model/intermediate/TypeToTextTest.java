@@ -16,7 +16,7 @@ public class TypeToTextTest {
         classIntermediate.setPrompt("this is a prompt");
 
         ApplyTemplate applyTemplate = new ApplyTemplate();
-        String text = applyTemplate.apply(classIntermediate, "typeToText.mustache");
+        String text = applyTemplate.applyToIntermediateType(classIntermediate);
         System.out.println(text);
 
     }

@@ -14,6 +14,4 @@ public abstract class AbstractSaveClass {
             fileOutput.writeFile(llmResponse,className + ".java",packageDir);
     }
 
-
-
 }

@@ -10,8 +10,8 @@ CreateIntermediateModel
       child to parent for method resolution
    map handle -> type
 
-create order based on inheritance graph
--> topolical sort
+create order based on inheritance graph and usage + fields?
+-> topolical sort with cycles?
 
 method -> tree? (only declared?)
 
