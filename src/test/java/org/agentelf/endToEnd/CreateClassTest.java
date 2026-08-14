@@ -25,10 +25,10 @@ public class CreateClassTest {
     private ApplicationContext applicationContext;
 
     @MockitoBean
-    CallLLMList callLLMList;
+    private CallLLMList callLLMList;
 
     @MockitoBean
-    FileOutput fileOutput;
+    private FileOutput fileOutput;
 
    // @Test
     public void createClass() throws IOException {

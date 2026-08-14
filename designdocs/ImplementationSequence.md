@@ -1,8 +1,8 @@
-per hand
-Intermediate -> Source
-Intermediate -> Test 
-unit test task
+Test for ParseMethod
+change LoadTasks
 
+test only for model (reload class)
+check
 
 templates from .agentelf template folder
 
@@ -13,8 +13,10 @@ module interfaces
 module definition
 
 
-explain, create doku
-which questions?
+explain, create doku (uml and html or yml)
+find usage
+ where is x called for example logger.warn
+which questions to answer?
 
 
 extend class
@@ -23,7 +25,7 @@ logging
 type resolution
    primitive types
    java.lang... (known types from github)
-      open when to include (skiplist, blacklist)
+      open when to include, blacklist based
    newly generated
 
 end to end documentation
