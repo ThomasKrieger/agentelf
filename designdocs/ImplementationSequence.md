@@ -9,8 +9,24 @@ templates from .agentelf template folder
 tests on method basis?
 
 
+module interfaces
+module definition
+
+
 explain, create doku
 which questions?
+
+
+extend class
+logging
+
+type resolution
+   primitive types
+   java.lang... (known types from github)
+      open when to include (skiplist, blacklist)
+   newly generated
+
+end to end documentation
 
 
 modellierung anhand function modell
@@ -47,6 +63,9 @@ update mechanism
 
 build, retry?
 other llm calls?
+
+
+example based prompts?
 
 
 

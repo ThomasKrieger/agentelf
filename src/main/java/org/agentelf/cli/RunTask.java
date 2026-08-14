@@ -1,11 +1,11 @@
 package org.agentelf.cli;
 
+import lombok.AllArgsConstructor;
 import org.agentelf.taskandaction.task.Task;
 import org.agentelf.taskandaction.task.TaskVariables;
 import org.agentelf.yaml.GenericParser;
 import org.agentelf.yaml.TaskAndActionFactorySpring;
 import org.agentelf.yaml.TaskDescription;
-import org.springframework.context.ApplicationContext;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -14,21 +14,25 @@ import java.util.Map;
 /**
  * Main entry point for end to end tests and normal use
  */
+@AllArgsConstructor
 public class RunTask {
 
-    public void run(Reader configYml,
-                    Reader[] yamlFiles,
-                    ApplicationContext ctx) throws IOException {
+    // ToDo change to LoadTasks
+    private final Reader[] yamlFiles;
+    private final TaskAndActionFactorySpring taskAndActionFactorySpring;
+
+
+    public void run(Reader configYml) throws IOException {
         TaskVariables taskVariables = new GenericParser<>(TaskVariables.class)
                 .parse(configYml);
-        run(taskVariables,yamlFiles,ctx);
+        run(taskVariables);
     }
 
-    public void run(TaskVariables taskVariables,
-                    Reader[] yamlFiles,
-                    ApplicationContext ctx) throws IOException {
+    public void run(TaskVariables taskVariables) throws IOException {
         String taskName = taskVariables.getTask();
         Map<String, TaskDescription> taskMap = new LoadTasks().loadTasks(yamlFiles);
+        taskVariables.setTaskMap(taskMap);
+
         TaskDescription taskDescription = taskMap.get(taskName);
         if (taskDescription == null) {
             System.err.println("Task not found: " + taskName);
@@ -41,7 +45,6 @@ public class RunTask {
                             + String.join(", ", taskMap.keySet()));
         }
 
-        TaskAndActionFactorySpring taskAndActionFactorySpring = new TaskAndActionFactorySpring(ctx);
         Task task = taskDescription.build(taskAndActionFactorySpring);
         task.execute(taskVariables);
     }

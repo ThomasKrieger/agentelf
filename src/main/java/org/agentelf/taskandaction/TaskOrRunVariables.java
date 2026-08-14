@@ -2,6 +2,11 @@ package org.agentelf.taskandaction;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import org.agentelf.model.intermediate.AbstractTypeIntermediate;
+import org.agentelf.yaml.TaskDescription;
+
+import java.util.List;
+import java.util.Map;
 
 @Data
 public abstract class TaskOrRunVariables {
@@ -11,5 +16,11 @@ public abstract class TaskOrRunVariables {
     private String packageName = "";
     @JsonProperty("class")
     private String className;
+
+    // for call task
+    private Map<String, TaskDescription> taskMap;
+
+    // For Intermediate Model processing
+    private List<AbstractTypeIntermediate> intermediateTypeList;
 
 }
