@@ -1,0 +1,7 @@
+package org.agentelf.endtoend;
+
+public class TestClass {
+    public static void main(String[] args) {
+        System.out.println("TestClass initialized successfully.");
+    }
+}

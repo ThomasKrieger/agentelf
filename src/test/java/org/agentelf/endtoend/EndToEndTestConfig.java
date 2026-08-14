@@ -1,4 +1,4 @@
-package org.agentelf.endToEnd;
+package org.agentelf.endtoend;
 
 import org.agentelf.cli.AbstractSpringConfig;
 import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;

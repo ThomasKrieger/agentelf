@@ -1,0 +1,2 @@
+implement class TestClass
+Output exactly one compilable Java class and nothing else.

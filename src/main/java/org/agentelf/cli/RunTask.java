@@ -17,10 +17,8 @@ import java.util.Map;
 @AllArgsConstructor
 public class RunTask {
 
-    // ToDo change to LoadTasks
-    private final Reader[] yamlFiles;
+    private final Map<String, TaskDescription> taskMap;
     private final TaskAndActionFactorySpring taskAndActionFactorySpring;
-
 
     public void run(Reader configYml) throws IOException {
         TaskVariables taskVariables = new GenericParser<>(TaskVariables.class)
@@ -30,7 +28,7 @@ public class RunTask {
 
     public void run(TaskVariables taskVariables) throws IOException {
         String taskName = taskVariables.getTask();
-        Map<String, TaskDescription> taskMap = new LoadTasks().loadTasks(yamlFiles);
+
         taskVariables.setTaskMap(taskMap);
 
         TaskDescription taskDescription = taskMap.get(taskName);

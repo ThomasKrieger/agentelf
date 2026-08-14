@@ -1,5 +1,11 @@
 Test for ParseMethod
-change LoadTasks
+
+
+ParseField
+
+
+
+implement assertion in TypeToTextTest
 
 test only for model (reload class)
 check
@@ -68,6 +74,11 @@ other llm calls?
 
 
 example based prompts?
+
+
+Support for utility functions: use for:...
+always in context?
+extended search?
 
 
 

@@ -1,0 +1,4 @@
+task:    createClass
+prompt:  "implement class TestClass"
+class:   TestClass
+package: org.agentelf.taskandaction.action
