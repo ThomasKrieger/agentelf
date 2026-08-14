@@ -4,6 +4,7 @@ import org.agentelf.cli.LoadTasks;
 import org.agentelf.cli.RunTask;
 import org.agentelf.file.FileOutput;
 import org.agentelf.llm.CallLLMList;
+import org.agentelf.taskandaction.action.LoadContext;
 import org.agentelf.yaml.TaskAndActionFactorySpring;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -14,7 +15,6 @@ import org.springframework.core.io.Resource;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
-import java.io.IOException;
 import java.io.StringReader;
 import java.nio.file.Path;
 
@@ -35,6 +35,9 @@ public class CreateClassTest {
     private CallLLMList callLLMList;
 
     @MockitoBean
+    private LoadContext loadContext;
+
+    @MockitoBean
     private FileOutput fileOutput;
 
     @Value("classpath:/endtoend/TestClass.java")
@@ -45,7 +48,10 @@ public class CreateClassTest {
 
 
     @Test
-    public void createClass() throws IOException {
+    public void createClass() throws Exception {
+        when(loadContext.loadContext(anyString()))
+                .thenAnswer(invocation -> invocation.getArgument(0));
+
         when(callLLMList.callLarge(anyString())).thenReturn(asString(testClassJava));
 
         ArgumentCaptor<String> promptCaptor =

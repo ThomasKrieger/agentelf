@@ -10,8 +10,8 @@ import java.nio.file.Paths;
 public class AgentElf {
 
     public static void main(String[] commandLine) throws IOException {
-       // new AgentElf().run(commandLine);
-        IntermediateToSource.run();
+       new AgentElf().run(commandLine);
+        //IntermediateToSource.run();
     }
 
     public void run(String[] commandLine) throws IOException {

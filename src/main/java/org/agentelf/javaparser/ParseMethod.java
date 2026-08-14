@@ -13,14 +13,14 @@ public class ParseMethod {
      * Parses a single method declaration from a string.
      *
      * @param methodSource The source code of the method.
-     * @return The parsed MethodDeclaration object.
+     * @return The parsed MethodIntermediate object.
      */
     public MethodIntermediate parse(String methodSource) {
-        MethodDeclaration methodDeclaration =  StaticJavaParser.parseMethodDeclaration(methodSource);
+        MethodDeclaration methodDeclaration = StaticJavaParser.parseMethodDeclaration(methodSource);
         MethodIntermediate methodIntermediate = new MethodIntermediate();
         methodIntermediate.setName(methodDeclaration.getNameAsString());
         methodIntermediate.setReturnType(javaParserToIntermediateTyp.map(methodDeclaration.getType()));
-        for(Parameter parameter : methodDeclaration.getParameters()) {
+        for (Parameter parameter : methodDeclaration.getParameters()) {
             methodIntermediate.addParameter(javaParserToIntermediateTyp.map(parameter.getType()),
                     parameter.getNameAsString());
         }
@@ -28,9 +28,8 @@ public class ParseMethod {
     }
 
     public static void main(String[] args) {
-        ParseMethod parser = new ParseMethod();
         String code = "public void exampleMethod(String input) { System.out.println(input); }";
-        
+
         try {
             MethodDeclaration method = StaticJavaParser.parseMethodDeclaration(code);
             System.out.println("Parsed method name: " + method.getNameAsString());
