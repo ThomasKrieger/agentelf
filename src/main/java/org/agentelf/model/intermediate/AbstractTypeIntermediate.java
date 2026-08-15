@@ -1,6 +1,7 @@
 package org.agentelf.model.intermediate;
 
 import lombok.Data;
+import org.agentelf.javaparser.ParseMethod;
 import org.agentelf.model.handle.ReferenceTypeHandle;
 import org.agentelf.mustache.ApplyTemplate;
 
@@ -28,9 +29,20 @@ public abstract class AbstractTypeIntermediate {
         return methodIntermediate;
     }
 
+    public void addUnitTestPrompt(String prompt) {
+        unitTest.addPrompt(prompt);
+    }
+
     public MethodIntermediate addMethodWithDocumentation(TypeDescriptionIntermediate returnType, String name, String documentation) {
         MethodIntermediate methodIntermediate = addMethod(returnType,name);
         methodIntermediate.setDocumentation(documentation);
+        return methodIntermediate;
+    }
+
+    public MethodIntermediate addMethodWithDocumentation(String methodDescription, String documentation) {
+        MethodIntermediate methodIntermediate = new ParseMethod().parse(methodDescription);
+        methodIntermediate.setDocumentation(documentation);
+        declaredMethods.add(methodIntermediate);
         return methodIntermediate;
     }
 

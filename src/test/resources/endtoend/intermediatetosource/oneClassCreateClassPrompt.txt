@@ -2,8 +2,8 @@ package org.agentelf.javaparser;
 public class ParseMethod
 {
     Uses StaticJavaParser parseBodyDeclaration to parse a stringcontaining a java method and returns a MethodIntermediate
-    implement method parseMethod&#10;null
-    public  org.agentelf.model.intermediate.MethodIntermediate parseMethod (
+    implement method parseMethod
+    public org.agentelf.model.intermediate.MethodIntermediate parseMethod (
 ,
     )
 }

@@ -1,22 +1,34 @@
+UML -> Intermediate oder erst data and functions?
+parser for data would be cool
+danach alles über X
+    use parse method
+sequence diagram?
+   function list
+   wie calls darstellen?
+
+
+Javadoc klären
+suche klären
+struktur in ordner übernehmen
+
 logging bei hand
 
 Test for Parameters in ParseMethod
 
-use parse method for intermediate builder
+clear and test llm config
 
+    
+Data, funcition -> Intermediate
+define Java Parser as data, function
+Action -> Intermediate
+
+logik intermediate:
 intermediate model calculate all methods
 Inheritance tree
 prompt inheritance prompt resolution
 -> by intermediate model
 type resolution
 -> by intermediate model
-
-
-Reihenfolge
-    UML -> Intermediate
-    Data, funcition -> Intermediate
-    define Java Parser as data, function
-    Action -> Intermediate
     
 
 stereotype for models?:

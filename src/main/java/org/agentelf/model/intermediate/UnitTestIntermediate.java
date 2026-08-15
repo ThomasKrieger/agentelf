@@ -8,5 +8,5 @@ import java.util.Optional;
 public interface UnitTestIntermediate {
 
     Optional<String> getPrompt(ApplyTemplate applyTemplate, AbstractTypeIntermediate type) throws IOException;
-
+    UnitTestIntermediate addPrompt(String prompt);
 }

@@ -1,5 +1,6 @@
 package org.agentelf.cli;
 
+import ch.qos.logback.classic.util.ContextInitializer;
 import org.agentelf.yaml.TaskAndActionFactorySpring;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -10,7 +11,10 @@ import java.nio.file.Paths;
 public class AgentElf {
 
     public static void main(String[] commandLine) throws IOException {
-       new AgentElf().run(commandLine);
+        // must be set before the first call to  LoggerFactory.getLogger();
+        // ContextInitializer.CONFIG_FILE_PROPERTY is set to "agentelf/logback.xml"
+        System.setProperty(ContextInitializer.CONFIG_FILE_PROPERTY, ".agentelf/logback.xml");
+        new AgentElf().run(commandLine);
         //IntermediateToSource.run();
     }
 

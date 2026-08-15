@@ -1,4 +1,4 @@
 task:    createUnitTest
 prompt:  "create unit test for ParseMethod.parse use public void exampleMethod(String input) { System.out.println(input); } and variations with exception multiple parameters"
 class:   ParseMethodTest
-package: org.agentelf.javaparser
+package: org

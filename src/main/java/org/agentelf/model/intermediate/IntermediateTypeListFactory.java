@@ -7,13 +7,13 @@ public class IntermediateTypeListFactory {
     public static List<AbstractTypeIntermediate> create() {
         IntermediateTypeListBuilder builder = new IntermediateTypeListBuilder();
 
-        ClassIntermediate parseMethodClass = builder.addClass("org.agentelf.javaparser", "ParseMethod");
-        parseMethodClass.addMethodWithDocumentation(new ReferenceTypeDescriptionIntermediate("org.agentelf.model.intermediate", "MethodIntermediate") , "parseMethod" , "Uses StaticJavaParser parseBodyDeclaration to parse a string" +
-                "containing a java method and returns a MethodIntermediate");
-
+        ClassIntermediate parseMethodClass = builder.addClass("org.agentelf.cli", "WriteLogbackXML");
+        parseMethodClass.addMethodWithDocumentation("void writeLogbackXML(File targetDir) throws IOException;" ,
+                "reads logbackTemplate.xml from the class path " +
+                "and writes it as logback.xml to the targetDir");
+        parseMethodClass.addUnitTestPrompt("use JUnit 5 @TempDir");
 
        // builder.addClass("org.agentelf.javaparser", "ParseField");
-
 
 
         return builder.build();

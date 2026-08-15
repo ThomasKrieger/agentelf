@@ -9,4 +9,9 @@ public class UnitTestNoneIntermediate implements UnitTestIntermediate{
     public Optional<String> getPrompt(ApplyTemplate applyTemplate, AbstractTypeIntermediate type) {
         return Optional.empty();
     }
+
+    @Override
+    public UnitTestIntermediate addPrompt(String prompt) {
+        return new UnitTestLLMIntermediate(prompt);
+    }
 }
