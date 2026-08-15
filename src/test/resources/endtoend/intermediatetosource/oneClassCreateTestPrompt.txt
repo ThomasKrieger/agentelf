@@ -1,0 +1,10 @@
+package org.agentelf.endtoend;
+public class TestClass {
+    public static void main(String[] args) {
+        System.out.println("TestClass initialized successfully.");
+    }
+}
+Write a unit test for ParseMethod
+Test each method
+Include all edge cases
+Output exactly one compilable Java class and nothing else.

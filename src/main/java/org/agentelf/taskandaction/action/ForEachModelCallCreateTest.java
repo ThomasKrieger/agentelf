@@ -5,6 +5,7 @@ import org.agentelf.api.Action;
 import org.agentelf.model.handle.ReferenceTypeHandle;
 import org.agentelf.model.intermediate.AbstractTypeIntermediate;
 import org.agentelf.model.intermediate.ModelIntermediate;
+import org.agentelf.mustache.ApplyTemplate;
 import org.agentelf.taskandaction.RunVariables;
 import org.agentelf.taskandaction.task.Task;
 import org.agentelf.yaml.TaskAndActionFactory;
@@ -18,6 +19,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ForEachModelCallCreateTest {
 
+    private final ApplyTemplate applyTemplate;
     private final TaskAndActionFactory taskAndActionFactory;
 
     @Action(arguments = {"modelIntermediate", "taskMap"})
@@ -26,12 +28,12 @@ public class ForEachModelCallCreateTest {
         for (ReferenceTypeHandle handle : modelIntermediate.getAllTypeHandles()) {
             AbstractTypeIntermediate type = modelIntermediate.getType(handle);
 
-            Optional<String> unitTestPrompt = type.getUnitTestPrompt();
+            Optional<String> unitTestPrompt = type.getUnitTestPrompt(applyTemplate);
             if(unitTestPrompt.isEmpty()) {
                 continue;
             }
 
-            String prompt = modelIntermediate.createTextForTypesExcept(handle)
+            String prompt = modelIntermediate.createTextForAllTypes()
                     + System.lineSeparator()
                     + unitTestPrompt.get();
 

@@ -1,6 +1,7 @@
 package org.agentelf.javaparser;
 
 import com.github.javaparser.StaticJavaParser;
+import com.github.javaparser.ast.body.BodyDeclaration;
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.body.Parameter;
 import org.agentelf.model.intermediate.MethodIntermediate;
@@ -28,13 +29,13 @@ public class ParseMethod {
     }
 
     public static void main(String[] args) {
-        String code = "public void exampleMethod(String input) { System.out.println(input); }";
+        String code = "private int i;";
 
         try {
-            MethodDeclaration method = StaticJavaParser.parseMethodDeclaration(code);
-            System.out.println("Parsed method name: " + method.getNameAsString());
-            System.out.println("Return type: " + method.getType());
-            System.out.println("Parameters: " + method.getParameters());
+            BodyDeclaration method = StaticJavaParser.parseBodyDeclaration(code);
+            System.out.println("Parsed method name: " + method.isFieldDeclaration());
+            System.out.println("Parsed method name: " + method.getClass());
+
         } catch (Exception e) {
             System.err.println("Failed to parse method: " + e.getMessage());
         }

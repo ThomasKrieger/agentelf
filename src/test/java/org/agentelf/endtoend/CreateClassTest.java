@@ -2,18 +2,11 @@ package org.agentelf.endtoend;
 
 import org.agentelf.cli.LoadTasks;
 import org.agentelf.cli.RunTask;
-import org.agentelf.file.FileOutput;
-import org.agentelf.llm.CallLLMList;
-import org.agentelf.taskandaction.action.LoadContext;
 import org.agentelf.yaml.TaskAndActionFactorySpring;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.Resource;
-import org.springframework.test.context.bean.override.mockito.MockitoBean;
-import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import java.io.StringReader;
 import java.nio.file.Path;
@@ -25,20 +18,7 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-@SpringJUnitConfig(EndToEndTestConfig.class)
-public class CreateClassTest {
-
-    @Autowired
-    private ApplicationContext applicationContext;
-
-    @MockitoBean
-    private CallLLMList callLLMList;
-
-    @MockitoBean
-    private LoadContext loadContext;
-
-    @MockitoBean
-    private FileOutput fileOutput;
+public class CreateClassTest extends AbstractEndToEndTest{
 
     @Value("classpath:/endtoend/TestClass.java")
     private Resource testClassJava;
@@ -46,12 +26,8 @@ public class CreateClassTest {
     @Value("classpath:/endtoend/createClass.yml")
     private Resource createClassYml;
 
-
     @Test
     public void createClass() throws Exception {
-        when(loadContext.loadContext(anyString()))
-                .thenAnswer(invocation -> invocation.getArgument(0));
-
         when(callLLMList.callLarge(anyString())).thenReturn(asString(testClassJava));
 
         ArgumentCaptor<String> promptCaptor =

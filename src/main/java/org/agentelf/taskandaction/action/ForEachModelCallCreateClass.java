@@ -20,6 +20,7 @@ public class ForEachModelCallCreateClass {
 
 
     private final TaskAndActionFactory taskAndActionFactory;
+    private final ApplyTemplate applyTemplate;
 
     /**
      * Iterates over modelIntermediate.getAllTypeHandles
@@ -43,7 +44,7 @@ public class ForEachModelCallCreateClass {
 
             String prompt = modelIntermediate.createTextForTypesExcept(handle)
                     + System.lineSeparator()
-                    + new ApplyTemplate().applyToIntermediateType(type);
+                    + applyTemplate.applyToIntermediateType(type);
 
             type.setIncludePrompt(false);
 

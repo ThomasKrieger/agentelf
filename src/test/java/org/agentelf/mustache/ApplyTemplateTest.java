@@ -1,5 +1,6 @@
 package org.agentelf.mustache;
 
+import com.github.mustachejava.DefaultMustacheFactory;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -10,7 +11,7 @@ public class ApplyTemplateTest {
 
     @Test
     public void testApplyTrue() throws IOException {
-        ApplyTemplate applyTemplate = new ApplyTemplate();
+        ApplyTemplate applyTemplate = new ApplyTemplate(new DefaultMustacheFactory("template" ));
         ContextGuineaPig context = new ContextGuineaPig();
         context.setTest(true);
 
@@ -21,7 +22,7 @@ public class ApplyTemplateTest {
 
     @Test
     public void testApplyFalse() throws IOException {
-        ApplyTemplate applyTemplate = new ApplyTemplate();
+        ApplyTemplate applyTemplate = new ApplyTemplate(new DefaultMustacheFactory("template" ));
         ContextGuineaPig context = new ContextGuineaPig();
         context.setTest(false);
 

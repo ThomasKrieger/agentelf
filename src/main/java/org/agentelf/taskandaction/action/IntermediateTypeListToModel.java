@@ -1,6 +1,7 @@
 
 package org.agentelf.taskandaction.action;
 
+import lombok.RequiredArgsConstructor;
 import org.agentelf.api.Action;
 import org.agentelf.model.handle.ReferenceTypeHandle;
 import org.agentelf.model.intermediate.AbstractTypeIntermediate;
@@ -14,7 +15,10 @@ import java.util.List;
 import java.util.Map;
 
 @Component
+@RequiredArgsConstructor
 public class IntermediateTypeListToModel {
+
+    private final ApplyTemplate applyTemplate;
 
     /**
      * Iterates over the abstractTypeList
@@ -32,7 +36,7 @@ public class IntermediateTypeListToModel {
 
         for (AbstractTypeIntermediate typeIntermediate : abstractTypeList) {
             ReferenceTypeHandle handle = typeIntermediate.getHandle();
-            String text = new ApplyTemplate().applyToIntermediateType(typeIntermediate);
+            String text = applyTemplate.applyToIntermediateType(typeIntermediate);
             typeToText.put(handle, text);
             typeToModel.put(handle, typeIntermediate);
         }

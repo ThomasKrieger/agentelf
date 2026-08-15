@@ -15,7 +15,7 @@ extends {{extendsType}}
 private {{labelForTemplate}} {{name}};
 {{/fields}}
 
-{{#methods}}
+{{#allMethods}}
     {{documentation}}
     {{promptForTemplate}}
     public  {{returnType.labelForTemplate}} {{name}} (
@@ -23,6 +23,6 @@ private {{labelForTemplate}} {{name}};
         {{type.labelForTemplate}} {{name}}
     {{/parameterList}},
     )
-{{/methods}}
+{{/allMethods}}
 
 }

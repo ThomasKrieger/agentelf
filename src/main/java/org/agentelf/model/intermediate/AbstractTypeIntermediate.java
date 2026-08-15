@@ -2,6 +2,7 @@ package org.agentelf.model.intermediate;
 
 import lombok.Data;
 import org.agentelf.model.handle.ReferenceTypeHandle;
+import org.agentelf.mustache.ApplyTemplate;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -51,8 +52,12 @@ public abstract class AbstractTypeIntermediate {
         return new ReferenceTypeHandle(packageName,name);
     }
 
-    public Optional<String> getUnitTestPrompt() throws IOException {
-        return unitTest.getPrompt(this);
+    public Optional<String> getUnitTestPrompt(ApplyTemplate applyTemplate) throws IOException {
+        return unitTest.getPrompt(applyTemplate,this);
+    }
+
+    public List<MethodIntermediate> getAllMethods() {
+        return declaredMethods;
     }
 
 }

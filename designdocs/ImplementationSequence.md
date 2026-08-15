@@ -1,7 +1,70 @@
-Test for ParseMethod
+logging bei hand
+
+Test for Parameters in ParseMethod
+
+use parse method for intermediate builder
+
+intermediate model calculate all methods
+Inheritance tree
+prompt inheritance prompt resolution
+-> by intermediate model
+type resolution
+-> by intermediate model
 
 
-ParseField
+Reihenfolge
+    UML -> Intermediate
+    Data, funcition -> Intermediate
+    define Java Parser as data, function
+    Action -> Intermediate
+    
+
+stereotype for models?:
+Model:
+   classes
+   yaml parser
+   model -> intermediate
+
+
+StopAt X
+Restart X
+for example first create class
+than test 
+requires to save the created classes 
+and than reload
+
+similar intermediate files
+define where it makes sense to stop 
+requires a save and reload
+for example which classes to include
+or the created intermediate model
+and support for multiple variations 
+    workspace a contains variation one
+    workspace b contains variation two
+stuff like inline static methods
+delombok yes/no
+
+makes sense to allow the creation, tools used for intermediate as control 
+in the higher model/extra model
+so it is not neccesary to save the intermediate model?
+of course forvexpreimenting?
+but propably easier to create the class perhand if really impossibkle?
+or extravtool loike implementClass for special, very complicated stuff?
+
+so:
+model (serialized..)
+can be generated as multiple alternatives using llm
+contains all control directives to create intermediate
+allows oveerrides through directives?
+for example order?
+includes?
+perhaps create prompt as intermediate step?
+
+intermediate -> soure
+than save and create test
+
+saving intermediate is propably mire useful for debugging
+nit so much real usage?
 
 
 

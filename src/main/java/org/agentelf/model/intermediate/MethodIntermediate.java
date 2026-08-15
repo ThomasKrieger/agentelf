@@ -31,10 +31,10 @@ public class MethodIntermediate {
       return "";
    }
 
-   public void addImplementMethodToPrompt()  {
+   public void addImplementMethodToPrompt(ApplyTemplate applyTemplate)  {
        String addToPrompt = null;
        try {
-            addToPrompt = new ApplyTemplate().apply(this, "promptImplementMethod.mustache");
+            addToPrompt = applyTemplate.apply(this, "promptImplementMethod.mustache");
             prompt = addToPrompt + System.lineSeparator() + prompt;
        } catch (IOException e) {
           throw new RuntimeException(e);
