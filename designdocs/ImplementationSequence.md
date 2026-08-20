@@ -8,6 +8,9 @@ sequence diagram?
 
 
 Javadoc klären
+perhaps easier to use extra tags and than replace through java doc
++ parsing of java doc 
+
 suche klären
 struktur in ordner übernehmen
 
@@ -155,6 +158,11 @@ Support for utility functions: use for:...
 always in context?
 extended search?
 
+
+refactoring suggestions
++ tidy
+
+prompt as part of history/search
 
 
 

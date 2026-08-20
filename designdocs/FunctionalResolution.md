@@ -1,3 +1,11 @@
+perhaps simple add to class  x and remove from parameter list
+open synthetic method generation e.g. call.. replacement
+
+two tasks:
+create method in class (correct class)
+create method call
++ visitor/double dispatch
+
 Basic resolution
 
 

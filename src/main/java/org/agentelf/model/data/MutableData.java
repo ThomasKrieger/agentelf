@@ -1,4 +1,4 @@
 package org.agentelf.model.data;
 
-public class MutableData {
+public record MutableData() {
 }
