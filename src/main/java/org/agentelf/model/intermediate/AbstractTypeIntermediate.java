@@ -3,6 +3,8 @@ package org.agentelf.model.intermediate;
 import lombok.Data;
 import org.agentelf.javaparser.ParseMethod;
 import org.agentelf.model.handle.ReferenceTypeHandle;
+import org.agentelf.model.unittest.UnitTest;
+import org.agentelf.model.unittest.UnitTestLLM;
 import org.agentelf.mustache.ApplyTemplate;
 
 import java.io.IOException;
@@ -18,7 +20,7 @@ public abstract class AbstractTypeIntermediate {
     private String prompt;
     private String documentation;
     private boolean includePrompt;
-    private UnitTestIntermediate unitTest = new UnitTestLLMIntermediate();
+    private UnitTest unitTest = new UnitTestLLM();
     private final List<MethodIntermediate> declaredMethods = new ArrayList<>();
 
     public MethodIntermediate addMethod(TypeDescriptionIntermediate returnType, String name) {

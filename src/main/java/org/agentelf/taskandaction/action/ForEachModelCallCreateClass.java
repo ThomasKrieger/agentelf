@@ -54,10 +54,9 @@ public class ForEachModelCallCreateClass {
             runVariables.setPackageName(handle.packageName());
 
             TaskDescription taskDescription = taskMap.get("createClass");
-            if (taskDescription != null) {
-                Task task = taskDescription.build(taskAndActionFactory);
-                task.execute(runVariables);
-            }
+            Task task = taskDescription.build(taskAndActionFactory);
+            task.execute(runVariables);
+
             modelIntermediate.setGeneratedType(handle,runVariables.getCreatedClass());
         }
     }

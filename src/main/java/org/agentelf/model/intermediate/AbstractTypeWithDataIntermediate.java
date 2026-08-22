@@ -2,6 +2,7 @@ package org.agentelf.model.intermediate;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import org.agentelf.javaparser.ParseField;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,14 @@ public abstract class AbstractTypeWithDataIntermediate extends AbstractTypeInter
 
     private final List<FieldIntermediate> fields = new ArrayList<>();
     private final List<ReferenceTypeDescriptionIntermediate> implementList = new ArrayList<>();
+
+
+    public FieldIntermediate addField(String description) {
+        FieldIntermediate fieldIntermediate = new ParseField().parseField(description);
+        fields.add(fieldIntermediate);
+        return fieldIntermediate;
+    }
+
 
     public FieldIntermediate addField(TypeDescriptionIntermediate type, String name) {
         FieldIntermediate fieldIntermediate = new FieldIntermediate();

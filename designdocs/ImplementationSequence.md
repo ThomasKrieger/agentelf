@@ -1,3 +1,27 @@
+@JsonProperty("implements") List<String> implementsInterfaces,
+
+
+prompt generation and context building
+    at
+    call...
+    super
+       -> context building
+    logging..
+    includes
+    uses
+    extra prompt?
+
+
+method resolution
+    double dispatch
+    visitor pattern 
+
+prompt parer probably best regexp based
+
+
+difference between service and normal mutable class
+
+
 UML -> Intermediate oder erst data and functions?
 parser for data would be cool
 danach alles über X
@@ -5,6 +29,44 @@ danach alles über X
 sequence diagram?
    function list
    wie calls darstellen?
+
+Ids, Streetname...
+Types based on only one field based on stereotypes
+stereotype definition?
+
+You could call these:
+Single-value object
+Single-value Value Object
+Atomic Value Object
+Scalar Value Object
+I would probably use Single-Value Value Object if you want the distinction to be explicit.
+2. Composite Value Object
+
+One important distinction: Money is often considered a value object even though it might only have two fields (amount, currency). The distinction is therefore not really about the number of fields, but about whether the object's state is atomic or composite from the domain's perspective.
+If you're designing a Java type hierarchy or DSL, I'd use Scalar/Atomic Domain Type vs. Composite Domain Type if the distinction is important to your model.
+
+
+Data:
+    Service, Strategy?
+    Service and Strategy as extensdion
+    without state?
+
+task data to source:
+    model file
+    functionalModel ->  modelIntermediate
+    call intermediateToSource
+
+three actions:
+    load model
+    functional to modelIntermediate
+    call intermediateToSource
+
+später 
+   modeltosource
+
+
+
+
 
 
 Javadoc klären
@@ -163,6 +225,12 @@ refactoring suggestions
 + tidy
 
 prompt as part of history/search
+
+
+variations:
+    how to create multiple variations/models?
+    from textual description?
+    how to try?
 
 
 

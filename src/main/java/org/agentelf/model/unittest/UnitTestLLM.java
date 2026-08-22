@@ -1,5 +1,7 @@
-package org.agentelf.model.intermediate;
+package org.agentelf.model.unittest;
 
+import lombok.Getter;
+import org.agentelf.model.intermediate.AbstractTypeIntermediate;
 import org.agentelf.mustache.ApplyTemplate;
 
 import java.io.IOException;
@@ -7,25 +9,25 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Optional;
 
-public class UnitTestLLMIntermediate implements UnitTestIntermediate {
+public class UnitTestLLM implements UnitTest {
 
+    @Getter
     private String prompt;
 
-    public UnitTestLLMIntermediate() {
-
+    public UnitTestLLM() {
     }
 
-    public UnitTestLLMIntermediate(String prompt) {
+    public UnitTestLLM(String prompt) {
         this.prompt = prompt;
     }
 
     @Override
-    public Optional<String> getPrompt(ApplyTemplate applyTemplate,AbstractTypeIntermediate type) throws IOException {
+    public Optional<String> getPrompt(ApplyTemplate applyTemplate, AbstractTypeIntermediate type) throws IOException {
         return Optional.of(buildPrompt(applyTemplate , type));
     }
 
     @Override
-    public UnitTestIntermediate addPrompt(String prompt) {
+    public UnitTest addPrompt(String prompt) {
         if(this.prompt == null) {
             this.prompt = prompt;
         } else {

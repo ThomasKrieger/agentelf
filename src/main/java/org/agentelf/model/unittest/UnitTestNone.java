@@ -1,17 +1,18 @@
-package org.agentelf.model.intermediate;
+package org.agentelf.model.unittest;
 
+import org.agentelf.model.intermediate.AbstractTypeIntermediate;
 import org.agentelf.mustache.ApplyTemplate;
 
 import java.util.Optional;
 
-public class UnitTestNoneIntermediate implements UnitTestIntermediate{
+public class UnitTestNone implements UnitTest {
     @Override
     public Optional<String> getPrompt(ApplyTemplate applyTemplate, AbstractTypeIntermediate type) {
         return Optional.empty();
     }
 
     @Override
-    public UnitTestIntermediate addPrompt(String prompt) {
-        return new UnitTestLLMIntermediate(prompt);
+    public UnitTest addPrompt(String prompt) {
+        return new UnitTestLLM(prompt);
     }
 }

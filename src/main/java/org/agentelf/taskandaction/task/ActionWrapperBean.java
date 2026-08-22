@@ -48,6 +48,7 @@ public class ActionWrapperBean implements ActionWrapper {
                 }
             }
         } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+            e.printStackTrace();
             throw new RuntimeException(e);
         }
         if(! actionFound) {
