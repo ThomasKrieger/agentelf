@@ -1,6 +1,6 @@
 package org.agentelf.taskandaction.action;
 
-import org.agentelf.model.elf.ElfModel;
+import org.agentelf.model.type.TypeModel;
 import org.agentelf.model.unittest.UnitTestLLM;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
@@ -39,7 +39,7 @@ public class LoadModelTest {
         Files.writeString(modelFile, yamlContent);
 
         LoadModel loader = new LoadModel();
-        ElfModel model = loader.loadModel(modelFile.toAbsolutePath().toString());
+        TypeModel model = loader.loadModel(modelFile.toAbsolutePath().toString());
 
         assertNotNull(model, "Parsed model should not be null");
         assertEquals("org.agentelf.test", model.packageName());
@@ -71,7 +71,7 @@ public class LoadModelTest {
         Files.writeString(modelFile, yamlContent);
 
         LoadModel loader = new LoadModel();
-        ElfModel model = loader.loadModel(modelFile.toAbsolutePath().toString());
+        TypeModel model = loader.loadModel(modelFile.toAbsolutePath().toString());
 
         assertNotNull(model, "Parsed model should not be null");
         assertEquals("org.agentelf.test", model.packageName());

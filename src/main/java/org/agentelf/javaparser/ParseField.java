@@ -6,16 +6,16 @@ import com.github.javaparser.ast.body.BodyDeclaration;
 import com.github.javaparser.ast.body.FieldDeclaration;
 import com.github.javaparser.ast.body.VariableDeclarator;
 import org.agentelf.model.intermediate.FieldIntermediate;
+import org.agentelf.model.intermediate.TypeDescriptionIntermediate;
 
 public class ParseField {
 
-    private final JavaParserToIntermediateTyp javaParserToIntermediateTyp = new JavaParserToIntermediateTyp();
 
     public FieldIntermediate parseField(String description) {
         TypeAndName typeAndName = parseFieldInternal(description);
         FieldIntermediate fieldIntermediate = new FieldIntermediate();
         fieldIntermediate.setName(typeAndName.name());
-        fieldIntermediate.setType(javaParserToIntermediateTyp.map(typeAndName.type()));
+        fieldIntermediate.setType(TypeDescriptionIntermediate.create(typeAndName.type()));
         return fieldIntermediate;
     }
 

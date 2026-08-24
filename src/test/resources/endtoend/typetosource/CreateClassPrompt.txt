@@ -1,0 +1,12 @@
+package org.agentelf.test;
+public class ImmutableClassOne
+{
+private  id;
+private  name;
+    Get the identifier
+    What is the ID?
+    public String getId (
+,
+    )
+}
+Output exactly one compilable Java class and nothing else.

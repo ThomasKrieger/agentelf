@@ -4,10 +4,10 @@ import com.github.javaparser.StaticJavaParser;
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.body.Parameter;
 import org.agentelf.model.intermediate.MethodIntermediate;
+import org.agentelf.model.intermediate.TypeDescriptionIntermediate;
 
 public class ParseMethod {
 
-    private final JavaParserToIntermediateTyp javaParserToIntermediateTyp = new JavaParserToIntermediateTyp();
 
     /**
      * Parses a single method declaration from a string.
@@ -20,9 +20,9 @@ public class ParseMethod {
         MethodDeclaration methodDeclaration = StaticJavaParser.parseMethodDeclaration(normalizedMethodSource);
         MethodIntermediate methodIntermediate = new MethodIntermediate();
         methodIntermediate.setName(methodDeclaration.getNameAsString());
-        methodIntermediate.setReturnType(javaParserToIntermediateTyp.map(methodDeclaration.getType()));
+        methodIntermediate.setReturnType(TypeDescriptionIntermediate.create(methodDeclaration.getType()));
         for (Parameter parameter : methodDeclaration.getParameters()) {
-            methodIntermediate.addParameter(javaParserToIntermediateTyp.map(parameter.getType()),
+            methodIntermediate.addParameter(TypeDescriptionIntermediate.create(parameter.getType()),
                     parameter.getNameAsString());
         }
         return methodIntermediate;

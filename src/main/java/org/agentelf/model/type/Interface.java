@@ -1,4 +1,4 @@
-package org.agentelf.model.elf;
+package org.agentelf.model.type;
 
 import java.util.List;
 

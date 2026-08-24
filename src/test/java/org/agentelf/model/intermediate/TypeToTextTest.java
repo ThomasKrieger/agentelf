@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
+import static org.agentelf.util.DiffText.assertTextEquals;
+
 public class TypeToTextTest {
 
     @Test
@@ -18,8 +20,7 @@ public class TypeToTextTest {
 
         ApplyTemplate applyTemplate = new ApplyTemplate(new DefaultMustacheFactory("org/agentelf/initialresource/template"));
         String text = applyTemplate.applyToIntermediateType(classIntermediate);
-        System.out.println(text);
-
+        assertTextEquals("/model/intermediate/classToTextIncludePrompt.txt" , text);
     }
 
 }

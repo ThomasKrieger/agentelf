@@ -1,5 +1,145 @@
 @JsonProperty("implements") List<String> implementsInterfaces,
 
+action preprocess 
+search additional files
+action postprocesslass
+generated class (String)
+
+clarify
+TypeDescriptionIntermediate
+
+add annotation (for action)
+add documentation
+
+design pattern als rules
+
+java doc template
++ used by
++ used in
+
+do i need ReferenceTypeDescriptionIntermediate
+
+propbly remove unnecessary tests
+
+next:
+javaparser
+    get -> methoden liste
+           daten für hash code
+    set
+    check
+    add annotation
+    add/set java doc
+
+Generated Class
+    Method Handle
+    Field Handle?
+    clear annotations
+    add documentation
+    reset compltly generated methods
+
+
+method call creation
+     and method creation
+     example visitor
+     builder...
+     example call sequence
+     example data flow 
+
+search
+implements
+prompt
+    @ -> map aus commands when function call abc(param)
+    @ direct (super.. param) 
+    or call()
+    or xyz()
+    perhaps @{program code}
+    parser (regexp)
+update
+    link
+        replace with existing
+    tests komliziert -> neu hinzukommende tests
+    offen ob erstmal pro class nicht pro methode?
+    keep test? -> Refactoring?
+    what methods is a test calling? especially unit test?
+
+
+create model?
+
+end to end test?
+
+
+run
+
+functional
+
+test für prompt...
+
+
+
+Refactoring -> Does doku still fits?
+nicht versuchen zu smart zu sein!
+eher über refactoring
+
+
+N small model types:
+types -> entprechend uml class diagramm -> record,...
+sequence diagram -> propably mostly rule based?
+functional 
+state diagram
+open: variations?
+productline views?
+test (end to end?)
+modules
+event based? use case maps?
+ddd design techniken?
+abstraction
+dependency matrix
+entity relation ship?
+methods also as relation? later
+specialiced dsls (actions...)
+LLm Req -> Model
+
+
+first existing models:
+uml class
+sequence
+state
+functional 
+use case? -> functional decomposition + ddd techniques
+
+
+
+
+
+
+
+
+open: one large model
+or n different
+n different nearer to uml
+sequence/state..
+easier to develop
+especially state
+open functional sepreation?
+functional part
+
+how to try model?
+
++ seqquence -> high level
+    mostly rule based
+    template for visitor
+parameter widening
+
+
++ functional (adt, very type based, functions)
+gadt?
+
+foreach? functional? (maps...)
+ähnlich types nicht direkt uml
+@für model typ?
+
++ functional/
+
 
 prompt generation and context building
     at
@@ -231,6 +371,24 @@ variations:
     how to create multiple variations/models?
     from textual description?
     how to try?
+
+
+stereotypes
+@ resolution
+
+LLM -> setMethod
+setAnnotation
+setDocumentation
+
+checkFields
+checkMethods
+
+später: 
+    allgemein prüfungen später
+    import berechnung
+    prüfung felder
+    add and checks import
+
 
 
 

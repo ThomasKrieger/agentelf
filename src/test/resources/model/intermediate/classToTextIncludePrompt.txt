@@ -1,0 +1,5 @@
+package org.agentelf.model.intermediate;
+this is a prompt
+public class IntermediateClass
+{
+}

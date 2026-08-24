@@ -10,7 +10,7 @@ public class ClassIntermediate extends AbstractTypeWithDataIntermediate{
     /**
      * is null if this class does not extend another class
      */
-    private ReferenceTypeDescriptionIntermediate extendsType;
+    private TypeDescriptionIntermediate extendsType;
 
     public String getType() {
         return "class";

@@ -1,9 +1,9 @@
 package org.agentelf.taskandaction.action;
 
 import org.agentelf.api.Action;
-import org.agentelf.model.elf.Function;
-import org.agentelf.model.elf.ElfModel;
-import org.agentelf.model.elf.ElfType;
+import org.agentelf.model.type.Function;
+import org.agentelf.model.type.TypeModel;
+import org.agentelf.model.type.Type;
 import org.agentelf.model.intermediate.AbstractTypeIntermediate;
 import org.agentelf.model.intermediate.ClassIntermediate;
 import org.agentelf.model.intermediate.MethodIntermediate;
@@ -18,10 +18,11 @@ public class FunctionalModelToIntermediateTypeList {
 
     @Action(arguments = {"model"},
             returnVariable = "intermediateTypeList")
-    public List<AbstractTypeIntermediate>  functionalModelTointermediateTypeList(ElfModel model) {
+    public List<AbstractTypeIntermediate>  functionalModelTointermediateTypeList(TypeModel model) {
         List<AbstractTypeIntermediate> intermediateTypeList = new LinkedList<>();
-        for(ElfType type : model.classes()) {
+        for(Type type : model.classes()) {
             ClassIntermediate classIntermediate = new ClassIntermediate();
+            classIntermediate.setName(type.name());
             classIntermediate.setPackageName(model.packageName());
             if(type.unitTest() == null) {
                 classIntermediate.setUnitTest(new UnitTestLLM());

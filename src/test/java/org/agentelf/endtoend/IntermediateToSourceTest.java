@@ -6,7 +6,7 @@ import org.agentelf.cli.RunTask;
 import org.agentelf.model.intermediate.AbstractTypeIntermediate;
 import org.agentelf.model.intermediate.ClassIntermediate;
 import org.agentelf.model.intermediate.IntermediateTypeListBuilder;
-import org.agentelf.model.intermediate.ReferenceTypeDescriptionIntermediate;
+import org.agentelf.model.intermediate.TypeDescriptionIntermediate;
 import org.agentelf.taskandaction.task.TaskVariables;
 import org.agentelf.yaml.TaskAndActionFactorySpring;
 import org.junit.jupiter.api.Test;
@@ -37,7 +37,7 @@ public class IntermediateToSourceTest extends AbstractEndToEndTest{
         IntermediateTypeListBuilder builder = new IntermediateTypeListBuilder();
 
         ClassIntermediate parseMethodClass = builder.addClass("org.agentelf.javaparser", "ParseMethod");
-        parseMethodClass.addMethodWithDocumentation(new ReferenceTypeDescriptionIntermediate("org.agentelf.model.intermediate", "MethodIntermediate") , "parseMethod" , "Uses StaticJavaParser parseBodyDeclaration to parse a string" +
+        parseMethodClass.addMethodWithDocumentation(TypeDescriptionIntermediate.create("org.agentelf.model.intermediate.MethodIntermediate") , "parseMethod" , "Uses StaticJavaParser parseBodyDeclaration to parse a string" +
                 "containing a java method and returns a MethodIntermediate");
 
         List<AbstractTypeIntermediate> list = builder.build();

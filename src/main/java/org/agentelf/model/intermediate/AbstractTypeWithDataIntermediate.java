@@ -12,15 +12,13 @@ import java.util.List;
 public abstract class AbstractTypeWithDataIntermediate extends AbstractTypeIntermediate {
 
     private final List<FieldIntermediate> fields = new ArrayList<>();
-    private final List<ReferenceTypeDescriptionIntermediate> implementList = new ArrayList<>();
-
+    private final List<TypeDescriptionIntermediate> implementList = new ArrayList<>();
 
     public FieldIntermediate addField(String description) {
         FieldIntermediate fieldIntermediate = new ParseField().parseField(description);
         fields.add(fieldIntermediate);
         return fieldIntermediate;
     }
-
 
     public FieldIntermediate addField(TypeDescriptionIntermediate type, String name) {
         FieldIntermediate fieldIntermediate = new FieldIntermediate();
@@ -30,7 +28,7 @@ public abstract class AbstractTypeWithDataIntermediate extends AbstractTypeInter
         return fieldIntermediate;
     }
 
-    public void addImplements(ReferenceTypeDescriptionIntermediate referenceTypeDescriptionIntermediate) {
+    public void addImplements(TypeDescriptionIntermediate referenceTypeDescriptionIntermediate) {
         implementList.add(referenceTypeDescriptionIntermediate);
     }
 
@@ -40,7 +38,7 @@ public abstract class AbstractTypeWithDataIntermediate extends AbstractTypeInter
         }
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("implements ");
-        for(ReferenceTypeDescriptionIntermediate  referenceTypeDescriptionIntermediate : implementList ) {
+        for(TypeDescriptionIntermediate  referenceTypeDescriptionIntermediate : implementList ) {
             stringBuilder.append(referenceTypeDescriptionIntermediate.getLabelForTemplate());
             stringBuilder.append(", ");
         }
