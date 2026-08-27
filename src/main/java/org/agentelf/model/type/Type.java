@@ -5,9 +5,17 @@ import org.agentelf.model.unittest.UnitTest;
 
 import java.util.List;
 
+/**
+ * Type represents both a class and records
+ * So extends is only available for classes but I think this
+ * does not justify the creation of two types
+ *
+ */
 public record Type(String name,
+                   String documentation,
+                   List<String> annotations,
                    List<String> fields,
-                   List<Function> methods,
+                   List<Method> methods,
                    @JsonProperty("implements") List<String> implementsInterfaces,
                    UnitTest unitTest) {
 }

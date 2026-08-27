@@ -1,4 +1,100 @@
-@JsonProperty("implements") List<String> implementsInterfaces,
+classes annotation
+und method annotation
+
+
+Action updateGeneratedSource
+
+GeneratedType -> setDocumentaion
+                 setAnnotation
+
+
+auch für record und interface umsetzen
+bzw einfacher test
+
+
+
+prompt extra package
+graph or relation package
+      key 
+      link type (inheritance...)
+      how to build
+file reader?
+    encapsulate file sytem access
+detect type?
+     basically a detecting file, yaml and also per types potential actions
+     xml, json, yaml...
+
+
+diagram -> model?
+wie am besten umsetzen?
+   direkt aus model`
+   extra diagram file?
+   extra diagram  elemen in modell
+   eher diagramm aus modell generieren
+   ggf. mit update mechanismen für ui infos?
+   manuellem änderungen im diagramm
+ 
+
+diagram
+   plantuml
+   mermaid
+   graohviz...
+   layout algo?
+
+
+open
+   source model for all?
+   or only for model -> source
+   e.g. also for source -> model and bytecode?
+
+link
+
+GeneratedType
+ExistingType
+interfaces
+method calculation from interfaces + override
+where prompt class
+
+test prompt in config
+
+logging
+what to log?
+> is this crosscutting?
+> action, variable?
+> outside of action?
+
+e/r modell?
+für deka bank?
+relation/functions also useful for e/r model
+relations in functional programming?
+
+init command (erstmal replace)
+
+perhaps an intermediate diagram model?
+
+Module.
+
+
+tdd/test modelle
+
+schwierig alles was kein Java ist?
+bzw was ist schwierig zu formultiern
+warum?
+
+
+variationen: als teil vomn types finctions?
+extra mode.l (wie mit anderen modellen zusammenpspielen)
+cross cutting/ darstellungsproblem?
+jede variation benötigt standard funktioanlität:
+varaition: a | b | c
+beihnatlet x extension points
+extension points andere modelle (bezug name zu anderen modellen)
+variationen dann sammlung aus n extension points wo es zu unterschiedlichem verhalten führt
+offen inwieweit regelbasiert -> hnzufügen extension point?
+weitere variation?
+tests basierend auf variationen
+so variation similar to module -> grouping of other classes, functions...
+
 
 action preprocess 
 search additional files
@@ -193,12 +289,12 @@ Data:
 
 task data to source:
     model file
-    functionalModel ->  modelIntermediate
+    functionalModel ->  sourceModel
     call intermediateToSource
 
 three actions:
     load model
-    functional to modelIntermediate
+    functional to sourceModel
     call intermediateToSource
 
 später 
@@ -389,8 +485,10 @@ später:
     prüfung felder
     add and checks import
 
+modell für scenarios?
+Integratoon Tests...
+Examples...
 
-
-
+perhaps possibility for complex/multple combined refactorings
 
 

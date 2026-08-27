@@ -58,7 +58,7 @@ public class TypeToSourceTest extends AbstractEndToEndTest {
 
         when(callLLMList.callLarge(anyString())).thenReturn(asString(testClassJava));
 
-        String yamlCommand = "task: functionalToSource" +
+        String yamlCommand = "task: typeModelToSource" +
                 System.lineSeparator() +
                 "model-path: \"" + modelFile.toAbsolutePath() + '"';
 

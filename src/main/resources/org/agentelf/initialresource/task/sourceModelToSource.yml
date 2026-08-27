@@ -1,0 +1,6 @@
+name: sourceModelToSource
+actions:
+    - addImplementMethodPromptToSourceModel
+    - sourceModelTypeListToModel
+    - forEachSourceModelCallCreateClass
+    - forEachSourceModelCallCreateTest

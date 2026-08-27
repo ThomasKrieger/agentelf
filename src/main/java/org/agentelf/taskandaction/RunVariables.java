@@ -2,8 +2,8 @@ package org.agentelf.taskandaction;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.agentelf.model.source.SourceModel;
 import org.agentelf.model.type.TypeModel;
-import org.agentelf.model.intermediate.ModelIntermediate;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -15,6 +15,6 @@ public class RunVariables extends TaskOrRunVariables {
     private TypeModel model;
 
     // For Intermediate Model processing
-    private ModelIntermediate modelIntermediate;
+    private SourceModel sourceModel;
 
 }

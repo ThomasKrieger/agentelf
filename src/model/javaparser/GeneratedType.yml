@@ -1,0 +1,11 @@
+package: "org.agentelf.test"
+classes:
+  - name: ImmutableClassOne
+    fields:
+      - "int id;"
+      - "String name;"
+    methods:
+      - documentation: "Get the identifier"
+        prompt: "What is the ID?"
+        declaration: "public String getId()"
+        label: "getId"

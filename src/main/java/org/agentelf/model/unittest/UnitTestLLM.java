@@ -1,7 +1,7 @@
 package org.agentelf.model.unittest;
 
 import lombok.Getter;
-import org.agentelf.model.intermediate.AbstractTypeIntermediate;
+import org.agentelf.model.source.AbstractTypeSource;
 import org.agentelf.mustache.ApplyTemplate;
 
 import java.io.IOException;
@@ -22,7 +22,7 @@ public class UnitTestLLM implements UnitTest {
     }
 
     @Override
-    public Optional<String> getPrompt(ApplyTemplate applyTemplate, AbstractTypeIntermediate type) throws IOException {
+    public Optional<String> getPrompt(ApplyTemplate applyTemplate, AbstractTypeSource type) throws IOException {
         return Optional.of(buildPrompt(applyTemplate , type));
     }
 
@@ -40,7 +40,7 @@ public class UnitTestLLM implements UnitTest {
         return this;
     }
 
-    private String buildPrompt(ApplyTemplate applyTemplate,AbstractTypeIntermediate type) {
+    private String buildPrompt(ApplyTemplate applyTemplate, AbstractTypeSource type) {
         try {
             if(prompt == null) {
                 return applyTemplate.apply(type, "promptUnitTest.mustache");

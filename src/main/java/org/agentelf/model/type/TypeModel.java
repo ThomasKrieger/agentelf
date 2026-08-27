@@ -6,5 +6,6 @@ import java.util.List;
 
 public record TypeModel(@JsonProperty("package") String packageName,
                         List<Type> records,
-                        List<Type> classes) {
+                        List<Type> classes,
+                        List<Interface> interfaces) {
 }

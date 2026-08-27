@@ -5,18 +5,18 @@ import com.github.javaparser.StaticJavaParser;
 import com.github.javaparser.ast.body.BodyDeclaration;
 import com.github.javaparser.ast.body.FieldDeclaration;
 import com.github.javaparser.ast.body.VariableDeclarator;
-import org.agentelf.model.intermediate.FieldIntermediate;
-import org.agentelf.model.intermediate.TypeDescriptionIntermediate;
+import org.agentelf.model.source.FieldSource;
+import org.agentelf.model.source.TypeDescriptionSource;
 
 public class ParseField {
 
 
-    public FieldIntermediate parseField(String description) {
+    public FieldSource parseField(String description) {
         TypeAndName typeAndName = parseFieldInternal(description);
-        FieldIntermediate fieldIntermediate = new FieldIntermediate();
-        fieldIntermediate.setName(typeAndName.name());
-        fieldIntermediate.setType(TypeDescriptionIntermediate.create(typeAndName.type()));
-        return fieldIntermediate;
+        FieldSource fieldSource = new FieldSource();
+        fieldSource.setName(typeAndName.name());
+        fieldSource.setType(TypeDescriptionSource.create(typeAndName.type()));
+        return fieldSource;
     }
 
     /**

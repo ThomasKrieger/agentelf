@@ -15,7 +15,6 @@ public class AgentElf {
         // ContextInitializer.CONFIG_FILE_PROPERTY is set to "agentelf/logback.xml"
         System.setProperty(ContextInitializer.CONFIG_FILE_PROPERTY, ".agentelf/logback.xml");
         new AgentElf().run(commandLine);
-        //IntermediateToSource.run();
     }
 
     public void run(String[] commandLine) throws IOException {

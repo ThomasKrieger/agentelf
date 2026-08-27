@@ -1,4 +1,4 @@
 task:    createUnitTest
-prompt:  "create an unit test for LoadModel"
-class:   LoadModel
+prompt:  "create an unit test for TypeModelToIntermediateTypeList use List<Type> classes test implements, methods and fields"
+class:   TypeModelToIntermediateTypeList
 package: org.agentelf.taskandaction.action

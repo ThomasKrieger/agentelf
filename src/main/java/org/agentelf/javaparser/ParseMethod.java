@@ -3,8 +3,8 @@ package org.agentelf.javaparser;
 import com.github.javaparser.StaticJavaParser;
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.body.Parameter;
-import org.agentelf.model.intermediate.MethodIntermediate;
-import org.agentelf.model.intermediate.TypeDescriptionIntermediate;
+import org.agentelf.model.source.MethodSource;
+import org.agentelf.model.source.TypeDescriptionSource;
 
 public class ParseMethod {
 
@@ -15,14 +15,14 @@ public class ParseMethod {
      * @param methodSource The source code of the method.
      * @return The parsed MethodIntermediate object.
      */
-    public MethodIntermediate parse(String methodSource) {
+    public MethodSource parse(String methodSource) {
         String normalizedMethodSource = new NormalizeDescription().normalize(methodSource);
         MethodDeclaration methodDeclaration = StaticJavaParser.parseMethodDeclaration(normalizedMethodSource);
-        MethodIntermediate methodIntermediate = new MethodIntermediate();
+        MethodSource methodIntermediate = new MethodSource();
         methodIntermediate.setName(methodDeclaration.getNameAsString());
-        methodIntermediate.setReturnType(TypeDescriptionIntermediate.create(methodDeclaration.getType()));
+        methodIntermediate.setReturnType(TypeDescriptionSource.create(methodDeclaration.getType()));
         for (Parameter parameter : methodDeclaration.getParameters()) {
-            methodIntermediate.addParameter(TypeDescriptionIntermediate.create(parameter.getType()),
+            methodIntermediate.addParameter(TypeDescriptionSource.create(parameter.getType()),
                     parameter.getNameAsString());
         }
         return methodIntermediate;
