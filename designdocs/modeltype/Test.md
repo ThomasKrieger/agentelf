@@ -34,3 +34,29 @@ probably easy to formulate checks for rule based:
 Open: How to check the Texts
 Types of checks
 How to implement the other types:
+
+
+Unit Tests: One Method/One Class propably multiple Objects
+
+All other additional:
+one verb/Method multiple Nouns
+one Noun multiple verbs (order of verbs)
+Combination of multiple Nouns and verbs
+
+
+So we have:
+UnitTest:
+single method
+multiple Methods
+
+UnitTest Multiple Classes (where to describe?)
+single Methods multiple Classes (classes implementing interfaces)
+multiple classes, one scenario
+
+
+
+
+
+
+
+

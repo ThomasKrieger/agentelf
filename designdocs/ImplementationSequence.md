@@ -1,16 +1,17 @@
-classes annotation
-und method annotation
-
-
+über modelToSource:
 Action updateGeneratedSource
-
+    annotation anwenden
+    doku anwenden
 GeneratedType -> setDocumentaion
                  setAnnotation
+PromptBuilder
 
 
-auch für record und interface umsetzen
-bzw einfacher test
 
+
+
+support for scripting/kotlin
+   for example transform all files cucumber
 
 
 prompt extra package
@@ -490,5 +491,18 @@ Integratoon Tests...
 Examples...
 
 perhaps possibility for complex/multple combined refactorings
+
+
+use case 
+problem frames models
+why should a technology model suddenly work because of llm?
+the most specific model possible 
+not ontology but rather relational model
+not always use a graph
+not necesseraly an datalog database if sql is enough
+
+
+
+
 
 

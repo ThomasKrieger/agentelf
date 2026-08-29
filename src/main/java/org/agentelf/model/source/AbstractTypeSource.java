@@ -16,6 +16,7 @@ import java.util.Optional;
 public abstract class AbstractTypeSource {
 
     private String packageName;
+    private List<String> annotations = new ArrayList<>();
     private String name;
     private String prompt;
     private String documentation;

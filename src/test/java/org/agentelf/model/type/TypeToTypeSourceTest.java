@@ -1,10 +1,9 @@
 
-package org.agentelf.taskandaction.action;
+package org.agentelf.model.type;
 
-import org.agentelf.model.source.*;
-import org.agentelf.model.type.Method;
-import org.agentelf.model.type.Type;
-import org.agentelf.model.type.TypeModel;
+import org.agentelf.model.source.AbstractTypeSource;
+import org.agentelf.model.source.ClassSource;
+import org.agentelf.model.source.MethodSource;
 import org.agentelf.model.unittest.UnitTestLLM;
 import org.junit.jupiter.api.Test;
 
@@ -17,12 +16,12 @@ import static org.junit.jupiter.api.Assertions.*;
  * Unit test for TypeModelToIntermediateTypeList.
  * Tests the conversion of fields, methods, and general class structure.
  */
-public class TypeModelToIntermediateTypeListTest {
+public class TypeToTypeSourceTest {
 
     @Test
-    public void testTypeModelTointermediateTypeList_Conversion() {
+    public void testTransform() {
         // Setup
-        TypeModelToIntermediateTypeList converter = new TypeModelToIntermediateTypeList();
+        TypeToTypeSource converter = new TypeToTypeSource();
 
         // 1. Define a Method for the Type
         String methodDoc = "Calculates the total sum.";
@@ -33,7 +32,7 @@ public class TypeModelToIntermediateTypeListTest {
         // 2. Define a Type (representing a class)
         // Note: The Type record constructor is assumed based on the usage in the Action class.
         // Order: name, fields, methods, interfaces, unitTest
-        String fieldDesc = "private String name;";
+        Field fieldDesc =  new Field(emptyList(),"private String name;");
         Type classType = new Type(
                 "UserAccount",
                 "Documentation",
@@ -54,13 +53,13 @@ public class TypeModelToIntermediateTypeListTest {
         );
 
         // Execute
-        List<AbstractTypeSource> resultList = converter.typeModelTointermediateTypeList(model);
+        List<AbstractTypeSource> resultList = converter.transform(model);
 
         // Assertions
         assertNotNull(resultList, "Resulting list should not be null");
         assertEquals(1, resultList.size(), "Should have converted one class");
 
-        AbstractTypeSource intermediate = resultList.get(0);
+        AbstractTypeSource intermediate = resultList.getFirst();
         assertInstanceOf(ClassSource.class, intermediate, "Intermediate should be of type ClassIntermediate");
         ClassSource classIntermediate = (ClassSource) intermediate;
 
@@ -76,12 +75,12 @@ public class TypeModelToIntermediateTypeListTest {
 
         // Verify Methods
         assertEquals(1, classIntermediate.getDeclaredMethods().size(), "Should have 1 method");
-        MethodSource methodSource = classIntermediate.getDeclaredMethods().get(0);
+        MethodSource methodSource = classIntermediate.getDeclaredMethods().getFirst();
         assertEquals(methodDoc, methodSource.getDocumentation(), "Method documentation should match");
         assertEquals(methodPrompt, methodSource.getPrompt(), "Method prompt should match");
 
         // Verify Implements
         assertEquals(1, classIntermediate.getImplementList().size());
-        assertEquals("java.io.Serializable", classIntermediate.getImplementList().get(0).getLabelForTemplate());
+        assertEquals("java.io.Serializable", classIntermediate.getImplementList().getFirst().getLabelForTemplate());
     }
 }

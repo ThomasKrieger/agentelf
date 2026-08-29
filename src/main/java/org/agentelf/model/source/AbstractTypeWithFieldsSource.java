@@ -9,7 +9,7 @@ import java.util.List;
 
 @Getter
 @EqualsAndHashCode(callSuper = true)
-public abstract class AbstractTypeWithDataSource extends AbstractTypeSource {
+public abstract class AbstractTypeWithFieldsSource extends AbstractTypeSource {
 
     private final List<FieldSource> fields = new ArrayList<>();
     private final List<TypeDescriptionSource> implementList = new ArrayList<>();

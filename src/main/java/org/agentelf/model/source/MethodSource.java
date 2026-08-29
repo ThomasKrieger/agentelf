@@ -17,7 +17,9 @@ public class MethodSource {
    private String documentation;
    private boolean includePrompt;
    private TypeDescriptionSource returnType;
+   private List<String> annotations = new ArrayList<>();
    private final List<VariableDeclarationSource> parameterList = new ArrayList<>();
+
 
    public void addParameter(TypeDescriptionSource type, String name) {
       VariableDeclarationSource parameter = new VariableDeclarationSource();

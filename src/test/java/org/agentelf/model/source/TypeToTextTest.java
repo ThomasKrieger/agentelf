@@ -17,10 +17,25 @@ public class TypeToTextTest {
         classIntermediate.setName("IntermediateClass");
         classIntermediate.setIncludePrompt(true);
         classIntermediate.setPrompt("this is a prompt");
+        classIntermediate.addImplements(TypeDescriptionSource.create("Serializable"));
 
         ApplyTemplate applyTemplate = new ApplyTemplate(new DefaultMustacheFactory("org/agentelf/initialresource/template"));
         String text = applyTemplate.applyToIntermediateType(classIntermediate);
-        assertTextEquals("/model/intermediate/classToTextIncludePrompt.txt" , text);
+        assertTextEquals("/model/source/classToTextIncludePrompt.txt" , text);
     }
+
+    @Test
+    public void interfaceToText() throws IOException {
+        InterfaceSource interfaceSource = new InterfaceSource();
+        interfaceSource.setPackageName("org.agentelf.model.intermediate");
+        interfaceSource.setName("IntermediateClass");
+        interfaceSource.addExtends(TypeDescriptionSource.create("Serializable"));
+
+        ApplyTemplate applyTemplate = new ApplyTemplate(new DefaultMustacheFactory("org/agentelf/initialresource/template"));
+        String text = applyTemplate.applyToIntermediateType(interfaceSource);
+        assertTextEquals("/model/source/interfaceToText.txt" , text);
+    }
+
+
 
 }

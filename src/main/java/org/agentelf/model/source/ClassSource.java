@@ -5,7 +5,7 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class ClassSource extends AbstractTypeWithDataSource {
+public class ClassSource extends AbstractTypeWithFieldsSource {
 
     /**
      * is null if this class does not extend another class

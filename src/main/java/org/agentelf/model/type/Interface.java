@@ -10,5 +10,5 @@ public record Interface(String name,
                         List<String> annotations,
                         List<Method> methods,
                         @JsonProperty("extends") List<String> extendsInterfaces,
-                        UnitTest unitTest) {
+                        UnitTest unitTest) implements AbstractType {
 }

@@ -24,8 +24,8 @@ public class LoadModelTest {
                 records:
                   - name: ImmutableClassOne
                     fields:
-                      - "id"
-                      - "name"
+                      - declaration: "id"
+                      - declaration: "name"
                     methods:
                       - documentation: "Get the identifier"
                         prompt: "What is the ID?"
@@ -45,13 +45,13 @@ public class LoadModelTest {
         assertEquals("org.agentelf.test", model.packageName());
         assertEquals(2, model.records().size());
         
-        var immutable = model.records().get(0);
+        var immutable = model.records().getFirst();
         assertEquals(2, immutable.fields().size());
-        assertEquals("id", immutable.fields().get(0));
+        assertEquals("id", immutable.fields().getFirst().declaration());
         
         assertEquals(1, immutable.methods().size());
-        assertEquals("getId", immutable.methods().get(0).label());
-        assertEquals("Get the identifier", immutable.methods().get(0).documentation());
+        assertEquals("getId", immutable.methods().getFirst().label());
+        assertEquals("Get the identifier", immutable.methods().getFirst().documentation());
         
         assertEquals(1, immutable.implementsInterfaces().size());
     }

@@ -36,8 +36,8 @@ public class TypeToSourceTest extends AbstractEndToEndTest {
                 classes:
                   - name: ImmutableClassOne
                     fields:
-                      - "int id;"
-                      - "String name;"
+                      - declaration: "int id;"
+                      - declaration: "String name;"
                     methods:
                       - documentation: "Get the identifier"
                         prompt: "What is the ID?"
