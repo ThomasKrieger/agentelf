@@ -1,0 +1,7 @@
+package: "org.agentelf.taskandaction.action"
+classes:
+  - name: UpdateGeneratedSource
+    methods:
+      - documentation: "Get the identifier"
+        prompt: "What is the ID?"
+        declaration: "public String updateGeneratedSource(String createdClass, AbstractTypeSource currentType)"

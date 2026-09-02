@@ -1,9 +1,0 @@
-@startuml
-'https://plantuml.com/component-diagram
-
-
-[Action DSL] -->  [Intermediate]
-[Intermediate] -->  [Generate]
-
-
-@enduml

@@ -1,17 +1,221 @@
+model processing:
+   project init -> caches/generated loaded all model files
+   model To Source. Potential folder
+   later we have synchronize
+   propably different phases similar to maven?
+   open if we need to exclude specific models?
+   type repo
+   reference type repo (insted current SourceModel variable)
+   open: variable or field? 
+
+modeling of meta prozesses
+   for example all models go from a to x and have the following structure
+
+models for architecture/layers/components
+    look at c4?
+
+MethodHanlde: when equals, what infos needed
+    when to infer the types -> TypeHandle conversion?
+    use TypeHanldle? 
+    how to inject type mapping?
+how to model handels
+
+
+model for how used, where used (which context)
+
+
+support for completly generated classes without llm calls
+
+activity 
+   binding to existing class or genrate new one if it does not exist
+   parser for activity, antlr?
+      var x... can also be done by javaparser
+      how to define binding?
+      do i need a.method call also?
+      visitor + builder?
+      ast for this language?
+      how to define higher order functions
+           simply function calls but lookup in special map
+           if found we can use it if the other parts are labels
+           perhaps use upper case?
+           #if
+           as macros
+      antlr for other cases (only call.. without binding...)
+   variable resolution
+   type resolution
+   add parameter to method
+         for generation?
+   create method call
+       also later class builder
+       method builder
+       probably based on javapoet
+       sourcebuilder 
+   algorithm for activity -> source model
+    imports in models
+type
+    inheritance
+    add annotation
+    add documentation
+    PromptBuilder
+model -> diagram (mermaid or plantuml)
+test/test types
+
+Use the smallest abstraction that provides the required cross-cutting behavior while keeping dependencies and control flow understandable.
+perhaps meaning refactoring -> change...
+something like add
+remove
+replace...
+
+
+perhaps cahce using lucene:
+updateDocuments(Term delTerm, Iterable<? extends Iterable<? extends IndexableField>> docs)
+Atomically deletes documents matching the provided delTerm and adds a block of documents with sequentially assigned document IDs, such that an external reader will see all or none of the documents.
+
+support for incremental updates?
+define queries, which methods needed?
+
+extension through scripts/kotlin:
+new actions like git commit
+replace maven through gradle
+new sterotypes/pattern
+new data formats
+mutliple different types
+new data sources (jira..)
+create jira ticket
+
+Modern software engineering generally moved toward:
+Make dependencies explicit.
+AOP often moves in the opposite direction:
+Make dependencies implicit so the primary code stays clean.
+That trade-off became less attractive as systems became larger.
+
+Report generation
+
+two dimensional relations
+for example component/used in scenario x
+
+show for scenario x what is used which classes are used?
+
+new parameter -> requires change of test and all calling
+methods (not so easy)
+
+perhaps default values
+moving fields easier (e.g. context)
+binding easier
+
+
+check if possible useful:
+   move change model x -> leads to refactoring of classes
+
+
+The biggest conceptual problem: AOP optimizes for locality of code, not locality of reasoning
+
+
+variable resolution
+type resolution
+
+when to use algebaric data types when absrtract data types
+
+
+method handle 
+field handle
+    used for refactoring
+    not used for method resolution
+
+
+für tests klassen typen und arten der tests aufschreiben + wie tests beschreinben
+bezug zu bestehnden modellen -> activity diagram type diagram
+sprezifische testarten je nach modell!
+
+vielleicht auch noch modell/test modell für abstract data types?
+invariants
+pre post conditions 
+vielleicht als beschreibung
+
+
+visitor as basis/typical operation
+similar to builder for collecting
+and factory for building?
+
+
+process folder of model files
+if we want to process activity files we need also process types
+we can start with one service class bind everything to one class
+
+
+builder/dsl for types/activity to allow llm and rule based genration
+of models from use cases
+
+templates/meta data
+design pattern as constraints/templates?
+
+open/to be defined:
+    extra test model?
+    scenario model auf ebene use case model
+    problem frame model?
+    test
+    update
+    refactoring (where, how to translate from model to source?)
+    especially test refactoring
+    test independent on x change operation
+    variation = change?
+    scenarios, abstract scenarios (use cases?)
+    resolution/checks by datalog/tree based?
+    incoporation of datalog/flix?
+
+
+Refactoring/Dokumentation
+some models are independent os specific questions for example
+where
+so we can translate the documentation here
+propably refactorinmg must
+allow for seperating/moving/adding and removing parameters
+poropably transformation in higher levevel model and change here
+probably seperatijg (for erxample large methods in activity diagram)
+and then refactoring based on activity diagram
+jeweils indepence des models klären und dann
+darauf basierend refactoring
+probably seperation of methods
+and combining methods
+inlining methods
+
+
+documentation of higher level classes needs to be translated
+to lower level models
+
+
+for useage/source model
+going to scenarios/use cases (+ domain model description)
+allows us to specify new use cases new types of usages based on scenarios
+use cases...
+propbable not for all for example sql stuff like this need special model support!
+
+
+
+
 über modelToSource:
 Action updateGeneratedSource
     annotation anwenden
     doku anwenden
 GeneratedType -> setDocumentaion
                  setAnnotation
-PromptBuilder
 
 
 
+first type resolution for method calls
+second type checking
 
+import
+
+model -> diagram
 
 support for scripting/kotlin
    for example transform all files cucumber
+
+
+variable resolution
+type resolution
+
 
 
 prompt extra package
@@ -49,6 +253,17 @@ open
    e.g. also for source -> model and bytecode?
 
 link
+
+
+external data (jira tickets, confluence) -> user stories
+  lässt sich wahrscheinlich über import und links lösen
+
+performance/caching?
+wahrscheinlich muss mand dependencies cachen 
+die eigentlichen modelle/modell transformationen sind ja eher klein
+jeweils kleine actionen
+
+
 
 GeneratedType
 ExistingType

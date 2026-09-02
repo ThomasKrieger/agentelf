@@ -1,6 +1,6 @@
-package: "org.agentelf.test"
+package: "org.agentelf.type"
 classes:
-  - name: ImmutableClassOne
+  - name: InheritanceTree
     fields:
       - "int id;"
       - "String name;"

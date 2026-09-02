@@ -49,6 +49,7 @@ public class ForEachSourceModelCallCreateClass {
             type.setIncludePrompt(false);
 
             RunVariables runVariables = new RunVariables();
+            runVariables.setCurrentType(type);
             runVariables.setPrompt(prompt);
             runVariables.setClassName(handle.name());
             runVariables.setPackageName(handle.packageName());

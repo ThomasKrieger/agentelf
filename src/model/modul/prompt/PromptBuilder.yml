@@ -1,6 +1,6 @@
-package: "org.agentelf.test"
+package: "org.agentelf.prompt"
 classes:
-  - name: ImmutableClassOne
+  - name: PromptBuilder
     fields:
       - "int id;"
       - "String name;"

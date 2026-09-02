@@ -1,0 +1,28 @@
+@startuml
+'https://plantuml.com/component-diagram
+
+[Use Cases] <--> [Class Model]
+[Use Cases] <--> [Activity Model]
+
+[Domain Model] <--> [Class Model]
+[Domain Model] <--> [Activity Model]
+
+[Class Model] <--> [SourceModel]
+[Activity Model] <-->  [SourceModel]
+
+[SourceModel] <--> [Source Code]
+
+[Activity Model] <-->  [DiagramModel]
+[Class Model] <-->  [DiagramModel]
+
+ [DiagramModel] <--> [Mermaid]
+ [DiagramModel] <--> [PlantUML]
+
+[Use Cases] <-->  [DiagramModel]
+[Domain Model]  <-->  [DiagramModel]
+
+[Variation] <--> [Class Model]
+[Variation] <--> [Activity Model]
+[Variation]  <-->  [DiagramModel]
+
+@enduml

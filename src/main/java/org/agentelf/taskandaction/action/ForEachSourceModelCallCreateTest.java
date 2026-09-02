@@ -38,6 +38,7 @@ public class ForEachSourceModelCallCreateTest {
                     + unitTestPrompt.get();
 
             RunVariables runVariables = new RunVariables();
+            runVariables.setCurrentType(type);
             runVariables.setPrompt(prompt);
             runVariables.setClassName(handle.name() + "Test");
             runVariables.setPackageName(handle.packageName());
