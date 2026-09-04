@@ -2,9 +2,19 @@ package: "org.agentelf.javaparser"
 classes:
   - name: GeneratedType
     fields:
-      - "CompilationUnit compilationUnit;"
+      - declaration: "CompilationUnit compilationUnit;"
     methods:
-      - documentation: "Get the identifier"
-        declaration: "public void setMethodAnnotation(String annotationSource, MethodHandle methodHandle)"
-      - documentation: "Get the identifier"
-        declaration: "public void setMethodDocumentation(String annotationSource, MethodHandle methodHandle)"
+      - documentation: | 
+          Iterates over all Methods of the compilationUnit. Create a new MethodHandle for each method
+          and compares it with the given methodHandle. If it is equal adds the given annotationSource as 
+          annotation
+        declaration: "public void setMethodAnnotation(MethodHandle methodHandle, String annotationSource)"
+      - documentation: |
+          Iterates over all Methods of the compilationUnit. Create a new MethodHandle for each method
+          and compares it with the given methodHandle. If it is equal sets the given documentation as documtentation
+          of this method
+        declaration: "public void setMethodDocumentation(MethodHandle methodHandle, String documentation)"
+      - documentation: "Sets the given annotation as class annotation"
+        declaration: "public void setClassAnnotation(String annotationSource)"
+      - documentation: "Sets the given documentation as class documentation"
+        declaration: "public void setClassDocumentation(String documentation)"

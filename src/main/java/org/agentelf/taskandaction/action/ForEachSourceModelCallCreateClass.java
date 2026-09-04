@@ -2,7 +2,7 @@ package org.agentelf.taskandaction.action;
 
 import lombok.RequiredArgsConstructor;
 import org.agentelf.api.Action;
-import org.agentelf.model.handle.ReferenceTypeHandle;
+import org.agentelf.handle.ReferenceTypeHandle;
 import org.agentelf.model.source.AbstractTypeSource;
 import org.agentelf.model.source.SourceModel;
 import org.agentelf.mustache.ApplyTemplate;

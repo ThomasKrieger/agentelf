@@ -8,6 +8,98 @@ model processing:
    reference type repo (insted current SourceModel variable)
    open: variable or field? 
 
+
+activity diagramm alle benötigten klassen zusammen suchen
+Context zusammenbauen + inlining
+sources: Model, Source, Jars, JavaDoc, external files
+user stories?
+später Jira...
+start at prompt builder
+
+
+
+activity diagramm update mechanism
+
+
+activity diagramm init
+     cache update
+
+
+variations at functions/activities:
+at types we have either algebaric or a implements b
+We need to specify what is the sane and what changes
+so two types for activites:
+eith extensionpoints (similar to abstract methods)
+with variations (or + and for stuff whicxh is the same for all)
+similar to algebaric data types
+the problem is we can not remove details 
+   only perhaps the order between the elements?
+   and variable resolution
+       if/foreach than not possible
+       or simply an unorderd collections of activisties
+       so in this case we are interested in what is the same what is different
+       do we have all diffences and all steps but not the order of steps
+       so
+       variations:
+       processes: (similar) display like algebraic
+          and + or
+       perhaps more algebraic operations (union/differnce) set based?
+       perhaps order can also be defined <
+
+activity:
+    call
+    call
+    variation{
+        case 
+        case 
+    }
+    call
+    call
+
+
+
+
+
+strategien sammeln/lösungen/pattern
+
+
+add comment (in doku but not for llm)
+für variations... open issues
+später draus aus higher level model extra potential iomplementations
+implementation alternatives
+
+
+inititialize project
+
+support for final fields
+what about constructors?
+and all args annotation from lombok?
+
+struktur:
+    module 
+        types
+        activity
+    system activities?
+    cross cutting?
+      or
+    modul 
+       api
+          service activities?
+    layer structure?
+
+how would it look like if we have a feature seperation
+
+features as modeling construct?
+
+next: 
+     tasks -> simple list of actions
+     actions as activities/and or types
+ 
+find and add existing and classes from model
+
+
+refactoring typen aufzählen
+
 modeling of meta prozesses
    for example all models go from a to x and have the following structure
 
@@ -18,7 +110,11 @@ MethodHanlde: when equals, what infos needed
     when to infer the types -> TypeHandle conversion?
     use TypeHanldle? 
     how to inject type mapping?
-how to model handels
+TypeRepo
+MethodRepo
+   -> thransforms a java parsed method to an method handle
+
+model of spring beans -> modules, d.i. replaceable
 
 
 model for how used, where used (which context)

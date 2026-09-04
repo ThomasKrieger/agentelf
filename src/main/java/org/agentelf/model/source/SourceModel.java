@@ -1,6 +1,6 @@
 package org.agentelf.model.source;
 
-import org.agentelf.model.handle.ReferenceTypeHandle;
+import org.agentelf.handle.ReferenceTypeHandle;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;

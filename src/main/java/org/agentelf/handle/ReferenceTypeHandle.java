@@ -1,4 +1,4 @@
-package org.agentelf.model.handle;
+package org.agentelf.handle;
 
 public record ReferenceTypeHandle(String packageName, String name) {
 }

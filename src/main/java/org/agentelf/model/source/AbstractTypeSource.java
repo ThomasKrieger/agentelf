@@ -2,7 +2,7 @@ package org.agentelf.model.source;
 
 import lombok.Data;
 import org.agentelf.javaparser.ParseMethod;
-import org.agentelf.model.handle.ReferenceTypeHandle;
+import org.agentelf.handle.ReferenceTypeHandle;
 import org.agentelf.model.unittest.UnitTest;
 import org.agentelf.model.unittest.UnitTestLLM;
 import org.agentelf.mustache.ApplyTemplate;

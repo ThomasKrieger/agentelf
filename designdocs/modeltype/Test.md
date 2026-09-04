@@ -118,5 +118,54 @@ input + sit erzeugen
 methoden aufrufen
 ausgabe, state prüfen
 
+offen welche teile als teil von agentelf
+welcher teil teil der application/getrennt?
 
+zusammenhang mit bdd
+andere statische checks?
+
+combining statische checks, model checks and tests
+hypotheses <-> test
+
+how to test/how to mock for example gradle tool api
+
+vielleicht test ergänzen+
+kombinatorik aus modell erzeugen list scenarios -> scenario llm
+am einfachsten e/r domain model und adt
+
+schwierig text/yaml...
+vielleicht erst kombinatorik erzeugen lassen?
+property based testen?
+
+
+Classification:
+Type of CIT
+Scope: what to mock
+Input -> Output/State
+do i have a model for input output?
+relation to other tests
+what happens at refactoring 
+
+relation to static checks?
+
+
+the following relations exist:
+input -> output
+input -> input (not every data neccessary, possible)
+test a -> test b
+test -> SIT
+
+
+basically it would be good if there were good defaults which can be overriden
+
+check for concept -> what can go wrong
+how is it tested?
+how can tests be reviewed?
+tests as examples, for easy review!!
+easy to understand
+and flexibility: refactoring should not change the test
+desribed from business perspective
+examples
+but also all inputs can be exeuted -> complete coverage
+all scenarios are tested
 

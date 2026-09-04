@@ -1,0 +1,11 @@
+package: "org.agentelf.type"
+classes:
+  - name: InheritanceTree
+    fields:
+      - "int id;"
+      - "String name;"
+    methods:
+      - documentation: "Get the identifier"
+        prompt: "What is the ID?"
+        declaration: "public String getId()"
+        label: "getId"
