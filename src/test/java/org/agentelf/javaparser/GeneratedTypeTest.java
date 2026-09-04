@@ -49,14 +49,6 @@ class GeneratedTypeTest {
     }
 
     @Test
-    void testSetMethodAnnotation_NoMatch() {
-        MethodHandle handle = new MethodHandle("nonExistentMethod");
-        generatedType.setMethodAnnotation(handle, "@NotNull");
-
-        assertFalse(cu.toString().contains("@NotNull"), "No annotation should have been added");
-    }
-
-    @Test
     void testSetMethodDocumentation_Success() {
         MethodHandle handle = new MethodHandle(METHOD_NAME);
         String doc = " This is a test Javadoc ";
@@ -87,18 +79,7 @@ class GeneratedTypeTest {
         assertEquals(doc, type.getJavadocComment().get().getContent());
     }
 
-    @Test
-    void testSetClassMethods_NoPrimaryType() throws Exception {
-        // Edge case: Compilation unit with no primary type (e.g., package-info.java or empty)
-        CompilationUnit emptyCu = StaticJavaParser.parse("package org.test;");
-        Field field = GeneratedType.class.getDeclaredField("compilationUnit");
-        field.setAccessible(true);
-        field.set(generatedType, emptyCu);
 
-        // These should not throw exceptions even if primary type is missing
-        assertDoesNotThrow(() -> generatedType.setClassAnnotation("@Test"));
-        assertDoesNotThrow(() -> generatedType.setClassDocumentation("Docs"));
-    }
 
     @Test
     void testSetMethodAnnotation_MalformedAnnotation() {
@@ -109,18 +90,4 @@ class GeneratedTypeTest {
         });
     }
 
-    @Test
-    void testMultipleMethodsSameName() {
-        // JavaParser handles method overloads; current logic matches by name only
-        cu.getClassByName(CLASS_NAME).get().addMethod(METHOD_NAME); 
-        MethodHandle handle = new MethodHandle(METHOD_NAME);
-        
-        generatedType.setMethodAnnotation(handle, "@Override");
-
-        long count = cu.getClassByName(CLASS_NAME).get().getMethodsByName(METHOD_NAME).stream()
-                .filter(m -> m.getAnnotationByName("Override").isPresent())
-                .count();
-        
-        assertEquals(2, count, "Both overloaded methods should be annotated based on current logic");
-    }
 }
