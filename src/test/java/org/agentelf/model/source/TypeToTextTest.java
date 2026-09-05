@@ -5,6 +5,7 @@ import org.agentelf.mustache.ApplyTemplate;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.Collections;
 
 import static org.agentelf.util.DiffText.assertTextEquals;
 
@@ -18,6 +19,7 @@ public class TypeToTextTest {
         classIntermediate.setIncludePrompt(true);
         classIntermediate.setPrompt("this is a prompt");
         classIntermediate.addImplements(TypeDescriptionSource.create("Serializable"));
+        classIntermediate.setAnnotations(Collections.singletonList("@Deprecated"));
 
         ApplyTemplate applyTemplate = new ApplyTemplate(new DefaultMustacheFactory("org/agentelf/initialresource/template"));
         String text = applyTemplate.applyToIntermediateType(classIntermediate);

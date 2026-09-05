@@ -1,7 +1,11 @@
 package: "org.agentelf.taskandaction.action"
 classes:
   - name: UpdateGeneratedSource
+    annotations:
+      - '@Component'
     methods:
       - documentation: "Get the identifier"
+        annotations :
+          - '@Action(arguments = {"prompt"}, returnVariable = "llmResponse")'
         prompt: "What is the ID?"
         declaration: "public String updateGeneratedSource(String createdClass, AbstractTypeSource currentType)"

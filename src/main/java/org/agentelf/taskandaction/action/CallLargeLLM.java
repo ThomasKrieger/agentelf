@@ -13,8 +13,7 @@ public class CallLargeLLM {
         this.callLLMList = callLLMList;
     }
 
-    @Action(arguments = {"prompt"},
-            returnVariable = "llmResponse")
+    @Action(arguments = {"prompt"}, returnVariable = "llmResponse")
     public String callLLM(String prompt) {
         return callLLMList.callLarge(prompt);
     }

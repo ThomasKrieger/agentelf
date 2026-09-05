@@ -1,12 +1,120 @@
-model processing:
-   project init -> caches/generated loaded all model files
-   model To Source. Potential folder
-   later we have synchronize
-   propably different phases similar to maven?
-   open if we need to exclude specific models?
-   type repo
-   reference type repo (insted current SourceModel variable)
-   open: variable or field? 
+erstmal nur ein spezifisches modell 
+     model variable als object
+erst bei update rfactoren mehrere modelle notwendig
+
+Type -> Source
+    1) hinzufügen existing classes
+TypeRepo -> ReferenceTypeRepo
+if not a primitive type
+TypeRepo manuell
+ReferenceTypeRepo manuell
+InitializeReferenceTypeRepo (Action)
+generieren über type
+    3) prompt templates (search)
+    5) inheritance
+    wir können hier auch functions erzeugen (selbe technik wie bei functions und activity)
+    interesting for example for visitor -> ADT
+
+
+ADT, Function -> Source
+    2) ADT -> Source (Builder + Classes)
+          offen erstmal direkt erzeugen?
+          benötigt source builder
+    4) Functional Model -> Source
+            das ermöglicht mapping
+    Generics for ADT
+
+Activity ->  Source
+    5) Model -> Source
+
+General
+    Model einlesen in Repo
+    Update
+
+DeKa: ADT -> Template (erfordert 2)
+
+
+Test
+
+
+Model -> Report/Diagram
+
+
+Refactoring:
+was lässt sich alles durch Surce -> Model -> Source abbilden
+
+
+
+
+
+
+adt + builder + functions
+apply für pattern matching mit binding
+builder erzeugen (source builder)
+current state als übergabe parameter (builder)
+
+model adt records
+builder erzeugen
+
+model functions records
+type resolution binding für function calls
+   macros
+
+
+antlr erweitern
+mapping für nutzung, transformation über adt
+visitor -> builder -> adt -> builder(source model)
+
+
+typische methoden auflisten und jeweils wie diese modellieren
+umsetzen: create, map, validate...
+
+
+Generic make, remove eogentlich relativ einfach über all Typ durch
+X erstetzen
+allerdings nicht vollständig inversible kann sein
+das nicht alle stellen ersetzt werden dürfen
+
+
+
+Select LLM
+vielleicht erstmal über config
+
+
+schwierig template z.b. mustache
+json
+xml...
+
+Action
+LoadJavaClasses
+
+update -> filter der prompts für schon bestehnde methoden
+see AbstractTypeSource setIncludePrompt
+
+
+vielleicht ein modell in ein anderes übertragen um refactoring zu ermöglichen
+z.B. anhand prompt/doku erzeugt dann in activity diagramm übertragen
+ähnlich auch für tests: source code in allgemeines modell um zu erweitern/refactoren
+
+
+models für plans
+
+
+
+alle dateine für context suchen (v1)
+    java project durchgehen -> vorhandene klassen speichern und in repo ablegen
+    repo -> KlassName ohne full qualified name -> Handle
+    Handle -> String?
+    was ist mit model, source, binary unterscheidung
+    was ist mit meta daten (methoden..)
+
+annotations auch in template mit aufnehmen
+
+
+problematik unterschiedliche ergebnisse bei unterschiedlichen llms
+nicht reproduzirebar
+
+aber erstmal viel über llm süäter prüfungen erewitern
 
 
 activity diagramm alle benötigten klassen zusammen suchen

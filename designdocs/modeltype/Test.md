@@ -169,3 +169,23 @@ examples
 but also all inputs can be exeuted -> complete coverage
 all scenarios are tested
 
+
+basicsally two dimensional
+1 scope
+2 sit
+
+
+vielleicht erstmal wie man modellieren. will
+und was das ziel ist
+erst dann die umsetzung
+
+
+wir haben das update -> refactoring problem
+keine abstraction, viele variationen nicht einfach zu prüfen
+
+bestimmen was für test verwenden (über llm?)
+similar to rules in claude code?
++ regel basiert?
++ was mocken?
+
+

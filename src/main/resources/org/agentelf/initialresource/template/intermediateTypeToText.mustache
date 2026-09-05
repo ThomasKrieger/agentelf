@@ -4,6 +4,9 @@ package {{packageName}};
 {{documentation}}
 {{promptForTemplate}}
 
+{{#annotations}}
+    {{.}}
+{{/annotations}}
 public {{type}} {{name}}
 {{#extendsType}}
 extends {{extendsType}}
@@ -12,12 +15,18 @@ extends {{extendsType}}
 {
 
 {{#fields}}
+    {{#annotations}}
+        {{.}}
+    {{/annotations}}
 private {{labelForTemplate}} {{name}};
 {{/fields}}
 
 {{#allMethods}}
     {{documentation}}
     {{promptForTemplate}}
+    {{#annotations}}
+        {{.}}
+    {{/annotations}}
     public {{returnType.labelForTemplate}} {{name}} (
     {{#parameterList}}
         {{type.labelForTemplate}} {{name}}
