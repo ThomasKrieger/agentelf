@@ -4,6 +4,7 @@ import io.github.classgraph.ClassGraph;
 import io.github.classgraph.Resource;
 import io.github.classgraph.ScanResult;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,9 +17,12 @@ import java.nio.file.StandardCopyOption;
 @Slf4j
 public class Initialize {
 
-    public void initialize() throws IOException {
+    public void initialize(boolean clearDirectory) throws IOException {
         log.info("initialize agentelf");
         File rootDir = new File(".agentelf");
+        if(clearDirectory) {
+            FileUtils.deleteQuietly(rootDir);
+        }
         String[] subDirs = {"context", "template", "task" };
         if (!rootDir.exists()) {
             rootDir.mkdir();

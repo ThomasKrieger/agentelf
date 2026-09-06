@@ -1,7 +1,9 @@
 name: createClass
 actions:
-    - addPromptOnlyClass
+    - addExistingClassesToPrompt
     - loadContext
+    - addPromptForCurrentType
+    - addPromptOnlyClass
     - callLargeLLM
     - removeMarkdownTags
     - setCreatedClass

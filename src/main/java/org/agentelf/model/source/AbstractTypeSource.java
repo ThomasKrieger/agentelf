@@ -88,6 +88,7 @@ public abstract class AbstractTypeSource {
     }
 
 
+
     protected abstract List<FieldSource> getFields();
 
 }

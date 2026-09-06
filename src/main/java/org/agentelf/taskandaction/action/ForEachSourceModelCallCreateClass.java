@@ -5,9 +5,9 @@ import org.agentelf.api.Action;
 import org.agentelf.handle.ReferenceTypeHandle;
 import org.agentelf.model.source.AbstractTypeSource;
 import org.agentelf.model.source.SourceModel;
-import org.agentelf.mustache.ApplyTemplate;
 import org.agentelf.taskandaction.RunVariables;
 import org.agentelf.taskandaction.task.Task;
+import org.agentelf.type.ReferenceTypeRepo;
 import org.agentelf.yaml.TaskAndActionFactory;
 import org.agentelf.yaml.TaskDescription;
 import org.springframework.stereotype.Component;
@@ -20,7 +20,7 @@ public class ForEachSourceModelCallCreateClass {
 
 
     private final TaskAndActionFactory taskAndActionFactory;
-    private final ApplyTemplate applyTemplate;
+
 
     /**
      * Iterates over sourceModel.getAllTypeHandles
@@ -34,23 +34,17 @@ public class ForEachSourceModelCallCreateClass {
      * @param sourceModel The Intermediate Model
      * @param taskMap The Task Map
      */
-    @Action(arguments = {"sourceModel", "taskMap"})
+    @Action(arguments = {"sourceModel", "taskMap", "referenceTypeRepo"})
     public void forEachModelCallCreateClass(SourceModel sourceModel,
-                                            Map<String, TaskDescription> taskMap) throws Exception {
+                                            Map<String, TaskDescription> taskMap,
+                                            ReferenceTypeRepo referenceTypeRepo) throws Exception {
         for (ReferenceTypeHandle handle : sourceModel.getAllTypeHandles()) {
             AbstractTypeSource type = sourceModel.getType(handle);
-
-            type.setIncludePrompt(true);
-
-            String prompt = sourceModel.createTextForTypesExcept(handle)
-                    + System.lineSeparator()
-                    + applyTemplate.applyToIntermediateType(type);
-
-            type.setIncludePrompt(false);
-
             RunVariables runVariables = new RunVariables();
+            runVariables.setReferenceTypeRepo(referenceTypeRepo);
             runVariables.setCurrentType(type);
-            runVariables.setPrompt(prompt);
+            runVariables.setSourceModel(sourceModel);
+            runVariables.setPrompt("");
             runVariables.setClassName(handle.name());
             runVariables.setPackageName(handle.packageName());
 

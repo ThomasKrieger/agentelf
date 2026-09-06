@@ -1,5 +1,6 @@
 package org.agentelf.taskandaction.action;
 
+import com.github.javaparser.ParserConfiguration;
 import com.github.javaparser.StaticJavaParser;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.body.TypeDeclaration;
@@ -32,15 +33,10 @@ public class InitializeReferenceTypeRepo {
      * each loaded File. Gets the ReferenceTypeHandle for each CompilationUnit and creates
      * a ReferenceTypeRepo with this data.
      *
-     * @param mainSrcDir the directory for main source files
-     * @param testSrcDir the directory for test source files
      * @return an initialized ReferenceTypeRepo
      */
     @Action(arguments = {}, returnVariable = "referenceTypeRepo")
-    public ReferenceTypeRepo initializeReferenceTypeRepo(String mainSrcDir, String testSrcDir) {
-        this.mainSrcDir = mainSrcDir;
-        this.testSrcDir = testSrcDir;
-
+    public ReferenceTypeRepo initializeReferenceTypeRepo() {
         Map<String, List<ReferenceTypeHandle>> nameToHandle = new HashMap<>();
         Map<ReferenceTypeHandle, CompilationUnit> handleToSource = new HashMap<>();
 
@@ -53,6 +49,8 @@ public class InitializeReferenceTypeRepo {
                         walk.filter(p -> Files.isRegularFile(p) && p.toString().endsWith(".java"))
                                 .forEach(p -> {
                                     try {
+                                        StaticJavaParser.getParserConfiguration()
+                                                .setLanguageLevel(ParserConfiguration.LanguageLevel.JAVA_21);
                                         CompilationUnit cu = StaticJavaParser.parse(p);
                                         String packageName = cu.getPackageDeclaration()
                                                 .map(pd -> pd.getNameAsString())

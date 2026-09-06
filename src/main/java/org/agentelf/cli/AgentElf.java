@@ -18,8 +18,14 @@ public class AgentElf {
     }
 
     public void run(String[] commandLine) throws IOException {
-        new Initialize().initialize();
         String taskNameOrFile = commandLine[0];
+        if("init".equals(taskNameOrFile)) {
+            new Initialize().initialize(true);
+            return;
+        }
+
+        new Initialize().initialize(false);
+
         new RunTask(new LoadTasks().getYamlFilesFromConfigDir(),
                     new TaskAndActionFactorySpring(new AnnotationConfigApplicationContext(AppConfig.class)))
                 .run(Files.newBufferedReader(Paths.get(taskNameOrFile)));

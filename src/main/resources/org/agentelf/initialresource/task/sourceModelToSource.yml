@@ -1,5 +1,6 @@
 name: sourceModelToSource
 actions:
+    - initializeReferenceTypeRepo
     - addImplementMethodPromptToSourceModel
     - sourceModelTypeListToModel
     - forEachSourceModelCallCreateClass

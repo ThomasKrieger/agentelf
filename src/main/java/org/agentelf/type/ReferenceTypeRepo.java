@@ -19,6 +19,10 @@ public class ReferenceTypeRepo {
 
     public Optional<String> lookup(String name) {
         List<ReferenceTypeHandle> result = nameToHandle.get(name);
+        if(result == null) {
+            return empty();
+        }
+
         if(result.isEmpty()) {
             return empty();
         }

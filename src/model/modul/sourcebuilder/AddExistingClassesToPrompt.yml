@@ -1,0 +1,15 @@
+package: "org.agentelf.taskandaction.action"
+classes:
+  - name: ClassBuilder
+    annotations:
+      - '@Component'
+    unitTest:
+      type: "llm"
+      prompt: "mock ReferenceTypeRepo"
+    methods:
+      - documentation: |
+          Iterates over sourceModel.getAllMethods(). Calls getAllUsedTypes() to lookup a type using ReferenceTypeRepo.
+          Adds each found type to the prompt and returns the prompt.
+        annotations :
+          - '@Action(arguments = {prompt,sourceModel,referenceTypeRepo}, returnVariable = "prompt")'
+        declaration: "public String addExistingClassesToPrompt(String prompt, SourceModel sourceModel, ReferenceTypeRepo referenceTypeRepo)"

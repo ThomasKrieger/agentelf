@@ -8,6 +8,7 @@ import org.agentelf.model.source.SourceModel;
 import org.agentelf.mustache.ApplyTemplate;
 import org.agentelf.taskandaction.RunVariables;
 import org.agentelf.taskandaction.task.Task;
+import org.agentelf.type.ReferenceTypeRepo;
 import org.agentelf.yaml.TaskAndActionFactory;
 import org.agentelf.yaml.TaskDescription;
 import org.springframework.stereotype.Component;
@@ -22,9 +23,10 @@ public class ForEachSourceModelCallCreateTest {
     private final ApplyTemplate applyTemplate;
     private final TaskAndActionFactory taskAndActionFactory;
 
-    @Action(arguments = {"sourceModel", "taskMap"})
+    @Action(arguments = {"sourceModel", "taskMap" , "referenceTypeRepo"})
     public void forEachModelCallCreateTest(SourceModel sourceModel,
-                                           Map<String, TaskDescription> taskMap) throws Exception {
+                                           Map<String, TaskDescription> taskMap,
+                                           ReferenceTypeRepo referenceTypeRepo) throws Exception {
         for (ReferenceTypeHandle handle : sourceModel.getAllTypeHandles()) {
             AbstractTypeSource type = sourceModel.getType(handle);
 
@@ -33,13 +35,11 @@ public class ForEachSourceModelCallCreateTest {
                 continue;
             }
 
-            String prompt = sourceModel.createTextForAllTypes()
-                    + System.lineSeparator()
-                    + unitTestPrompt.get();
-
             RunVariables runVariables = new RunVariables();
+            runVariables.setReferenceTypeRepo(referenceTypeRepo);
             runVariables.setCurrentType(type);
-            runVariables.setPrompt(prompt);
+            runVariables.setSourceModel(sourceModel);
+            runVariables.setPrompt("");
             runVariables.setClassName(handle.name() + "Test");
             runVariables.setPackageName(handle.packageName());
 
