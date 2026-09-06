@@ -1,0 +1,23 @@
+package: "org.agentelf.taskandaction.action"
+classes:
+  - name: InitializeReferenceTypeRepo
+    fields:
+       - annotations:
+         - '@Value("${main-target-dir}"'
+         declaration: "Path mainSrcDir;"
+       - annotations:
+           - '@Value("${test-target-dir}")'
+         declaration: "Path testSrcDir;"
+    annotations:
+      - '@Component'
+    unitTest:
+      type: "llm"
+      prompt: "use @TempDir"
+    methods:
+      - documentation: |
+          Loads all files from mainSrcDir and testSrcDir. Creates a CompilationUnit for
+          each loaded File. Gets the ReferenceTypeHandle for each CompilationUnit and creates
+          a ReferenceTypeRepo with this data.
+        annotations :
+          - '@Action(arguments = {}, returnVariable = "referenceTypeRepo")'
+        declaration: "public ReferenceTypeRepo initializeReferenceTypeRepo()"

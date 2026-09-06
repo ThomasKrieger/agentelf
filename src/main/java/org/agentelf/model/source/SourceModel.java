@@ -4,6 +4,7 @@ import org.agentelf.handle.ReferenceTypeHandle;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
@@ -48,6 +49,10 @@ public class SourceModel {
 
     public Set<ReferenceTypeHandle> getAllTypeHandles() {
         return typeToModel.keySet();
+    }
+
+    public Collection<AbstractTypeSource> getAllTypes() {
+        return typeToModel.values();
     }
 
 

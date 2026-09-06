@@ -4,6 +4,7 @@ Two cases:
      or design pattern for example wrapper
    Call Builder
       Build a call used inside a prompt
+   class builder -> adt, builder for adt
 
 
 based on java poet?

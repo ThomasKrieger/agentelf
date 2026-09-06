@@ -1,4 +1,4 @@
-grammar Activity;
+grammar Function;
 
 program
     : variableDeclaration EOF

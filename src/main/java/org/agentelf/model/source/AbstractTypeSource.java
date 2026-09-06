@@ -1,16 +1,14 @@
 package org.agentelf.model.source;
 
 import lombok.Data;
-import org.agentelf.javaparser.ParseMethod;
 import org.agentelf.handle.ReferenceTypeHandle;
+import org.agentelf.javaparser.ParseMethod;
 import org.agentelf.model.unittest.UnitTest;
 import org.agentelf.model.unittest.UnitTestLLM;
 import org.agentelf.mustache.ApplyTemplate;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Data
 public abstract class AbstractTypeSource {
@@ -74,5 +72,22 @@ public abstract class AbstractTypeSource {
     public List<MethodSource> getAllMethods() {
         return declaredMethods;
     }
+
+    public Set<String> getAllUsedTypes() {
+        Set<String> result = new HashSet<>();
+        for(MethodSource methodSource : getAllMethods()) {
+            result.add(methodSource.getReturnType().getLabelForTemplate());
+            for(VariableDeclarationSource parameter : methodSource.getParameterList()) {
+                result.add(parameter.getType().getLabelForTemplate());
+            }
+        }
+        for(FieldSource fieldSource : getFields()) {
+            result.add(fieldSource.getType().getLabelForTemplate());
+        }
+        return result;
+    }
+
+
+    protected abstract List<FieldSource> getFields();
 
 }

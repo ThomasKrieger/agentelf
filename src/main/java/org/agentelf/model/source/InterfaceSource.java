@@ -33,4 +33,8 @@ public class InterfaceSource extends AbstractTypeSource {
         return stringBuilder.toString();
     }
 
+    @Override
+    public List<FieldSource> getFields() {
+        return List.of();
+    }
 }

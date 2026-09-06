@@ -1,6 +1,6 @@
 erstmal nur ein spezifisches modell 
      model variable als object
-erst bei update rfactoren mehrere modelle notwendig
+erst bei update refactoren mehrere modelle notwendig
 
 Type -> Source
     1) hinzufügen existing classes
@@ -14,15 +14,36 @@ generieren über type
     5) inheritance
     wir können hier auch functions erzeugen (selbe technik wie bei functions und activity)
     interesting for example for visitor -> ADT
-
+erweitern type:
+    zwei arten von methoden
+      1) von llm generieren
+      2) nicht von llm generieren da existing oder generiert über rule based mechanism
+This type of method:
+public SaveClass(FileOutput fileOutput, @Value("${main-target-dir}") Path targetDir) {
+this.fileOutput = fileOutput;
+this.targetDir = targetDir;
+}
 
 ADT, Function -> Source
     2) ADT -> Source (Builder + Classes)
           offen erstmal direkt erzeugen?
+          Builder über lombok
           benötigt source builder
     4) Functional Model -> Source
             das ermöglicht mapping
     Generics for ADT
+adding methods over llm to adt similar to update
+
+Literal
+StringLiteral
+Boolean
+long
+#create();
+val x = new builder(); #create
+#foreach(child(x),(c) -> y(x,c));
+builderParam.add(x.build());
+
+same for activity
 
 Activity ->  Source
     5) Model -> Source

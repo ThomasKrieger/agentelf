@@ -15,6 +15,7 @@ public class MethodSource {
    private String name;
    private String prompt;
    private String documentation;
+   private String source;
    private boolean includePrompt;
    private TypeDescriptionSource returnType;
    private List<String> annotations = new ArrayList<>();
@@ -29,6 +30,10 @@ public class MethodSource {
    }
 
    public String getPromptForTemplate() {
+      if(source != null) {
+         return "";
+      }
+
       if(includePrompt) {
          return prompt;
       }
