@@ -1,0 +1,7 @@
+name: implementClass
+actions:
+    - loadContext
+    - addPromptOnlyClass
+    - callLargeLLM
+    - removeMarkdownTags
+    - saveClass

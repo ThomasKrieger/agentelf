@@ -1,3 +1,45 @@
+ForEachSourceModelCallCreateTest zusammenfassen (abstract class)
+    hier 2 arten von actions: save class und createClass
+    entscheidung innerhalb ForEachSourceModelCallCreateTest
+    stereotypes (rule based) sollten auch bei saveClass möglcie sein
+ 
+ADT -> JavaPoet (onhe source builder)
+daher source code -> source modell (entscheidet ob llm aufgerufen werden muss) -> prozessieren
+innerhalb source model statischen und llm teil trennen
+source builder wenn wir methoden erzeugen
+
+implementClass
+CreateUnitTest
+
+action load class if exists
+add unit test prompt
+
+
+zwei modelle tosource 
+fromsource
+
+todiagram
+fromdiagramm
+
+ask llm for missing classes
+resolution of imports * import?
+use modul x/y
++ automatic resolution using llm
+
+
+
+vielleicht source block für type -> mit java parser parsen
+und daraus tosource erzeugen
+für arbitrary constructor...
+source übernehmen
+z.B. annotations bei param
+
+
+offen: welche teile innerhal agentelf welche teile ausserhalb
+z.B. bei testfall generierung und themen für deka bank
+
+
+
 erstmal nur ein spezifisches modell 
      model variable als object
 erst bei update refactoren mehrere modelle notwendig
@@ -154,36 +196,7 @@ activity diagramm init
      cache update
 
 
-variations at functions/activities:
-at types we have either algebaric or a implements b
-We need to specify what is the sane and what changes
-so two types for activites:
-eith extensionpoints (similar to abstract methods)
-with variations (or + and for stuff whicxh is the same for all)
-similar to algebaric data types
-the problem is we can not remove details 
-   only perhaps the order between the elements?
-   and variable resolution
-       if/foreach than not possible
-       or simply an unorderd collections of activisties
-       so in this case we are interested in what is the same what is different
-       do we have all diffences and all steps but not the order of steps
-       so
-       variations:
-       processes: (similar) display like algebraic
-          and + or
-       perhaps more algebraic operations (union/differnce) set based?
-       perhaps order can also be defined <
 
-activity:
-    call
-    call
-    variation{
-        case 
-        case 
-    }
-    call
-    call
 
 
 

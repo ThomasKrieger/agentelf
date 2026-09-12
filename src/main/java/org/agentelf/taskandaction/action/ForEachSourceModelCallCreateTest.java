@@ -43,7 +43,7 @@ public class ForEachSourceModelCallCreateTest {
             runVariables.setClassName(handle.name() + "Test");
             runVariables.setPackageName(handle.packageName());
 
-            TaskDescription taskDescription = taskMap.get("createUnitTest");
+            TaskDescription taskDescription = taskMap.get("createUnitTestForModelClass");
             if (taskDescription != null) {
                 Task task = taskDescription.build(taskAndActionFactory);
                 task.execute(runVariables);

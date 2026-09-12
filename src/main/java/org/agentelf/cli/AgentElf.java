@@ -26,7 +26,7 @@ public class AgentElf {
 
         new Initialize().initialize(false);
 
-        new RunTask(new LoadTasks().getYamlFilesFromConfigDir(),
+        new RunTask(new LoadTasks().getYamlFilesFromClassPath(),
                     new TaskAndActionFactorySpring(new AnnotationConfigApplicationContext(AppConfig.class)))
                 .run(Files.newBufferedReader(Paths.get(taskNameOrFile)));
     }

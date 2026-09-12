@@ -1,0 +1,9 @@
+name: createUnitTestForModelClass
+actions:
+    - addExistingClassesToPrompt
+    - loadContext
+    - addPromptForUnitTestOfCurrentType
+    - addPromptOnlyClass
+    - callLargeLLM
+    - removeMarkdownTags
+    - saveTest

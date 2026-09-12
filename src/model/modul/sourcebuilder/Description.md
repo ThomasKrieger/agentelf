@@ -20,3 +20,10 @@ methodbuilder
 
 
 open return values and parameter declarations
+
+for adt:
+record
+interface
+
+implements 
+field

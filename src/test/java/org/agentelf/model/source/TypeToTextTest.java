@@ -21,7 +21,7 @@ public class TypeToTextTest {
         classIntermediate.addImplements(TypeDescriptionSource.create("Serializable"));
         classIntermediate.setAnnotations(Collections.singletonList("@Deprecated"));
 
-        ApplyTemplate applyTemplate = new ApplyTemplate(new DefaultMustacheFactory("org/agentelf/initialresource/template"));
+        ApplyTemplate applyTemplate = new ApplyTemplate(new DefaultMustacheFactory("org/agentelf/template"));
         String text = applyTemplate.applyToIntermediateType(classIntermediate);
         assertTextEquals("/model/source/classToTextIncludePrompt.txt" , text);
     }
@@ -33,11 +33,9 @@ public class TypeToTextTest {
         interfaceSource.setName("IntermediateClass");
         interfaceSource.addExtends(TypeDescriptionSource.create("Serializable"));
 
-        ApplyTemplate applyTemplate = new ApplyTemplate(new DefaultMustacheFactory("org/agentelf/initialresource/template"));
+        ApplyTemplate applyTemplate = new ApplyTemplate(new DefaultMustacheFactory("org/agentelf/template"));
         String text = applyTemplate.applyToIntermediateType(interfaceSource);
         assertTextEquals("/model/source/interfaceToText.txt" , text);
     }
-
-
 
 }
