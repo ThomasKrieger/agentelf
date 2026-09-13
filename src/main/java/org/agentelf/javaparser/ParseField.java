@@ -5,18 +5,18 @@ import com.github.javaparser.StaticJavaParser;
 import com.github.javaparser.ast.body.BodyDeclaration;
 import com.github.javaparser.ast.body.FieldDeclaration;
 import com.github.javaparser.ast.body.VariableDeclarator;
-import org.agentelf.model.source.FieldSource;
-import org.agentelf.model.source.TypeDescriptionSource;
+import org.agentelf.model.tosource.FieldToSource;
+import org.agentelf.model.tosource.TypeDescriptionToSource;
 
 public class ParseField {
 
 
-    public FieldSource parseField(String description) {
+    public FieldToSource parseField(String description) {
         TypeAndName typeAndName = parseFieldInternal(description);
-        FieldSource fieldSource = new FieldSource();
-        fieldSource.setName(typeAndName.name());
-        fieldSource.setType(TypeDescriptionSource.create(typeAndName.type()));
-        return fieldSource;
+        FieldToSource fieldToSource = new FieldToSource();
+        fieldToSource.setName(typeAndName.name());
+        fieldToSource.setType(TypeDescriptionToSource.create(typeAndName.type()));
+        return fieldToSource;
     }
 
     /**

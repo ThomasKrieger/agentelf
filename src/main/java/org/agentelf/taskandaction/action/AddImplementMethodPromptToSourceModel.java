@@ -2,7 +2,7 @@ package org.agentelf.taskandaction.action;
 
 import lombok.RequiredArgsConstructor;
 import org.agentelf.api.Action;
-import org.agentelf.model.source.AbstractTypeSource;
+import org.agentelf.model.tosource.AbstractTypeToSource;
 import org.agentelf.mustache.ApplyTemplate;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +15,7 @@ public class AddImplementMethodPromptToSourceModel {
     private final ApplyTemplate applyTemplate;
 
     @Action(arguments = {"intermediateTypeList"})
-    public void addImplementMethodPromptToIntermediateModel(List<AbstractTypeSource> abstractTypeList) {
+    public void addImplementMethodPromptToIntermediateModel(List<AbstractTypeToSource> abstractTypeList) {
         abstractTypeList
                 .stream()
                 .flatMap( model -> model.getDeclaredMethods().stream())

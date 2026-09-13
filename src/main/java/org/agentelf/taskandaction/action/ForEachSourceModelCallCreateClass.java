@@ -3,8 +3,8 @@ package org.agentelf.taskandaction.action;
 import lombok.RequiredArgsConstructor;
 import org.agentelf.api.Action;
 import org.agentelf.handle.ReferenceTypeHandle;
-import org.agentelf.model.source.AbstractTypeSource;
-import org.agentelf.model.source.SourceModel;
+import org.agentelf.model.tosource.AbstractTypeToSource;
+import org.agentelf.model.tosource.ToSourceModel;
 import org.agentelf.taskandaction.RunVariables;
 import org.agentelf.taskandaction.task.Task;
 import org.agentelf.type.ReferenceTypeRepo;
@@ -23,36 +23,36 @@ public class ForEachSourceModelCallCreateClass {
 
 
     /**
-     * Iterates over sourceModel.getAllTypeHandles
+     * Iterates over toSourceModel.getAllTypeHandles
      * creates a new RunVariables
-     *     create prompt as sourceModel.createTextForTypesExcept and
-     *        ApplyTemplate.applyToIntermediateType to sourceModel.getType
+     *     create prompt as toSourceModel.createTextForTypesExcept and
+     *        ApplyTemplate.applyToIntermediateType to toSourceModel.getType
      *     setPrompt to prompt
      *     setClass and setPackageName from handle
      *     get the task createClass from the taskMap snd execute the task
      *
-     * @param sourceModel The Intermediate Model
+     * @param toSourceModel The Intermediate Model
      * @param taskMap The Task Map
      */
-    @Action(arguments = {"sourceModel", "taskMap", "referenceTypeRepo"})
-    public void forEachModelCallCreateClass(SourceModel sourceModel,
+    @Action(arguments = {"toSourceModel", "taskMap", "referenceTypeRepo"})
+    public void forEachModelCallCreateClass(ToSourceModel toSourceModel,
                                             Map<String, TaskDescription> taskMap,
                                             ReferenceTypeRepo referenceTypeRepo) throws Exception {
-        for (ReferenceTypeHandle handle : sourceModel.getAllTypeHandles()) {
-            AbstractTypeSource type = sourceModel.getType(handle);
+        for (ReferenceTypeHandle handle : toSourceModel.getAllTypeHandles()) {
+            AbstractTypeToSource type = toSourceModel.getType(handle);
             RunVariables runVariables = new RunVariables();
             runVariables.setReferenceTypeRepo(referenceTypeRepo);
             runVariables.setCurrentType(type);
-            runVariables.setSourceModel(sourceModel);
+            runVariables.setToSourceModel(toSourceModel);
             runVariables.setPrompt("");
             runVariables.setClassName(handle.name());
             runVariables.setPackageName(handle.packageName());
 
-            TaskDescription taskDescription = taskMap.get("createClass");
+            TaskDescription taskDescription = taskMap.get("createClassFromToSourceModel");
             Task task = taskDescription.build(taskAndActionFactory);
             task.execute(runVariables);
 
-            sourceModel.setGeneratedType(handle,runVariables.getCreatedClass());
+            toSourceModel.setGeneratedType(handle,runVariables.getCreatedClass());
         }
     }
 

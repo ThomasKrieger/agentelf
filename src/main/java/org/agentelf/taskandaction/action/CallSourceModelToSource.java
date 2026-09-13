@@ -2,7 +2,7 @@ package org.agentelf.taskandaction.action;
 
 import lombok.RequiredArgsConstructor;
 import org.agentelf.api.Action;
-import org.agentelf.model.source.AbstractTypeSource;
+import org.agentelf.model.tosource.AbstractTypeToSource;
 import org.agentelf.taskandaction.RunVariables;
 import org.agentelf.taskandaction.task.Task;
 import org.agentelf.yaml.TaskAndActionFactory;
@@ -19,7 +19,7 @@ public class CallSourceModelToSource {
     private final TaskAndActionFactory taskAndActionFactory;
 
     @Action(arguments = {"intermediateTypeList", "taskMap"})
-    public void callIntermediateToSource(List<AbstractTypeSource> intermediateTypeList,
+    public void callIntermediateToSource(List<AbstractTypeToSource> intermediateTypeList,
                                          Map<String, TaskDescription> taskMap) {
         RunVariables runVariables = new RunVariables();
         runVariables.setIntermediateTypeList(intermediateTypeList);

@@ -3,10 +3,7 @@ package org.agentelf.endtoend;
 
 import org.agentelf.cli.LoadTasks;
 import org.agentelf.cli.RunTask;
-import org.agentelf.model.source.AbstractTypeSource;
-import org.agentelf.model.source.ClassSource;
-import org.agentelf.model.source.SourceTypeListBuilder;
-import org.agentelf.model.source.TypeDescriptionSource;
+import org.agentelf.model.tosource.*;
 import org.agentelf.taskandaction.task.TaskVariables;
 import org.agentelf.yaml.TaskAndActionFactorySpring;
 import org.junit.jupiter.api.Test;
@@ -22,7 +19,7 @@ import static org.agentelf.util.ResourceReader.asString;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
-public class SourceModelToSourceTest extends AbstractEndToEndTest{
+public class SourceModelToToSourceTest extends AbstractEndToEndTest{
 
     @Value("classpath:/endtoend/TestClass.java")
     private Resource testClassJava;
@@ -36,11 +33,11 @@ public class SourceModelToSourceTest extends AbstractEndToEndTest{
 
         SourceTypeListBuilder builder = new SourceTypeListBuilder();
 
-        ClassSource parseMethodClass = builder.addClass("org.agentelf.javaparser", "ParseMethod");
-        parseMethodClass.addMethodWithDocumentation(TypeDescriptionSource.create("org.agentelf.model.intermediate.MethodIntermediate") , "parseMethod" , "Uses StaticJavaParser parseBodyDeclaration to parse a string" +
+        ClassToSource parseMethodClass = builder.addClass("org.agentelf.javaparser", "ParseMethod");
+        parseMethodClass.addMethodWithDocumentation(TypeDescriptionToSource.create("org.agentelf.model.intermediate.MethodIntermediate") , "parseMethod" , "Uses StaticJavaParser parseBodyDeclaration to parse a string" +
                 "containing a java method and returns a MethodIntermediate");
 
-        List<AbstractTypeSource> list = builder.build();
+        List<AbstractTypeToSource> list = builder.build();
 
         TaskVariables taskVariables = new TaskVariables();
         taskVariables.setTask("sourceModelToSource");

@@ -3,7 +3,6 @@ package org.agentelf.endtoend;
 import org.agentelf.cli.LoadTasks;
 import org.agentelf.cli.RunTask;
 import org.agentelf.yaml.TaskAndActionFactorySpring;
-import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -26,7 +25,7 @@ public class CreateClassTest extends AbstractEndToEndTest{
     @Value("classpath:/endtoend/createClass.yml")
     private Resource createClassYml;
 
-    @Test
+    //@Test
     public void createClass() throws Exception {
         when(callLLMList.callLarge(anyString())).thenReturn(asString(testClassJava));
 

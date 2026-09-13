@@ -1,4 +1,4 @@
-package org.agentelf.model.source;
+package org.agentelf.model.tosource;
 
 import lombok.Data;
 import org.agentelf.mustache.ApplyTemplate;
@@ -10,20 +10,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class MethodSource {
+public class MethodToSource {
 
    private String name;
    private String prompt;
    private String documentation;
    private String source;
    private boolean includePrompt;
-   private TypeDescriptionSource returnType;
+   private TypeDescriptionToSource returnType;
    private List<String> annotations = new ArrayList<>();
-   private final List<VariableDeclarationSource> parameterList = new ArrayList<>();
+   private final List<VariableDeclarationToSource> parameterList = new ArrayList<>();
 
 
-   public void addParameter(TypeDescriptionSource type, String name) {
-      VariableDeclarationSource parameter = new VariableDeclarationSource();
+   public void addParameter(TypeDescriptionToSource type, String name) {
+      VariableDeclarationToSource parameter = new VariableDeclarationToSource();
       parameter.setType(type);
       parameter.setName(name);
       parameterList.add(parameter);

@@ -1,17 +1,17 @@
 package org.agentelf.model.type;
 
-import org.agentelf.model.source.*;
+import org.agentelf.model.tosource.*;
 
 import java.util.LinkedList;
 import java.util.List;
 
 public class TypeToTypeSource {
 
-    public List<AbstractTypeSource> transform(TypeModel model) {
-        List<AbstractTypeSource> intermediateTypeList = new LinkedList<>();
+    public List<AbstractTypeToSource> transform(TypeModel model) {
+        List<AbstractTypeToSource> intermediateTypeList = new LinkedList<>();
         if(model.classes() != null) {
             for(Type type : model.classes()) {
-                ClassSource classIntermediate = new ClassSource();
+                ClassToSource classIntermediate = new ClassToSource();
                 intermediateTypeList.add(classIntermediate);
                 new ApplyValuesToTypeWithFieldsSource().applyValues(type,classIntermediate);
                 classIntermediate.setPackageName(model.packageName());
@@ -19,7 +19,7 @@ public class TypeToTypeSource {
         }
         if(model.records() != null) {
             for(Type type : model.records()) {
-                RecordSource recordSource = new RecordSource();
+                RecordToSource recordSource = new RecordToSource();
                 intermediateTypeList.add(recordSource);
                 new ApplyValuesToTypeWithFieldsSource().applyValues(type,recordSource);
                 recordSource.setPackageName(model.packageName());
@@ -27,13 +27,13 @@ public class TypeToTypeSource {
         }
         if(model.interfaces() != null) {
             for(Interface type : model.interfaces()) {
-                InterfaceSource interfaceSource = new InterfaceSource();
+                InterfaceToSource interfaceSource = new InterfaceToSource();
                 intermediateTypeList.add(interfaceSource);
                 new ApplyValuesToTypeSource().applyValues(type,interfaceSource);
                 interfaceSource.setPackageName(model.packageName());
                 if(type.extendsInterfaces() != null) {
                     for(String implement : type.extendsInterfaces()) {
-                        interfaceSource.addExtends(TypeDescriptionSource.create(implement));
+                        interfaceSource.addExtends(TypeDescriptionToSource.create(implement));
                     }
                 }
             }

@@ -3,8 +3,8 @@ package org.agentelf.taskandaction.action;
 import lombok.RequiredArgsConstructor;
 import org.agentelf.api.Action;
 import org.agentelf.handle.ReferenceTypeHandle;
-import org.agentelf.model.source.AbstractTypeSource;
-import org.agentelf.model.source.SourceModel;
+import org.agentelf.model.tosource.AbstractTypeToSource;
+import org.agentelf.model.tosource.ToSourceModel;
 import org.agentelf.mustache.ApplyTemplate;
 import org.agentelf.taskandaction.RunVariables;
 import org.agentelf.taskandaction.task.Task;
@@ -23,12 +23,12 @@ public class ForEachSourceModelCallCreateTest {
     private final ApplyTemplate applyTemplate;
     private final TaskAndActionFactory taskAndActionFactory;
 
-    @Action(arguments = {"sourceModel", "taskMap" , "referenceTypeRepo"})
-    public void forEachModelCallCreateTest(SourceModel sourceModel,
+    @Action(arguments = {"toSourceModel", "taskMap" , "referenceTypeRepo"})
+    public void forEachModelCallCreateTest(ToSourceModel toSourceModel,
                                            Map<String, TaskDescription> taskMap,
                                            ReferenceTypeRepo referenceTypeRepo) throws Exception {
-        for (ReferenceTypeHandle handle : sourceModel.getAllTypeHandles()) {
-            AbstractTypeSource type = sourceModel.getType(handle);
+        for (ReferenceTypeHandle handle : toSourceModel.getAllTypeHandles()) {
+            AbstractTypeToSource type = toSourceModel.getType(handle);
 
             Optional<String> unitTestPrompt = type.getUnitTestPrompt(applyTemplate);
             if(unitTestPrompt.isEmpty()) {
@@ -38,12 +38,12 @@ public class ForEachSourceModelCallCreateTest {
             RunVariables runVariables = new RunVariables();
             runVariables.setReferenceTypeRepo(referenceTypeRepo);
             runVariables.setCurrentType(type);
-            runVariables.setSourceModel(sourceModel);
+            runVariables.setToSourceModel(toSourceModel);
             runVariables.setPrompt("");
             runVariables.setClassName(handle.name() + "Test");
             runVariables.setPackageName(handle.packageName());
 
-            TaskDescription taskDescription = taskMap.get("createUnitTestForModelClass");
+            TaskDescription taskDescription = taskMap.get("createUnitTestFromToSourceModel");
             if (taskDescription != null) {
                 Task task = taskDescription.build(taskAndActionFactory);
                 task.execute(runVariables);

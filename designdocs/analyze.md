@@ -7,6 +7,12 @@ verwendung von haskell techniken
 
 combinatoric
 
+metrics, topology:
+functionalität als metric invariant ähnlich energy und impuls
+
+
+monte carlo simulation
+
 
 
 functional programming

@@ -1,4 +1,4 @@
-package org.agentelf.model.source;
+package org.agentelf.model.tosource;
 
 import org.agentelf.handle.ReferenceTypeHandle;
 
@@ -8,13 +8,13 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
-public class SourceModel {
+public class ToSourceModel {
 
     private final Map<ReferenceTypeHandle,String> typeToText ;
-    private final Map<ReferenceTypeHandle, AbstractTypeSource> typeToModel;
+    private final Map<ReferenceTypeHandle, AbstractTypeToSource> typeToModel;
 
-    public SourceModel(Map<ReferenceTypeHandle, String> typeToText,
-                       Map<ReferenceTypeHandle, AbstractTypeSource> typeToModel) {
+    public ToSourceModel(Map<ReferenceTypeHandle, String> typeToText,
+                         Map<ReferenceTypeHandle, AbstractTypeToSource> typeToModel) {
         this.typeToText = typeToText;
         this.typeToModel = typeToModel;
     }
@@ -43,7 +43,7 @@ public class SourceModel {
         typeToText.put(typeHandle,text);
     }
 
-    public AbstractTypeSource getType(ReferenceTypeHandle typeHandle) {
+    public AbstractTypeToSource getType(ReferenceTypeHandle typeHandle) {
         return typeToModel.get(typeHandle);
     }
 
@@ -51,7 +51,7 @@ public class SourceModel {
         return typeToModel.keySet();
     }
 
-    public Collection<AbstractTypeSource> getAllTypes() {
+    public Collection<AbstractTypeToSource> getAllTypes() {
         return typeToModel.values();
     }
 

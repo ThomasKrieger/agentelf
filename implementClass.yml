@@ -1,0 +1,4 @@
+task:    implementClass
+prompt:  "implement LoadClass"
+class:   LoadClass
+package: org.agentelf.taskandaction.action

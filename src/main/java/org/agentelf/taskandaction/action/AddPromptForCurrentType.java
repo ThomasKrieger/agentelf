@@ -2,8 +2,8 @@ package org.agentelf.taskandaction.action;
 
 import lombok.RequiredArgsConstructor;
 import org.agentelf.api.Action;
-import org.agentelf.model.source.AbstractTypeSource;
-import org.agentelf.model.source.SourceModel;
+import org.agentelf.model.tosource.AbstractTypeToSource;
+import org.agentelf.model.tosource.ToSourceModel;
 import org.agentelf.mustache.ApplyTemplate;
 import org.springframework.stereotype.Component;
 
@@ -15,16 +15,16 @@ public class AddPromptForCurrentType {
 
     private final ApplyTemplate applyTemplate;
 
-    @Action(arguments = {"currentType","sourceModel","prompt"}, returnVariable = "prompt")
-    public String addPromptForCurrentType(AbstractTypeSource currentType,
-                                          SourceModel sourceModel,
+    @Action(arguments = {"currentType","toSourceModel","prompt"}, returnVariable = "prompt")
+    public String addPromptForCurrentType(AbstractTypeToSource currentType,
+                                          ToSourceModel toSourceModel,
                                           String prompt) throws IOException {
         if(currentType == null) {
             return prompt;
         }
         currentType.setIncludePrompt(true);
 
-        String addToPrompt = sourceModel.createTextForTypesExcept(currentType.getHandle())
+        String addToPrompt = toSourceModel.createTextForTypesExcept(currentType.getHandle())
                 + System.lineSeparator()
                 + applyTemplate.applyToIntermediateType(currentType);
 

@@ -1,4 +1,4 @@
-package org.agentelf.model.source;
+package org.agentelf.model.tosource;
 
 import com.github.javaparser.ast.type.Type;
 
@@ -14,20 +14,20 @@ import com.github.javaparser.ast.type.Type;
  *
  */
 
-public class TypeDescriptionSource {
+public class TypeDescriptionToSource {
 
     private final String completeText;
 
-    private TypeDescriptionSource(String completeText) {
+    private TypeDescriptionToSource(String completeText) {
         this.completeText = completeText;
     }
 
-    public static TypeDescriptionSource create(Type type) {
-        return new TypeDescriptionSource(type.asString());
+    public static TypeDescriptionToSource create(Type type) {
+        return new TypeDescriptionToSource(type.asString());
     }
 
-    public static TypeDescriptionSource create(String text) {
-        return new TypeDescriptionSource(text);
+    public static TypeDescriptionToSource create(String text) {
+        return new TypeDescriptionToSource(text);
     }
 
     public String getLabelForTemplate() {

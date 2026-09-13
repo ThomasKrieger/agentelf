@@ -2,8 +2,8 @@ package org.agentelf.taskandaction;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.agentelf.model.source.AbstractTypeSource;
-import org.agentelf.model.source.SourceModel;
+import org.agentelf.model.tosource.AbstractTypeToSource;
+import org.agentelf.model.tosource.ToSourceModel;
 import org.agentelf.model.type.TypeModel;
 import org.agentelf.type.ReferenceTypeRepo;
 
@@ -15,10 +15,10 @@ public class RunVariables extends TaskOrRunVariables {
     private String createdClass;
 
     private TypeModel model;
-    private AbstractTypeSource currentType;
+    private AbstractTypeToSource currentType;
 
     // For Intermediate Model processing
     private ReferenceTypeRepo referenceTypeRepo;
-    private SourceModel sourceModel;
+    private ToSourceModel toSourceModel;
 
 }

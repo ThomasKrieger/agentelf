@@ -12,4 +12,4 @@ classes:
           Adds each found type to the prompt and returns the prompt.
         annotations :
           - '@Action(arguments = {prompt,sourceModel,referenceTypeRepo}, returnVariable = "prompt")'
-        declaration: "public String addExistingClassesToPrompt(String prompt, SourceModel sourceModel, ReferenceTypeRepo referenceTypeRepo)"
+        declaration: "public String addExistingClassesToPrompt(String prompt, ToSourceModel sourceModel, ReferenceTypeRepo referenceTypeRepo)"

@@ -4,8 +4,8 @@ package org.agentelf.taskandaction.action;
 import lombok.RequiredArgsConstructor;
 import org.agentelf.api.Action;
 import org.agentelf.handle.ReferenceTypeHandle;
-import org.agentelf.model.source.AbstractTypeSource;
-import org.agentelf.model.source.SourceModel;
+import org.agentelf.model.tosource.AbstractTypeToSource;
+import org.agentelf.model.tosource.ToSourceModel;
 import org.agentelf.mustache.ApplyTemplate;
 import org.springframework.stereotype.Component;
 
@@ -25,22 +25,22 @@ public class SourceModelTypeListToModel {
      * calls ApplyTemplate.applyToIntermediateType for each element
      * and stores it im a Map<ReferenceTypeHandle,String> typeToText using getHandle as key
      * and stores the model in Map<ReferenceTypeHandle,AbstractTypeIntermediate> typeToModel
-     * creates SourceModel with those two maps
+     * creates ToSourceModel with those two maps
      *
-     * @return the created SourceModel
+     * @return the created ToSourceModel
      */
-    @Action(arguments = {"intermediateTypeList"}, returnVariable = "sourceModel")
-    public SourceModel intermediateTypeListToModel(List<AbstractTypeSource> abstractTypeList) throws IOException {
+    @Action(arguments = {"intermediateTypeList"}, returnVariable = "toSourceModel")
+    public ToSourceModel intermediateTypeListToModel(List<AbstractTypeToSource> abstractTypeList) throws IOException {
         Map<ReferenceTypeHandle, String> typeToText = new HashMap<>();
-        Map<ReferenceTypeHandle, AbstractTypeSource> typeToModel = new HashMap<>();
+        Map<ReferenceTypeHandle, AbstractTypeToSource> typeToModel = new HashMap<>();
 
-        for (AbstractTypeSource typeIntermediate : abstractTypeList) {
+        for (AbstractTypeToSource typeIntermediate : abstractTypeList) {
             ReferenceTypeHandle handle = typeIntermediate.getHandle();
             String text = applyTemplate.applyToIntermediateType(typeIntermediate);
             typeToText.put(handle, text);
             typeToModel.put(handle, typeIntermediate);
         }
-        return new SourceModel(typeToText, typeToModel);
+        return new ToSourceModel(typeToText, typeToModel);
     }
 
 }

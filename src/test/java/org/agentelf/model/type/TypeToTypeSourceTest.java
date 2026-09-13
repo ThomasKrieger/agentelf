@@ -1,9 +1,7 @@
 
 package org.agentelf.model.type;
 
-import org.agentelf.model.source.AbstractTypeSource;
-import org.agentelf.model.source.ClassSource;
-import org.agentelf.model.source.MethodSource;
+import org.agentelf.model.tosource.*;
 import org.agentelf.model.unittest.UnitTestLLM;
 import org.junit.jupiter.api.Test;
 
@@ -53,15 +51,15 @@ public class TypeToTypeSourceTest {
         );
 
         // Execute
-        List<AbstractTypeSource> resultList = converter.transform(model);
+        List<AbstractTypeToSource> resultList = converter.transform(model);
 
         // Assertions
         assertNotNull(resultList, "Resulting list should not be null");
         assertEquals(1, resultList.size(), "Should have converted one class");
 
-        AbstractTypeSource intermediate = resultList.getFirst();
-        assertInstanceOf(ClassSource.class, intermediate, "Intermediate should be of type ClassIntermediate");
-        ClassSource classIntermediate = (ClassSource) intermediate;
+        AbstractTypeToSource intermediate = resultList.getFirst();
+        assertInstanceOf(ClassToSource.class, intermediate, "Intermediate should be of type ClassIntermediate");
+        ClassToSource classIntermediate = (ClassToSource) intermediate;
 
         // Verify Basic Metadata
         assertEquals("UserAccount", classIntermediate.getName(), "Class name should match");
@@ -75,9 +73,9 @@ public class TypeToTypeSourceTest {
 
         // Verify Methods
         assertEquals(1, classIntermediate.getDeclaredMethods().size(), "Should have 1 method");
-        MethodSource methodSource = classIntermediate.getDeclaredMethods().getFirst();
-        assertEquals(methodDoc, methodSource.getDocumentation(), "Method documentation should match");
-        assertEquals(methodPrompt, methodSource.getPrompt(), "Method prompt should match");
+        MethodToSource methodToSource = classIntermediate.getDeclaredMethods().getFirst();
+        assertEquals(methodDoc, methodToSource.getDocumentation(), "Method documentation should match");
+        assertEquals(methodPrompt, methodToSource.getPrompt(), "Method prompt should match");
 
         // Verify Implements
         assertEquals(1, classIntermediate.getImplementList().size());

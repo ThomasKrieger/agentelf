@@ -1,9 +1,10 @@
-name: createUnitTestForModelClass
+name: createClassFromToSourceModel
 actions:
     - addExistingClassesToPrompt
     - loadContext
-    - addPromptForUnitTestOfCurrentType
+    - addPromptForCurrentType
     - addPromptOnlyClass
     - callLargeLLM
     - removeMarkdownTags
-    - saveTest
+    - setCreatedClass
+    - saveClass

@@ -2,7 +2,7 @@ package org.agentelf.model.unittest;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import org.agentelf.model.source.AbstractTypeSource;
+import org.agentelf.model.tosource.AbstractTypeToSource;
 import org.agentelf.mustache.ApplyTemplate;
 
 import java.io.IOException;
@@ -19,6 +19,6 @@ import java.util.Optional;
 })
 public interface UnitTest {
 
-    Optional<String> getPrompt(ApplyTemplate applyTemplate, AbstractTypeSource type) throws IOException;
+    Optional<String> getPrompt(ApplyTemplate applyTemplate, AbstractTypeToSource type) throws IOException;
     UnitTest addPrompt(String prompt);
 }

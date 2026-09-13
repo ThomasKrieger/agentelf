@@ -2,8 +2,8 @@
 package org.agentelf.taskandaction.action;
 
 import org.agentelf.api.Action;
-import org.agentelf.model.source.AbstractTypeSource;
-import org.agentelf.model.source.SourceModel;
+import org.agentelf.model.tosource.AbstractTypeToSource;
+import org.agentelf.model.tosource.ToSourceModel;
 import org.agentelf.type.ReferenceTypeRepo;
 import org.springframework.stereotype.Component;
 
@@ -19,17 +19,17 @@ public class AddExistingClassesToPrompt {
      * methods and fields, looks up the source code for those types using the ReferenceTypeRepo, 
      * and appends found source code to the prompt.
      */
-    @Action(arguments = {"prompt", "sourceModel", "referenceTypeRepo"}, returnVariable = "prompt")
+    @Action(arguments = {"prompt", "toSourceModel", "referenceTypeRepo"}, returnVariable = "prompt")
     public String addExistingClassesToPrompt(
             String prompt,
-            SourceModel sourceModel,
+            ToSourceModel toSourceModel,
             ReferenceTypeRepo referenceTypeRepo
     ) {
         StringBuilder promptBuilder = new StringBuilder(prompt != null ? prompt : "");
         Set<String> processedTypes = new HashSet<>();
 
-        if (sourceModel != null && referenceTypeRepo != null) {
-            for (AbstractTypeSource typeSource : sourceModel.getAllTypes()) {
+        if (toSourceModel != null && referenceTypeRepo != null) {
+            for (AbstractTypeToSource typeSource : toSourceModel.getAllTypes()) {
                 Set<String> usedTypes = typeSource.getAllUsedTypes();
                 if (usedTypes != null) {
                     for (String usedTypeName : usedTypes) {
@@ -38,7 +38,7 @@ public class AddExistingClassesToPrompt {
                             Optional<String> typeContent = referenceTypeRepo.lookup(usedTypeName);
                             if (typeContent.isPresent()) {
                                 // Add a newline separator if the prompt already contains content
-                                if (promptBuilder.length() > 0) {
+                                if (!promptBuilder.isEmpty()) {
                                     promptBuilder.append("\n");
                                 }
                                 promptBuilder.append(typeContent.get());

@@ -1,11 +1,11 @@
 package org.agentelf.model.type;
 
-import org.agentelf.model.source.AbstractTypeWithFieldsSource;
-import org.agentelf.model.source.TypeDescriptionSource;
+import org.agentelf.model.tosource.AbstractTypeWithFieldsToSource;
+import org.agentelf.model.tosource.TypeDescriptionToSource;
 
 public class ApplyValuesToTypeWithFieldsSource {
 
-    public void applyValues(Type type, AbstractTypeWithFieldsSource typeSource) {
+    public void applyValues(Type type, AbstractTypeWithFieldsToSource typeSource) {
         new ApplyValuesToTypeSource().applyValues(type,typeSource);
         if(type.fields() != null) {
             for(Field field :  type.fields()) {
@@ -17,7 +17,7 @@ public class ApplyValuesToTypeWithFieldsSource {
         }
         if(type.implementsInterfaces() != null) {
             for(String implement : type.implementsInterfaces()) {
-                typeSource.addImplements(TypeDescriptionSource.create(implement));
+                typeSource.addImplements(TypeDescriptionToSource.create(implement));
             }
         }
     }

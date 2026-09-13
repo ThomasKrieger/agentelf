@@ -1,3 +1,35 @@
+action add unit test/implement clas prompt
+unit-test:
+tyoe llm
+prompt
+callcreatEClass
+callCreateUnitEst
+
+
+add implement class prompt
+adt -> source (ohne llm) + end to end test
+
+wahrscheinlich wird implementClass am anfang recht häufig benutzt?
+prompt über annotation
+alternative zu type model
+prompt über annotation
+wie type model erweitern, verbessern?
+als abstract data type?
+wie abstract data types spezifizieren?
+abstract data type: verhalten von kombination von n aufrufen:
+get put vs put get..
+get only...
+
+
+
+weg gehen von types eher hin zu abstract data types und implement class?
+usability in context x/y/z wie modellieren?
+
+
+implementClass
+CreateUnitTest
+CreateClassTest to implementClassTest
+
 ForEachSourceModelCallCreateTest zusammenfassen (abstract class)
     hier 2 arten von actions: save class und createClass
     entscheidung innerhalb ForEachSourceModelCallCreateTest
@@ -8,11 +40,41 @@ daher source code -> source modell (entscheidet ob llm aufgerufen werden muss) -
 innerhalb source model statischen und llm teil trennen
 source builder wenn wir methoden erzeugen
 
-implementClass
-CreateUnitTest
 
-action load class if exists
-add unit test prompt
+annotation parsen und hinzufügen -> wie testen, wo testen
+see AddExistingClassesToPrompt
+sowohl für implementClass als auch model to source
+import auswerten
+ReferenceTypeRepo filled by model and existing classes
+later: implementClass -> ExistintgClass -> ToSourceModel
+d.h.alle code generierung kann über tosourcemodel laufen
+
+views ausarbreiten
+was ist zu sehen
+wie zu ändernde nicht passende klassen erkennen
+reasoning suppoor
+neue struktur erkennen?
+Sprung?
+Was passiert wo
+debug support
+hinzulerenen
+
+
+composibility:
+über welches modell am besten abbilden
+welche arten von composiblity?
+functional (auch daten)
+reuse
+
+
+model to model
+das erlaubt lernen, neue abstraktionen zu bilden
+andere stereotypen...
+Mathemak der einzelnen Modelle
+innerhalb Modell von A nach B
+wie warum dokumentieren was alles bei warum dokumnetieren
+welche warums?
+
 
 
 zwei modelle tosource 
@@ -25,6 +87,14 @@ ask llm for missing classes
 resolution of imports * import?
 use modul x/y
 + automatic resolution using llm
+
+
+end to end test über agentelf
+was teil des modells was teil der implementierung/source code
+wie so etwas entscheiden?
+z.B. verwendung von paramterieten tests
+spezifische themen wie z.B. vmlens synchronized
+oder deka bank cucumber zu erzeugen
 
 
 
@@ -743,12 +813,12 @@ Data:
 
 task data to source:
     model file
-    functionalModel ->  sourceModel
+    functionalModel ->  toSourceModel
     call intermediateToSource
 
 three actions:
     load model
-    functional to sourceModel
+    functional to toSourceModel
     call intermediateToSource
 
 später 

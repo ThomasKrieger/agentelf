@@ -1,16 +1,16 @@
-package org.agentelf.model.source;
+package org.agentelf.model.tosource;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class ClassSource extends AbstractTypeWithFieldsSource {
+public class ClassToSource extends AbstractTypeWithFieldsToSource {
 
     /**
      * is null if this class does not extend another class
      */
-    private TypeDescriptionSource extendsType;
+    private TypeDescriptionToSource extendsType;
 
     public String getType() {
         return "class";

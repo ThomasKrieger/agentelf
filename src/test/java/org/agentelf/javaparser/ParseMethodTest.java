@@ -1,7 +1,7 @@
 package org.agentelf.javaparser;
 
 import com.github.javaparser.ParseProblemException;
-import org.agentelf.model.source.MethodSource;
+import org.agentelf.model.tosource.MethodToSource;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,7 +19,7 @@ public class ParseMethodTest {
     @Test
     void testParseSimpleMethodWithOneParameter() {
         String code = "public void exampleMethod(String input) { System.out.println(input); }";
-        MethodSource result = parseMethod.parse(code);
+        MethodToSource result = parseMethod.parse(code);
 
         assertNotNull(result);
         assertEquals("exampleMethod", result.getName());
@@ -30,7 +30,7 @@ public class ParseMethodTest {
     @Test
     void testParseMethodWithMultipleParameters() {
         String code = "public int calculateSum(int a, double b, String label) { return 0; }";
-        MethodSource result = parseMethod.parse(code);
+        MethodToSource result = parseMethod.parse(code);
 
         assertNotNull(result);
         assertEquals("calculateSum", result.getName());
@@ -39,7 +39,7 @@ public class ParseMethodTest {
     @Test
     void testParseMethodWithCompileError() {
         String code = "public int calculateSum(int a, double b, String label) {  }";
-        MethodSource result = parseMethod.parse(code);
+        MethodToSource result = parseMethod.parse(code);
 
         assertNotNull(result);
         assertEquals("calculateSum", result.getName());
@@ -48,7 +48,7 @@ public class ParseMethodTest {
     @Test
     void testParseMethodWithoutBlock() {
         String code = "public int calculateSum(int a, double b, String label);";
-        MethodSource result = parseMethod.parse(code);;
+        MethodToSource result = parseMethod.parse(code);;
 
         assertNotNull(result);
         assertEquals("calculateSum", result.getName());
@@ -57,7 +57,7 @@ public class ParseMethodTest {
     @Test
     void testParseMethodWithNoParameters() {
         String code = "protected String getName() { return \"default\"; }";
-        MethodSource result = parseMethod.parse(code);
+        MethodToSource result = parseMethod.parse(code);
 
         assertNotNull(result);
         assertEquals("getName", result.getName());

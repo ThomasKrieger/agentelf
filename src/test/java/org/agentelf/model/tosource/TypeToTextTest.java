@@ -1,4 +1,4 @@
-package org.agentelf.model.source;
+package org.agentelf.model.tosource;
 
 import com.github.mustachejava.DefaultMustacheFactory;
 import org.agentelf.mustache.ApplyTemplate;
@@ -13,12 +13,12 @@ public class TypeToTextTest {
 
     @Test
     public void classToTextIncludePrompt() throws IOException {
-        ClassSource classIntermediate = new ClassSource();
+        ClassToSource classIntermediate = new ClassToSource();
         classIntermediate.setPackageName("org.agentelf.model.intermediate");
         classIntermediate.setName("IntermediateClass");
         classIntermediate.setIncludePrompt(true);
         classIntermediate.setPrompt("this is a prompt");
-        classIntermediate.addImplements(TypeDescriptionSource.create("Serializable"));
+        classIntermediate.addImplements(TypeDescriptionToSource.create("Serializable"));
         classIntermediate.setAnnotations(Collections.singletonList("@Deprecated"));
 
         ApplyTemplate applyTemplate = new ApplyTemplate(new DefaultMustacheFactory("org/agentelf/template"));
@@ -28,10 +28,10 @@ public class TypeToTextTest {
 
     @Test
     public void interfaceToText() throws IOException {
-        InterfaceSource interfaceSource = new InterfaceSource();
+        InterfaceToSource interfaceSource = new InterfaceToSource();
         interfaceSource.setPackageName("org.agentelf.model.intermediate");
         interfaceSource.setName("IntermediateClass");
-        interfaceSource.addExtends(TypeDescriptionSource.create("Serializable"));
+        interfaceSource.addExtends(TypeDescriptionToSource.create("Serializable"));
 
         ApplyTemplate applyTemplate = new ApplyTemplate(new DefaultMustacheFactory("org/agentelf/template"));
         String text = applyTemplate.applyToIntermediateType(interfaceSource);
