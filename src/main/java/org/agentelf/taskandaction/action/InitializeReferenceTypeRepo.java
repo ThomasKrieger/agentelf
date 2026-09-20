@@ -29,8 +29,8 @@ public class InitializeReferenceTypeRepo {
     private String testSrcDir;
 
     /**
-     * Loads all files from mainSrcDir and testSrcDir. Creates a CompilationUnit for
-     * each loaded File. Gets the ReferenceTypeHandle for each CompilationUnit and creates
+     * Loads all files from mainSrcDir fields testSrcDir. Creates a CompilationUnit for
+     * each loaded File. Gets the ReferenceTypeHandle for each CompilationUnit fields creates
      * a ReferenceTypeRepo with this data.
      *
      * @return an initialized ReferenceTypeRepo

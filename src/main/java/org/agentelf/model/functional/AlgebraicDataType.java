@@ -4,6 +4,6 @@ import org.agentelf.sourcebuilder.SourceBuilder;
 
 public interface AlgebraicDataType {
 
-    void addToBuilder(String packageName, SourceBuilder sourceBuilder);
+    void addToBuilder(String packageName, SourceBuilder sourceBuilder, FunctionalTypeToJavapoetType functionalTypeToJavapoetType);
 
 }

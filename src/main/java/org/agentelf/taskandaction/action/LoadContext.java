@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 
 /**
  * LoadContext loads all files from the contextDir
- *  adds them to the prompt variable and returns the new prompt
+ *  adds them to the prompt variable fields returns the new prompt
  */
 @Data
 @Component

@@ -1,25 +1,106 @@
-action add unit test/implement clas prompt
-unit-test:
-tyoe llm
-prompt
-callcreatEClass
-callCreateUnitEst
+function definition:
+   Function
+    declaraiton
+    prompt
+adt?
+auflösung (bestimmung function, welche methoden für welche klassen)
+type repo
+
+existing/source code -> tosource model
+existing/generated -> tosource + add prompts
 
 
-add implement class prompt
-adt -> source (ohne llm) + end to end test
+module als abstract data types -> interface description
+internal andere darstellung
+wie erzeugen
+wie nutzen
+
+
+module/comonent  modell
+adt
+
+end to end test über test modell
+
+functions/functional erweitern
+
+weitere modelle für types ausser abstract types
+und algebraic types
+
+weitere modelle für functional decomposition wie activity diagrams und functions
+
+
+ToDo/Fixme Tags
+
+
+mutable algebraic data types
+
+adt -> llm -> source
+(existing class) 
+JavaParser -> ToSource
+
+
+schwierigkeit bei code gen jeweils alle fälle/kombinationen abbilden zu können
+-> vielleicht duch stereotypen?
+-> freitext felder..
+-> to source basierend auf source code
+-> kann natürlich immer per hand angepasst werden 
+-> javaparser behält zusatz infos (aufbau) ->frei tedt additional text support (als add one?)
+z.B. bei refactoring..
+aktuell haupstächlich annotations
+
+
+annotations/comments für meta tasks/prompts?
+
+
+abstractions, views as function?
+
 
 wahrscheinlich wird implementClass am anfang recht häufig benutzt?
 prompt über annotation
 alternative zu type model
 prompt über annotation
 wie type model erweitern, verbessern?
-als abstract data type?
-wie abstract data types spezifizieren?
-abstract data type: verhalten von kombination von n aufrufen:
-get put vs put get..
-get only...
+wenn man mit uml diagramm startet direkt classes erzeugen
+welche fragen bei types nicht beantworten?
+oder besser abstract data types?
+e.g policies + design pattern
+see responsibiltiy driven design?
 
+
+doku erzeugen: 
+nicht nur diagramme sondern auch texte/tabellen
+vielleicht reports
+todoc
+fromdoc
+
+
+
+composibility
+was macht klassen composable
+pipe and filter?
+
+
+ilities wie compisibility
+extensibility
+tesitiblity
+
+neue struktur:
+strucure:
+seperation of concerns -> diagrams
+pro diagram tpy wha for function/data seperation
+function -> composibility
+seperation: function/data/state
+(e.g. Noun: state)
+data: Object
+function Noun verb object
+
+eigentlich diese aufteilung:
+function/data/state -> mapping auf modelle/diagramme
++
+function/data/state -> ilities wie jeweils erreicchen +
+dann innerhalb eines modells
+
++ abstraction als extra kapitel
 
 
 weg gehen von types eher hin zu abstract data types und implement class?

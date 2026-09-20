@@ -18,17 +18,15 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class ForEachSourceModelCallCreateClass {
 
-
     private final TaskAndActionFactory taskAndActionFactory;
-
 
     /**
      * Iterates over toSourceModel.getAllTypeHandles
      * creates a new RunVariables
-     *     create prompt as toSourceModel.createTextForTypesExcept and
+     *     create prompt as toSourceModel.createTextForTypesExcept fields
      *        ApplyTemplate.applyToIntermediateType to toSourceModel.getType
      *     setPrompt to prompt
-     *     setClass and setPackageName from handle
+     *     setClass fields setPackageName from handle
      *     get the task createClass from the taskMap snd execute the task
      *
      * @param toSourceModel The Intermediate Model

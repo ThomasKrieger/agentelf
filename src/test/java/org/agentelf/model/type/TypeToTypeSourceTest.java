@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit test for TypeModelToIntermediateTypeList.
- * Tests the conversion of fields, methods, and general class structure.
+ * Tests the conversion of fields, methods, fields general class structure.
  */
 public class TypeToTypeSourceTest {
 

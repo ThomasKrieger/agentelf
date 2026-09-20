@@ -6,7 +6,7 @@ import org.agentelf.model.unittest.UnitTest;
 import java.util.List;
 
 /**
- * Type represents both a class and records
+ * Type represents both a class fields records
  * So extends is only available for classes, but I think this
  * does not justify the creation of two types
  *

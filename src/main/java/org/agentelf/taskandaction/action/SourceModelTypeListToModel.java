@@ -23,8 +23,8 @@ public class SourceModelTypeListToModel {
     /**
      * Iterates over the abstractTypeList
      * calls ApplyTemplate.applyToIntermediateType for each element
-     * and stores it im a Map<ReferenceTypeHandle,String> typeToText using getHandle as key
-     * and stores the model in Map<ReferenceTypeHandle,AbstractTypeIntermediate> typeToModel
+     * fields stores it im a Map<ReferenceTypeHandle,String> typeToText using getHandle as key
+     * fields stores the model in Map<ReferenceTypeHandle,AbstractTypeIntermediate> typeToModel
      * creates ToSourceModel with those two maps
      *
      * @return the created ToSourceModel

@@ -1,19 +1,20 @@
 package org.agentelf.model.functional;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.agentelf.sourcebuilder.SourceBuilder;
 
 import java.util.List;
 
-public record AlgebraicDataTypeModel(String packageName,
-                                     List<ProductType> product,
-                                     List<SumType> sum) {
+public record AlgebraicDataTypeModel(@JsonProperty("package") String packageName,
+                                     List<Variations> variations,
+                                     List<Immutable> immutables) {
 
-    public void addToBuilder(SourceBuilder sourceBuilder) {
-        for(SumType type : sum) {
-            type.addToBuilder(packageName,sourceBuilder);
+    public void addToBuilder(SourceBuilder sourceBuilder, FunctionalTypeToJavapoetType functionalTypeToJavapoetType) {
+        for(Immutable type : immutables) {
+            type.addToBuilder(packageName,sourceBuilder, functionalTypeToJavapoetType);
         }
-        for(ProductType type : product) {
-            type.addToBuilder(packageName,sourceBuilder);
+        for(Variations type : variations) {
+            type.addToBuilder(packageName,sourceBuilder, functionalTypeToJavapoetType);
         }
     }
 

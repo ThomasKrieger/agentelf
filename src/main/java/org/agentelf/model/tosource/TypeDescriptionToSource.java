@@ -3,7 +3,7 @@ package org.agentelf.model.tosource;
 import com.github.javaparser.ast.type.Type;
 
 /**
- * either a primitive type or a reference type
+ * either a primitive type either a reference type
  * So we can have the following cases:
  *   primitive Type
  *   java.lang.. no import needed

@@ -1,9 +1,16 @@
 package org.agentelf.model.functional;
 
-import com.palantir.javapoet.TypeSpec;
+import com.palantir.javapoet.MethodSpec;
+import com.palantir.javapoet.TypeName;
 
-public interface FieldDeclaration {
+public record FieldDeclaration(String type, String name) {
 
-    void addToBuilder(String packageName, TypeSpec.Builder typeBuilder);
-
+    public void addToBuilder(String packageName, MethodSpec.Builder builder, FunctionalTypeToJavapoetType functionalTypeToJavapoetType) {
+        TypeName typeName = functionalTypeToJavapoetType.toJavapoetType(packageName, type);
+        if(name != null) {
+            builder.addParameter(typeName,name);
+        } else {
+            builder.addParameter(typeName,type);
+        }
+    }
 }

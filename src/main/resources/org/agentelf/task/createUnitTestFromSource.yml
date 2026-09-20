@@ -1,0 +1,8 @@
+name: createUnitTestFromSource
+actions:
+    - loadContext
+    - addPromptUnitTest
+    - addPromptOnlyClass
+    - callLargeLLM
+    - removeMarkdownTags
+    - saveTest

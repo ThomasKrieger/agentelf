@@ -1,0 +1,10 @@
+name: createClassFromSource
+actions:
+    - loadContext
+    - loadClass
+    - addPromptImplementClass
+    - addPromptOnlyClass
+    - callLargeLLM
+    - removeMarkdownTags
+    - saveClass
+    - setCreatedClass

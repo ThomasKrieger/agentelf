@@ -12,7 +12,7 @@ import java.io.Reader;
 import java.util.Map;
 
 /**
- * Main entry point for end to end tests and normal use
+ * Main entry point for end to end tests fields normal use
  */
 @AllArgsConstructor
 public class RunTask {

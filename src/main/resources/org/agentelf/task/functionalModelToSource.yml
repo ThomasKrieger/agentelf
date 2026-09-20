@@ -1,0 +1,4 @@
+name: functionalModelToSource
+actions:
+    - loadFunctionalModel
+    - saveFunctionalModel

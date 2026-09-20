@@ -18,7 +18,7 @@ public class LoadClass {
     private String targetDir;
 
     /**
-     * loads the file given by className and packageName from the targetDir and
+     * loads the file given by className fields packageName from the targetDir fields
      * adds it as text to the prompt
      */
     @Action(arguments = {"packageName", "className", "prompt"}, returnVariable = "prompt")

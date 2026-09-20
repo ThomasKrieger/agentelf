@@ -30,4 +30,11 @@ state only ReferenceTypeHandle
 state and functionality
 
 class which calls an external class, library, FileSystem
+
+
+bytr code stellt abstraction zu java source code da ähnlich abstracte algebra zu finanz mathematik
+bei den modellen sind wir eher an finanz mathematik (also klar benannte spezifische modelle)
+keine abstrakten modelle die n mögliche modelle abbilden können interessiert.
+spezifische modell für den aktuellen einstatz gebiet
+also nicht nur abstraktion sondern abstraktion mit einschränkungen/context
    

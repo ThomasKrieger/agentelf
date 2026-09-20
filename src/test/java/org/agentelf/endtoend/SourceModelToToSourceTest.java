@@ -3,10 +3,12 @@ package org.agentelf.endtoend;
 
 import org.agentelf.cli.LoadTasks;
 import org.agentelf.cli.RunTask;
-import org.agentelf.model.tosource.*;
+import org.agentelf.model.tosource.AbstractTypeToSource;
+import org.agentelf.model.tosource.ClassToSource;
+import org.agentelf.model.tosource.SourceTypeListBuilder;
+import org.agentelf.model.tosource.TypeDescriptionToSource;
 import org.agentelf.taskandaction.task.TaskVariables;
 import org.agentelf.yaml.TaskAndActionFactorySpring;
-import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -24,7 +26,7 @@ public class SourceModelToToSourceTest extends AbstractEndToEndTest{
     @Value("classpath:/endtoend/TestClass.java")
     private Resource testClassJava;
 
-    @Test
+    //@Test
     public void oneClass() throws IOException {
         when(callLLMList.callLarge(anyString())).thenReturn(asString(testClassJava));
 

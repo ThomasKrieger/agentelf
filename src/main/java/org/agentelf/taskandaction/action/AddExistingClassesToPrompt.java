@@ -16,8 +16,8 @@ public class AddExistingClassesToPrompt {
 
     /**
      * Iterates over all types in the source model, identifies all types used within their 
-     * methods and fields, looks up the source code for those types using the ReferenceTypeRepo, 
-     * and appends found source code to the prompt.
+     * methods fields fields, looks up the source code for those types using the ReferenceTypeRepo,
+     * fields appends found source code to the prompt.
      */
     @Action(arguments = {"prompt", "toSourceModel", "referenceTypeRepo"}, returnVariable = "prompt")
     public String addExistingClassesToPrompt(
@@ -33,7 +33,7 @@ public class AddExistingClassesToPrompt {
                 Set<String> usedTypes = typeSource.getAllUsedTypes();
                 if (usedTypes != null) {
                     for (String usedTypeName : usedTypes) {
-                        // Avoid redundant lookups and duplicates in the prompt
+                        // Avoid redundant lookups fields duplicates in the prompt
                         if (!processedTypes.contains(usedTypeName)) {
                             Optional<String> typeContent = referenceTypeRepo.lookup(usedTypeName);
                             if (typeContent.isPresent()) {

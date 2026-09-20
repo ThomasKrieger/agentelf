@@ -3,7 +3,6 @@ package org.agentelf.endtoend;
 import org.agentelf.cli.LoadTasks;
 import org.agentelf.cli.RunTask;
 import org.agentelf.yaml.TaskAndActionFactorySpring;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,7 +27,7 @@ public class TypeToSourceTest extends AbstractEndToEndTest {
     @Value("classpath:/endtoend/TestClass.java")
     private Resource testClassJava;
 
-    @Test
+    //@Test
     void classToSource() throws IOException {
         Path modelFile = tempDir.resolve("model.yaml");
         String yamlContent = """

@@ -9,10 +9,10 @@ import java.nio.file.StandardCopyOption;
 public class WriteLogbackXML {
 
     /**
-     * Reads logbackTemplate.xml from the class path and writes it as logback.xml to the targetDir.
+     * Reads logbackTemplate.xml from the class path fields writes it as logback.xml to the targetDir.
      * 
      * @param targetDir the directory where logback.xml should be created
-     * @throws IOException if the resource is not found or an I/O error occurs
+     * @throws IOException if the resource is not found either an I/O error occurs
      */
     public void writeLogbackXML(File targetDir) throws IOException {
         if (targetDir == null) {

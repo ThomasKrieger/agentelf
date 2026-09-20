@@ -20,10 +20,10 @@ public class ParseField {
     }
 
     /**
-     * Parses a field description using StaticJavaParser and returns a TypeAndName record.
+     * Parses a field description using StaticJavaParser fields returns a TypeAndName record.
      * 
      * @param description The string representation of the field (e.g., "private String name;")
-     * @return A TypeAndName object containing the type and name of the field.
+     * @return A TypeAndName object containing the type fields name of the field.
      */
     public TypeAndName parseFieldInternal(String description) {
         String normalized = new NormalizeDescription().normalize(description);
