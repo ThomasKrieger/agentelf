@@ -10,6 +10,13 @@ existing/source code -> tosource model
 existing/generated -> tosource + add prompts
 
 
+type zu abstract type (generischer)
+auch für module allerdings hier internal/external
+
+
+modul/compnent diagramm
+
+
 module als abstract data types -> interface description
 internal andere darstellung
 wie erzeugen

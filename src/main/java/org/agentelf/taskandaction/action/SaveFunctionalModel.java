@@ -1,7 +1,7 @@
 package org.agentelf.taskandaction.action;
 
 import org.agentelf.api.Action;
-import org.agentelf.model.functional.AlgebraicDataTypeModel;
+import org.agentelf.model.functional.FunctionalModel;
 import org.agentelf.model.functional.FunctionalTypeToJavapoetType;
 import org.agentelf.sourcebuilder.ReferenceTypeHandleAndSource;
 import org.agentelf.sourcebuilder.SourceBuilder;
@@ -21,7 +21,7 @@ public class SaveFunctionalModel {
     private String targetDir;
 
     @Action(arguments = {"model"})
-    public void saveFunctionalModel(AlgebraicDataTypeModel model) throws IOException {
+    public void saveFunctionalModel(FunctionalModel model) throws IOException {
         Path rootDir =  Path.of(targetDir);
         FunctionalTypeToJavapoetType functionalTypeToJavapoetType = new FunctionalTypeToJavapoetType();
         SourceBuilder sourceBuilder = new SourceBuilder();
