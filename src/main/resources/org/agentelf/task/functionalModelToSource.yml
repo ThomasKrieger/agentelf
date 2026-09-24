@@ -1,4 +1,6 @@
 name: functionalModelToSource
 actions:
     - loadFunctionalModel
-    - saveFunctionalModel
+    - functionalModelToSourceModel
+    - forEachSourceModelCallCreateClass
+    - forEachSourceModelCallCreateTest

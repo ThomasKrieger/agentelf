@@ -3,8 +3,8 @@ package org.agentelf.taskandaction.action;
 import lombok.RequiredArgsConstructor;
 import org.agentelf.api.Action;
 import org.agentelf.handle.ReferenceTypeHandle;
-import org.agentelf.model.tosource.AbstractTypeToSource;
 import org.agentelf.model.tosource.ToSourceModel;
+import org.agentelf.model.tosource.TypeToSource;
 import org.agentelf.mustache.ApplyTemplate;
 import org.agentelf.taskandaction.RunVariables;
 import org.agentelf.taskandaction.task.Task;
@@ -13,8 +13,8 @@ import org.agentelf.yaml.TaskAndActionFactory;
 import org.agentelf.yaml.TaskDescription;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
@@ -28,18 +28,19 @@ public class ForEachSourceModelCallCreateTest {
                                            Map<String, TaskDescription> taskMap,
                                            ReferenceTypeRepo referenceTypeRepo) throws Exception {
         for (ReferenceTypeHandle handle : toSourceModel.getAllTypeHandles()) {
-            AbstractTypeToSource type = toSourceModel.getType(handle);
-
-            Optional<String> unitTestPrompt = type.getUnitTestPrompt(applyTemplate);
-            if(unitTestPrompt.isEmpty()) {
-                continue;
-            }
-
+            TypeToSource type = toSourceModel.getType(handle);
             RunVariables runVariables = new RunVariables();
             runVariables.setReferenceTypeRepo(referenceTypeRepo);
             runVariables.setCurrentType(type);
             runVariables.setToSourceModel(toSourceModel);
-            runVariables.setPrompt("");
+
+            Map<String,Object> context = new HashMap<>();
+            context.put("name" , handle.toString());
+
+            String prompt = toSourceModel.asPrompt() +
+                    applyTemplate.apply(context,"promptUnitTest.mustache");
+
+            runVariables.setPrompt(prompt);
             runVariables.setClassName(handle.name() + "Test");
             runVariables.setPackageName(handle.packageName());
 

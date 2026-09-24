@@ -18,8 +18,8 @@ public class SaveClass extends AbstractSaveClass{
         this.targetDir = targetDir;
     }
 
-    @Action(arguments = {"llmResponse", "className", "packageName" })
-    public void saveClass(String llmResponse, String className, String packageName) throws Exception {
+    @Action(arguments = {"llmResponse", "packageName",  "className" })
+    public void saveClass(String llmResponse, String packageName, String className) throws Exception {
         save(llmResponse,className,packageName,fileOutput,targetDir);
     }
 

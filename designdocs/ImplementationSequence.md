@@ -1,3 +1,37 @@
+we need load all sources for llm
+we need to load all jars for import lookup
+we can also use import statements (at start)
+
+
+
+
+all needed classes
+if from implemtclass always call llm
+
+service classes in adt for stereotypes
+but we also could use test add to x
+implements 
+stereotypes
+
+
+
+no test/ art der unit tests über stereotypes
+type/type resolution/
+opoen stereotypes in classes/tags (meta data?)
+commands?
+
+test struktur + templates
+später teile generisch, macros?
+existing source als template?
+template based auch bei anderen sachen?
+pattern?
+module?
+test classes
+how to get info from tests
+
+ask llm what classes are missing
+
+
 function definition:
    Function
     declaraiton
@@ -7,7 +41,35 @@ auflösung (bestimmung function, welche methoden für welche klassen)
 type repo
 
 existing/source code -> tosource model
+vielleicht mit prompt annotation
+oder genrate ähnlich toDo
 existing/generated -> tosource + add prompts
+adt + functions -> tosource model
+
+for variable resolution we need types with generics
+
+test?
+unitest
+    extra modell (tosource) totest?
+    wahrscheinlich/ template basiert
+    extend/fill ?
+    types of test -> vielleicht erstmal basierend auf templates?
+    welche infos habe ich, was will ich spezifizieren?
+
+
+
+schon jetzt auftrennen
+adt + function -> totest?
+
+tosourcemodel
+TypeToSource
+String source
+MethodHandleToPrompt
+implements/extends
+create prompt/prompt resolution
+without generic since variables method resolution generics get stripped
+away
+for resolution 
 
 
 type zu abstract type (generischer)

@@ -2,7 +2,7 @@ package org.agentelf.taskandaction;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
-import org.agentelf.model.tosource.AbstractTypeToSource;
+import org.agentelf.model.tosource.TypeToSource;
 import org.agentelf.yaml.TaskDescription;
 
 import java.util.List;
@@ -25,6 +25,6 @@ public abstract class TaskOrRunVariables {
     private Map<String, TaskDescription> taskMap;
 
     // For Intermediate Model processing
-    private List<AbstractTypeToSource> intermediateTypeList;
+    private List<TypeToSource> intermediateTypeList;
 
 }

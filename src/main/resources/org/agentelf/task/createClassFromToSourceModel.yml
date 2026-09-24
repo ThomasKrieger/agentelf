@@ -1,8 +1,6 @@
 name: createClassFromToSourceModel
 actions:
-    - addExistingClassesToPrompt
     - loadContext
-    - addPromptForCurrentType
     - addPromptOnlyClass
     - callLargeLLM
     - removeMarkdownTags

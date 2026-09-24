@@ -53,4 +53,9 @@ wie jeweils beschreiben?
 zusammenang test <-> SIT
 
 
+Deterministic Path
+if we have only refactoring/steps which do not change the function
+or complete tests we can skip review
+
+
 

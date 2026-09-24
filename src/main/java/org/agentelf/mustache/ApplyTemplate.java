@@ -3,7 +3,6 @@ package org.agentelf.mustache;
 
 import com.github.mustachejava.Mustache;
 import com.github.mustachejava.MustacheFactory;
-import org.agentelf.model.tosource.AbstractTypeToSource;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -17,10 +16,6 @@ public class ApplyTemplate {
     public ApplyTemplate(MustacheFactory mustacheFactory) {
         this.mustacheFactory = mustacheFactory;
     }
-
-    public String applyToIntermediateType(AbstractTypeToSource type) throws IOException {
-      return apply(type, "intermediateTypeToText.mustache");
-   }
 
    public String apply(Object context, String templateName) throws IOException {
        Mustache mustache = mustacheFactory.compile( templateName);

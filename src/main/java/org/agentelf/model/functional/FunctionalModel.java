@@ -7,14 +7,19 @@ import java.util.List;
 
 public record FunctionalModel(@JsonProperty("package") String packageName,
                               List<Variations> variations,
-                              List<Immutable> immutables) {
+                              List<Immutable> immutables,
+                              List<FunctionWithPromptFunctional> functions) {
 
     public void addToBuilder(SourceBuilder sourceBuilder, FunctionalTypeToJavapoetType functionalTypeToJavapoetType) {
-        for(Immutable type : immutables) {
-            type.addToBuilder(packageName,sourceBuilder, functionalTypeToJavapoetType);
+        if(immutables != null) {
+            for(Immutable type : immutables) {
+                type.addToBuilder(packageName,sourceBuilder, functionalTypeToJavapoetType);
+            }
         }
-        for(Variations type : variations) {
-            type.addToBuilder(packageName,sourceBuilder, functionalTypeToJavapoetType);
+        if(variations != null) {
+            for(Variations type : variations) {
+                type.addToBuilder(packageName,sourceBuilder, functionalTypeToJavapoetType);
+            }
         }
     }
 
