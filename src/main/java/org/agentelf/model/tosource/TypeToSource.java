@@ -9,12 +9,16 @@ import java.util.Map;
 import java.util.Optional;
 
 @Data
-public  class TypeToSource {
+public class TypeToSource {
 
-   private ReferenceTypeHandle referenceTypeHandle;
+   private final ReferenceTypeHandle referenceTypeHandle;
    private String typePrompt;
    private final Map<MethodHandle,String> methodHandleToPrompt = new HashMap<>();
-   private String source;
+   private TypeSource typeSource;
+
+   public TypeToSource(ReferenceTypeHandle referenceTypeHandle) {
+      this.referenceTypeHandle = referenceTypeHandle;
+   }
 
    public Optional<String> createPrompt() {
       if(methodHandleToPrompt.isEmpty()) {
@@ -28,6 +32,10 @@ public  class TypeToSource {
          builder.append(System.lineSeparator());
       }
       return Optional.of(builder.toString());
+   }
+
+   public String getSourceAsString() {
+      return typeSource.asString();
    }
 
 }

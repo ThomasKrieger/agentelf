@@ -11,7 +11,7 @@ argumentList
     ;
 
 argument
-   :    IDENTIFIER | (IDENTIFIER IDENTIFIER)
+   :    IDENTIFIER | (IDENTIFIER COLON IDENTIFIER)
    ;
 
 

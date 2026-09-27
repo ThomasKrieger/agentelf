@@ -25,7 +25,7 @@ public class ToSourceModel {
      */
     public String asPrompt() {
         return typeToModel.values().stream()
-                .map(TypeToSource::toString)
+                .map(TypeToSource::getSourceAsString)
                 .collect(Collectors.joining(System.lineSeparator()));
     }
 

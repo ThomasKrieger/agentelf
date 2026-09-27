@@ -1,35 +1,51 @@
 package org.agentelf.type;
 
+import com.github.javaparser.ParserConfiguration;
+import com.github.javaparser.StaticJavaParser;
 import com.github.javaparser.ast.CompilationUnit;
-import lombok.AllArgsConstructor;
 import org.agentelf.handle.ReferenceTypeHandle;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
-import java.util.Optional;
-
-import static java.util.Optional.empty;
+import java.util.Set;
 
 
-@AllArgsConstructor
 public class ReferenceTypeRepo {
 
-    private final Map<String, List<ReferenceTypeHandle>> nameToHandle;
-    private final Map<ReferenceTypeHandle, CompilationUnit> handleToSource;
+    private final Map<String, Set<ReferenceTypeHandle>> nameToHandle = new HashMap<>();
+    private final Map<ReferenceTypeHandle, CompilationUnit> handleToSource = new HashMap<>();
 
-    public Optional<String> lookup(String name) {
-        List<ReferenceTypeHandle> result = nameToHandle.get(name);
+    public PackageLookupResult lookup(String name) {
+        Set<ReferenceTypeHandle> result = nameToHandle.get(name);
         if(result == null) {
-            return empty();
+            return new PackageLookupResult.NoPackageFound();
         }
-
         if(result.isEmpty()) {
-            return empty();
+            return new PackageLookupResult.NoPackageFound();
         }
         if(result.size() > 1) {
-            throw new RuntimeException("not unique:" + name);
+            return new PackageLookupResult.MultipleResults(result);
         }
-        return Optional.of(handleToSource.get(result.getFirst()).toString());
+        return new PackageLookupResult.OneResult(result.stream().findFirst().get());
+    }
+
+    public void putAll(Map<String, Set<ReferenceTypeHandle>>  putNameToHandle, Map<ReferenceTypeHandle, CompilationUnit> putHandleToSource) {
+        for(Map.Entry<String, Set<ReferenceTypeHandle>> elem : putNameToHandle.entrySet()) {
+            if(nameToHandle.containsKey(elem.getKey())) {
+                nameToHandle.get(elem.getKey()).addAll(elem.getValue());
+            } else {
+                nameToHandle.put(elem.getKey(),elem.getValue());
+            }
+        }
+        handleToSource.putAll(putHandleToSource);
+    }
+
+    public void put(ReferenceTypeHandle handle , String source) {
+        StaticJavaParser.getParserConfiguration()
+                .setLanguageLevel(ParserConfiguration.LanguageLevel.JAVA_21);
+        nameToHandle.computeIfAbsent(handle.name(), k -> new HashSet<>()).add(handle);
+        handleToSource.put(handle, StaticJavaParser.parse(source));
     }
 
 }

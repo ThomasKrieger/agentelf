@@ -1,6 +1,7 @@
 name: functionalModelToSource
 actions:
     - loadFunctionalModel
+    - initializeTypeRepo
     - functionalModelToSourceModel
     - forEachSourceModelCallCreateClass
     - forEachSourceModelCallCreateTest

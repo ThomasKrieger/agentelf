@@ -1,4 +1,4 @@
 package org.agentelf.handle;
 
-public record ReferenceTypeHandle(String packageName, String name) {
+public record ReferenceTypeHandle(String packageName, String name) implements TypeHandle{
 }

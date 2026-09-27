@@ -8,7 +8,7 @@ import org.agentelf.model.tosource.TypeToSource;
 import org.agentelf.mustache.ApplyTemplate;
 import org.agentelf.taskandaction.RunVariables;
 import org.agentelf.taskandaction.task.Task;
-import org.agentelf.type.ReferenceTypeRepo;
+import org.agentelf.type.TypeRepo;
 import org.agentelf.yaml.TaskAndActionFactory;
 import org.agentelf.yaml.TaskDescription;
 import org.springframework.stereotype.Component;
@@ -23,14 +23,14 @@ public class ForEachSourceModelCallCreateTest {
     private final ApplyTemplate applyTemplate;
     private final TaskAndActionFactory taskAndActionFactory;
 
-    @Action(arguments = {"toSourceModel", "taskMap" , "referenceTypeRepo"})
+    @Action(arguments = {"toSourceModel", "taskMap" , "typeRepo"})
     public void forEachModelCallCreateTest(ToSourceModel toSourceModel,
                                            Map<String, TaskDescription> taskMap,
-                                           ReferenceTypeRepo referenceTypeRepo) throws Exception {
+                                           TypeRepo typeRepo) throws Exception {
         for (ReferenceTypeHandle handle : toSourceModel.getAllTypeHandles()) {
             TypeToSource type = toSourceModel.getType(handle);
             RunVariables runVariables = new RunVariables();
-            runVariables.setReferenceTypeRepo(referenceTypeRepo);
+            runVariables.setTypeRepo(typeRepo);
             runVariables.setCurrentType(type);
             runVariables.setToSourceModel(toSourceModel);
 

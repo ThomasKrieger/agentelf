@@ -12,7 +12,7 @@ public record FunctionWithPromptFunctional(String declaration,
                                            String prompt,
                                            String documentation) {
 
-    public Function toFunction(TypeRepo typeRepo) {
+    public Function toFunction(String defaultPackage, TypeRepo typeRepo) {
         CharStream chars = CharStreams.fromString(declaration);
         FunctionDeclarationLexer lexer =
                 new FunctionDeclarationLexer(chars);
@@ -20,7 +20,7 @@ public record FunctionWithPromptFunctional(String declaration,
                 new CommonTokenStream(lexer);
         FunctionDeclarationParser parser =
                 new FunctionDeclarationParser(tokens);
-        Function.FunctionBuilder builder = new CreateFunction(typeRepo).visitFunctionDeclaration(parser.functionDeclaration());
+        Function.FunctionBuilder builder = new CreateFunction(typeRepo,defaultPackage).visitFunctionDeclaration(parser.functionDeclaration());
         builder.prompt(prompt);
         builder.documentation(documentation);
         return builder.build();

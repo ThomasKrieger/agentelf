@@ -20,6 +20,13 @@ names: ...
 methods:
 combinatoric...
 
+Test builder 
+   standard test builder 
+   test builder für domäne 
+   teile der tests vorgenerieren + anderen teil z.b. prüfungen ergänzen lassen
+   pattern für test mithlfe pattern detection erkennen und erweitern
+
+
 first pattern
 given/when/then tests based on testbuilder
 assertions and probably mocks

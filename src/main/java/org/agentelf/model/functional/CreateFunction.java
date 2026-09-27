@@ -14,6 +14,7 @@ import java.util.List;
 public class CreateFunction {
 
     private final TypeRepo typeRepo;
+    private final String currentPackage;
 
     public Function.FunctionBuilder visitFunctionDeclaration(
             FunctionDeclarationParser.FunctionDeclarationContext ctx) {
@@ -27,7 +28,7 @@ public class CreateFunction {
         return Function.builder()
                 .name(functionName)
                 .arguments(arguments)
-                .returnType(typeRepo.getForSimpleName(returnTypeName));
+                .returnType(typeRepo.getForSimpleName(currentPackage, returnTypeName));
     }
 
     private List<FunctionArgument> visitArgumentListInternal(
@@ -46,13 +47,14 @@ public class CreateFunction {
         List<TerminalNode> identifiers = ctx.IDENTIFIER();
         if (identifiers.size() == 1) {
             return FunctionArgument.builder()
-                    .type(null)
-                    .name(identifiers.getFirst().getText())
+                    .type(typeRepo.getForSimpleName(currentPackage,identifiers.getFirst().getText()))
+                    .name(Character.toLowerCase(identifiers.getFirst().getText().charAt(0)) +
+                                    identifiers.getFirst().getText().substring(1))
                     .build();
         }
         return FunctionArgument.builder()
-                .type(typeRepo.getForSimpleName(identifiers.get(0).getText()))
-                .name(identifiers.get(1).getText())
+                .type(typeRepo.getForSimpleName(currentPackage, identifiers.get(1).getText()))
+                .name(identifiers.get(0).getText())
                 .build();
     }
 

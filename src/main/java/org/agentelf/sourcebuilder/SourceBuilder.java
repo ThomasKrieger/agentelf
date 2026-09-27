@@ -1,6 +1,5 @@
 package org.agentelf.sourcebuilder;
 
-import com.palantir.javapoet.JavaFile;
 import com.palantir.javapoet.TypeSpec;
 import org.agentelf.handle.ReferenceTypeHandle;
 
@@ -35,9 +34,7 @@ public class SourceBuilder {
     public List<ReferenceTypeHandleAndSource> build() {
         List<ReferenceTypeHandleAndSource> result = new LinkedList<>();
         for(Map.Entry<ReferenceTypeHandle,TypeSpec.Builder> entry : map.entrySet()) {
-            JavaFile javaFile = JavaFile.builder(entry.getKey().packageName(), entry.getValue().build())
-                    .build();
-            result.add(new ReferenceTypeHandleAndSource(entry.getKey(),javaFile.toString()));
+            result.add(new ReferenceTypeHandleAndSource(entry.getKey(),entry.getValue()));
         }
         return result;
     }

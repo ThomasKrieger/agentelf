@@ -1,6 +1,6 @@
 package: "org.agentelf.taskandaction.action"
 classes:
-  - name: InitializeReferenceTypeRepo
+  - name: InitializeTypeRepo
     fields:
        - annotations:
          - '@Value("${main-target-dir}"'

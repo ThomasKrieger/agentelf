@@ -1,19 +1,126 @@
-we need load all sources for llm
-we need to load all jars for import lookup
-we can also use import statements (at start)
+adt:
+  functions return und parameter
+  import support (später)
+  array support
+  generic support
+  full qualified suppprt -> dann import später
+  generic
 
 
+test for FunctionWithPromptFunctional
+ergänzen um Generic...
+
+
+
+hier prompt berechnung: TypeToSource
+only imlement for record or class or (later default methods!)
+interface Variation {
+String method(Variation variation);
+}
+
+package org.agentelf;
+
+interface VariationOne extends Variation {
+}
+implement: MethodHandle[name=method]
+create class
+
+
+
+
+config für StaticJavaParser (zentrale stelle, aus yaml)
+StaticJavaParser.getParserConfiguration()
+.setLanguageLevel(ParserConfiguration.LanguageLevel.JAVA_21);
+
+
+uml diagramme wann einsetzen?
+vielleicht multi extension, without interface def?
+im wesentlichen darstellung usage/containment/inheritance
+beziehung abstract data types?
+für module?
+
+
+decision vielleicht bei property tests schauen 
+generator
+wobei double book keeping sinn macht, e.g.
+decision + generator getrennt
+test + impl getrennt
+
+UpdateTypeRepoWithByteCodeFromJar
+
+
+grammar based generation
+pattern detection based on grammar -> + builder for transfoming/chnaging pattern
+
+
+tosource anders aufteilen?
+
+
+plugin möglichkeit für stereotypes und models und transformationen
+json parser prüfen
+
+
+Nächstes:
+Ableitungsbeziehung -> wie modellieren
+wahrscheinlich als klasse mit prompt
+
+Prompt erzeugung -> wie modellieren
+modell für abstact data types -> Container, (mathematic für liste/set als steroryp) algebraic modellierung
+modell für activities
+Update Mechanismus
+Test Modellierung
+Konfig/Rules -> Skills/Rule based
+wie konfigurieren
+
+nicht über templates sondern durch erzuegung, builder
+functions source code erzeugen
+
+
+config mechanism später
+
+
+
+adt as selaed mit permits
+
+
+abstract data types gut zum test generieren
+offen auch gut um implementierung zu erzeugen?
+sozusagen ergänzun für abstract data types (gegenstück)
+
+mutliple different types of llm support
+
+logging
+definieren
+test for logging
+
+Test generieren
+wie sollen tools später aussehen?
+aufruf/command für tests?
+test only (append test)
+-> basierend auf source!
+auch möglich über update
+
+benötigte actions auflisten
+
+support for arrays
+
+test modell
+interface/abstract data type modell/modul
+simple class vs complex modul
+
+TypeRepo -> defaultPackage
+load add the beginning
 
 
 all needed classes
-if from implemtclass always call llm
+if from implemt class always call llm
 
 service classes in adt for stereotypes
 but we also could use test add to x
 implements 
 stereotypes
 
-
+tosource design
 
 no test/ art der unit tests über stereotypes
 type/type resolution/
