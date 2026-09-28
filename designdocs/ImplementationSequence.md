@@ -1,15 +1,17 @@
 adt:
-  functions return und parameter
-  import support (später)
   array support
   generic support
-  full qualified suppprt -> dann import später
-  generic
 
+MethodHandle erweitern um  TypeHandles?
 
-test for FunctionWithPromptFunctional
-ergänzen um Generic...
+InheritanceTree ?
 
+TypeHandle without generic
+Type with generic
+
+Method/Function -> Type
+MehodHandle -> TypeHandle
+Function Method which is not bound
 
 
 hier prompt berechnung: TypeToSource
@@ -38,6 +40,14 @@ vielleicht multi extension, without interface def?
 im wesentlichen darstellung usage/containment/inheritance
 beziehung abstract data types?
 für module?
+für design pattern/tempaltees e.g. needs structure ... -> how to translate
+und befüllen 
+
+service -> Interface <- implementing classes
+benötigt activity diagram!
+oder nur ableitungsbeziehung
+oder genau definition was -> bedeutet?
+
 
 
 decision vielleicht bei property tests schauen 

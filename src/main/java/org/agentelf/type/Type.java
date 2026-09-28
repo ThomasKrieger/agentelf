@@ -7,5 +7,6 @@ public interface Type {
 
     TypeHandle toHandle();
     TypeName toJavapoet();
+    String simpleName();
 
 }

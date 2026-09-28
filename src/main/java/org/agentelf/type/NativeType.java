@@ -30,5 +30,10 @@ public enum NativeType implements Type, TypeHandle {
         return typeName;
     }
 
+    @Override
+    public String simpleName() {
+        return typeName.toString();
+    }
+
 
 }

@@ -4,8 +4,10 @@ import lombok.AllArgsConstructor;
 import org.agentelf.model.function.Function;
 import org.agentelf.model.function.FunctionArgument;
 import org.agentelf.model.function.FunctionDeclarationParser;
+import org.agentelf.type.ReferenceType;
+import org.agentelf.type.Type;
 import org.agentelf.type.TypeRepo;
-import org.antlr.v4.runtime.tree.TerminalNode;
+import org.antlr.v4.runtime.tree.ParseTree;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +20,7 @@ public class CreateFunction {
 
     public Function.FunctionBuilder visitFunctionDeclaration(
             FunctionDeclarationParser.FunctionDeclarationContext ctx) {
-        String functionName = ctx.IDENTIFIER(0).getText();
-        String returnTypeName =
-                ctx.IDENTIFIER(ctx.IDENTIFIER().size() - 1).getText();
+        String functionName = ctx.IDENTIFIER().getText();
         List<FunctionArgument> arguments =
                 ctx.argumentList() == null
                         ? List.of()
@@ -28,7 +28,7 @@ public class CreateFunction {
         return Function.builder()
                 .name(functionName)
                 .arguments(arguments)
-                .returnType(typeRepo.getForSimpleName(currentPackage, returnTypeName));
+                .returnType(visitType(ctx.type()));
     }
 
     private List<FunctionArgument> visitArgumentListInternal(
@@ -42,22 +42,43 @@ public class CreateFunction {
         return result;
     }
 
-    public FunctionArgument visitArgumentInternal(
+    private FunctionArgument visitArgumentInternal(
             FunctionDeclarationParser.ArgumentContext ctx) {
-        List<TerminalNode> identifiers = ctx.IDENTIFIER();
-        if (identifiers.size() == 1) {
+
+        if (ctx.IDENTIFIER() == null) {
+            Type type = visitType(ctx.type());
             return FunctionArgument.builder()
-                    .type(typeRepo.getForSimpleName(currentPackage,identifiers.getFirst().getText()))
-                    .name(Character.toLowerCase(identifiers.getFirst().getText().charAt(0)) +
-                                    identifiers.getFirst().getText().substring(1))
+                    .type(type)
+                    .name(firstCharToLowerCase(type.simpleName()))
                     .build();
         }
         return FunctionArgument.builder()
-                .type(typeRepo.getForSimpleName(currentPackage, identifiers.get(1).getText()))
-                .name(identifiers.get(0).getText())
+                .type(visitType(ctx.type()))
+                .name(ctx.IDENTIFIER().getText())
                 .build();
     }
 
+    private Type visitType(FunctionDeclarationParser.TypeContext typeContext) {
+        if(typeContext.IDENTIFIER().size() == 1) {
+           return typeRepo.getForSimpleName(currentPackage, typeContext.IDENTIFIER().get(0).getText());
+        }
 
+        // ToDo add array support and Generic support
+
+        List<String> names = typeContext.IDENTIFIER()
+                .stream()
+                .map(ParseTree::getText)
+                .toList();
+
+        int n = names.size() - 1;
+        String packageName = String.join(".", names.subList(0, n));
+        String className = names.get(n);
+        return new ReferenceType(packageName,className);
+    }
+
+    private String firstCharToLowerCase(String text) {
+        return  Character.toLowerCase(text.charAt(0))
+                + text.substring(1);
+    }
 
 }

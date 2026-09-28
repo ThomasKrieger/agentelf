@@ -16,5 +16,9 @@ public record ReferenceType(String packageName, String name) implements Type {
         return ClassName.get(packageName,name);
     }
 
+    @Override
+    public String simpleName() {
+        return name;
+    }
 
 }

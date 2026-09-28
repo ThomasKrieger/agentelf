@@ -2,8 +2,8 @@ grammar FunctionDeclaration;
 
 
 functionDeclaration
-    : IDENTIFIER LPAREN argumentList? RPAREN COLON IDENTIFIER
-      ;
+    : type IDENTIFIER LPAREN argumentList? RPAREN
+    ;
 
 
 argumentList
@@ -11,14 +11,32 @@ argumentList
     ;
 
 argument
-   :    IDENTIFIER | (IDENTIFIER COLON IDENTIFIER)
+   :    type | ( type IDENTIFIER)
    ;
 
+type
+  : (IDENTIFIER generic? array?)
+  | (((POINT IDENTIFIER)+ IDENTIFIER) generic? array?)
+  ;
 
+generic
+   : LANGLE type+ RANGLE
+   ;
+
+array
+    : LBRACK RBRACK
+    ;
+
+
+LANGLE      : '<';
+RANGLE      : '>';
 LPAREN      : '(';
 RPAREN      : ')';
+LBRACK      : '[';
+RBRACK      : ']';
 COMMA       : ',';
 COLON       : ':';
+POINT       : '.';
 
 IDENTIFIER
     : [a-zA-Z_] [a-zA-Z_0-9]*

@@ -37,7 +37,7 @@ public class FunctionalModelToSourceTest extends AbstractEndToEndTest  {
         FunctionalModel model = new FunctionalModel("org.agentelf",
                  Collections.singletonList(new Variations("Variation" , Collections.singletonList("VariationOne"))) ,
                 null,
-                Collections.singletonList(new FunctionWithPromptFunctional("method( variation : Variation) : String" , "create class" , "")) );
+                Collections.singletonList(new FunctionWithPromptFunctional("String method(Variation variation)" , "create class" , "")) );
 
         when(loadFunctionalModel.loadFunctionalModel(anyString())).thenReturn(model);
 

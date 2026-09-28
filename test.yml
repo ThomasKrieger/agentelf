@@ -1,4 +1,4 @@
 task:    createUnitTest
-prompt:  "create an unit test for UpdateTypeRepoWithSourceFromFolder use @TempDir"
-class:   UpdateTypeRepoWithSourceFromFolder
-package: org.agentelf.type
+prompt:  "create an unit test for FunctionWithPromptFunctional Include all edge cases"
+class:   FunctionWithPromptFunctionalTest
+package: org.agentelf.model.functional

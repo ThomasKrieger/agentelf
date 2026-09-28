@@ -14,6 +14,9 @@ import java.util.Set;
 public class ReferenceTypeRepo {
 
     private final Map<String, Set<ReferenceTypeHandle>> nameToHandle = new HashMap<>();
+    /**
+     * all classes which are unknown to the llm must be stored here
+     */
     private final Map<ReferenceTypeHandle, CompilationUnit> handleToSource = new HashMap<>();
 
     public PackageLookupResult lookup(String name) {
@@ -30,7 +33,8 @@ public class ReferenceTypeRepo {
         return new PackageLookupResult.OneResult(result.stream().findFirst().get());
     }
 
-    public void putAll(Map<String, Set<ReferenceTypeHandle>>  putNameToHandle, Map<ReferenceTypeHandle, CompilationUnit> putHandleToSource) {
+    public void putAll(Map<String, Set<ReferenceTypeHandle>>  putNameToHandle,
+                       Map<ReferenceTypeHandle, CompilationUnit> putHandleToSource) {
         for(Map.Entry<String, Set<ReferenceTypeHandle>> elem : putNameToHandle.entrySet()) {
             if(nameToHandle.containsKey(elem.getKey())) {
                 nameToHandle.get(elem.getKey()).addAll(elem.getValue());
