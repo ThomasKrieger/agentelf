@@ -3,9 +3,11 @@ package org.agentelf.taskandaction.action;
 import lombok.RequiredArgsConstructor;
 import org.agentelf.api.Action;
 import org.agentelf.handle.ReferenceTypeHandle;
+import org.agentelf.javaparser.JavaParserWrapper;
 import org.agentelf.model.tosource.ToSourceModel;
 import org.agentelf.model.tosource.TypeSourceString;
 import org.agentelf.model.tosource.TypeToSource;
+import org.agentelf.mustache.ApplyTemplate;
 import org.agentelf.taskandaction.RunVariables;
 import org.agentelf.taskandaction.task.Task;
 import org.agentelf.type.TypeRepo;
@@ -13,13 +15,14 @@ import org.agentelf.yaml.TaskAndActionFactory;
 import org.agentelf.yaml.TaskDescription;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
 public class ForEachSourceModelCallCreateClass {
 
+    private final ApplyTemplate applyTemplate;
     private final TaskAndActionFactory taskAndActionFactory;
     private final SaveClass saveClass;
 
@@ -27,18 +30,19 @@ public class ForEachSourceModelCallCreateClass {
     public void forEachSourceModelCallCreateClass(ToSourceModel toSourceModel,
                                             Map<String, TaskDescription> taskMap,
                                             TypeRepo typeRepo) throws Exception {
-
         for (ReferenceTypeHandle handle : toSourceModel.getAllTypeHandles()) {
             TypeToSource type = toSourceModel.getType(handle);
-            Optional<String> prompt = type.createPrompt();
-            if(prompt.isPresent()) {
+            if(type.needsLLM(new JavaParserWrapper())) {
                 RunVariables runVariables = new RunVariables();
                 runVariables.setTypeRepo(typeRepo);
                 runVariables.setCurrentType(type);
                 runVariables.setToSourceModel(toSourceModel);
-                String builder = toSourceModel.asPrompt() +
-                        prompt.get();
-                runVariables.setPrompt(builder);
+
+                Map<String,Object> context = new HashMap<>();
+                context.put("name" , handle.fullQualifiedName());
+                String prompt = toSourceModel.asPrompt() +
+                        applyTemplate.apply(context,"promptCreateClass.mustache");
+                runVariables.setPrompt(prompt);
                 runVariables.setClassName(handle.name());
                 runVariables.setPackageName(handle.packageName());
                 TaskDescription taskDescription = taskMap.get("createClassFromToSourceModel");

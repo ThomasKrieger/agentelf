@@ -1,8 +1,10 @@
 package org.agentelf.cli;
 
 import lombok.AllArgsConstructor;
+import org.agentelf.taskandaction.RunVariables;
 import org.agentelf.taskandaction.task.Task;
 import org.agentelf.taskandaction.task.TaskVariables;
+import org.agentelf.taskandaction.task.TaskVariablesMapper;
 import org.agentelf.yaml.GenericParser;
 import org.agentelf.yaml.TaskAndActionFactorySpring;
 import org.agentelf.yaml.TaskDescription;
@@ -29,7 +31,7 @@ public class RunTask {
     public void run(TaskVariables taskVariables) throws IOException {
         String taskName = taskVariables.getTask();
 
-        taskVariables.setTaskMap(taskMap);
+
 
         TaskDescription taskDescription = taskMap.get(taskName);
         if (taskDescription == null) {
@@ -43,8 +45,11 @@ public class RunTask {
                             + String.join(", ", taskMap.keySet()));
         }
 
+        RunVariables runVariables = TaskVariablesMapper.INSTANCE.toRunVariables(taskVariables);
+        runVariables.setTaskMap(taskMap);
+
         Task task = taskDescription.build(taskAndActionFactorySpring);
-        task.execute(taskVariables);
+        task.execute(runVariables);
     }
 
 }

@@ -3,6 +3,7 @@ package org.agentelf.type;
 import com.github.javaparser.ParserConfiguration;
 import com.github.javaparser.StaticJavaParser;
 import com.github.javaparser.ast.CompilationUnit;
+import lombok.extern.slf4j.Slf4j;
 import org.agentelf.handle.ReferenceTypeHandle;
 
 import java.util.HashMap;
@@ -10,12 +11,13 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-
+@Slf4j
 public class ReferenceTypeRepo {
 
     private final Map<String, Set<ReferenceTypeHandle>> nameToHandle = new HashMap<>();
     /**
-     * all classes which are unknown to the llm must be stored here
+     * used for the lookup of sources for classes which are unknown to the llm
+     *
      */
     private final Map<ReferenceTypeHandle, CompilationUnit> handleToSource = new HashMap<>();
 
@@ -50,6 +52,10 @@ public class ReferenceTypeRepo {
                 .setLanguageLevel(ParserConfiguration.LanguageLevel.JAVA_21);
         nameToHandle.computeIfAbsent(handle.name(), k -> new HashSet<>()).add(handle);
         handleToSource.put(handle, StaticJavaParser.parse(source));
+    }
+
+    public void put(ReferenceTypeHandle handle) {
+        nameToHandle.computeIfAbsent(handle.name(), k -> new HashSet<>()).add(handle);
     }
 
 }

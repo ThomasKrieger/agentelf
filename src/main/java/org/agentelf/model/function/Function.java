@@ -20,14 +20,19 @@ public record Function(String name,
 
     public void addToSourceModelType(ToSourceModel toSourceModel)   {
         if(! arguments.isEmpty()) {
+            List<FunctionArgument> boundArguments = arguments.subList(1, arguments.size());
             FunctionArgument firstArgument = arguments.getFirst();
             for(ReferenceTypeHandle handle :  toSourceModel.getAllTypeHandles()) {
                 TypeToSource model = toSourceModel.getType(handle);
                 if(firstArgument.type().toHandle().equals(model.getReferenceTypeHandle())) {
-                    model.getMethodHandleToPrompt().put(new MethodHandle(name), prompt);
+                    model.getMethodHandleToPrompt().put(new MethodHandle(
+                            name,
+                                    boundArguments.stream().map(FunctionArgument::type).map(Type::toHandle).toList(),
+                            returnType.toHandle()),
+                            prompt);
                     MethodSpec.Builder methodBuilder = MethodSpec.methodBuilder(name).addModifiers(Modifier.ABSTRACT,Modifier.PUBLIC);
                     methodBuilder.returns(returnType.toJavapoet());
-                    arguments.forEach(  arg-> arg.addToBuilder(methodBuilder));
+                    boundArguments.forEach(  arg-> arg.addToBuilder(methodBuilder));
                     model.getTypeSource().asBuilder().addMethod(methodBuilder.build());
                 }
             }

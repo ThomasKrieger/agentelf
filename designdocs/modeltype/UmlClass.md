@@ -1,11 +1,26 @@
-if a component is a class or interface should be specified in 
-the uml class diagram
+No Definition of interface/abstract class or record
 
-also the inheritance relations an 
+only classes 
+and relations between classes
+through calculation decison between class/interface
 
-methods are specified through the functional relations
-so probably we deó need this if we use functional relations?
+models the structure of nouns and objects no verbs
+allows modeling of different concepts not like adt which is related to one type of variation
 
-as alternative for functionalRelations
+additive not like adt whiche are closed
+open world assumption
 
-open where to specify fields of a class?
+new relations can be added outside of the curent definition
+
+support for 
+stereotypes
+containment
+implements
+open: fields?
+   vieleich property(class, field)
+   oder sowohl bei klasse als auch addition
+open: methods?
+
+prüfen gegen Design Pattern
+ob sich das gut als template modellieren läßt
+z.B. strategy pattern

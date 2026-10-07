@@ -1,8 +1,188 @@
+extension point in activity aufnehem
+
+bestimmung wofür agent call
+-> ableitung beziehung
+-> alle methoden berechnen
+function bindings
+test für logik
+
+
+vmlens:
+einlesen-> 
+klasse über java poet builder 
+bzw method body builder 
+und kommentare erzeugen
+   method call
+   variable declaration
+   concstructor call
+   commentar
+erstmal über builder
+
+
+komplexität bezieht sich auf mehrere gebiete:
+komplexität der sprache
+anzahl sätze benötigt um ein sachverhalt zu beschreiben
+anzahl begriffe.
+
+Sprache inherent nicht eindeutig.
+immer context abhängig
+dagegen mathematik eindeutig
+teilweise kann sprache eindeutig gemacht werden
+spezailisten sprache, dann aber ehrer nicht mehr 
+die funktion von sprache
+=> wann regel basiert wann sprache/llm verwenden
+wann llm für erzeugung von regeln?
+
+
+
+wobei template unterschiedliche grundlagen haben kann:
+source code 
+modelle
+
+template:
+was ist gleich was anders
+basis für abstractionen
+basis für test erweiterungen?
+rules?
+ontology
+
+
+
+
+template:
+activity
+generation function
+map?
+list of maps...
+das wäre dann template based, nicht builder based
+
+select
+generate
+template
+
+action hierfür
+package strukur
+
+composibility
+
+
+storage of decisions, resolution, cache
+multiple llm calls
+
+
+
+extension of adt -> add a field to an adt
+z.B. activity <-> name
+
+
+
+types to source for llm
+import statements auswerten und diese hinzufügen
+bei CompilationUnitWrapper jeweils den haupt namen
+um main type zu bestimmen
+
+filter abhängig ob von source oder adt, anderes modell
+bzw existing ist ja bekann sollte keineneuen klassen und methoden von aussen hinzukommen
+
+anhand imports benötigte klassen bestimmen
+macht wahrscheinlich sinn alle methoden aus interfaces in die method hinzuzufügen
+
+vmlens test cases erzeugen
+-> pom.xml (oder ein jar contains synchronized, volatile field)
+-> create test case:
+
+
+am beispiel klären ob man reihenfolge benötigt
+wahrscheinlich aber schon: 
+
+generics for adt
+
+
+stereotypes typical need additional infos not only the name
+
+
+
+open modeling of rules
+decision
+logic
+(where does this fit into)
+-> e.g. Ontology modeling allows for first order logic
+where does this make support sense 
+
+testfall genererierung:
+reicht erstmal aus synchronized, volatile enthalten.
+https://github.com/soot-oss/sootup
+
+language für pattern über 
+adt
+und builder?
+design strategy für builder von adts
+
+und find all needed sources
+
+functionale Modellierung
+
+
+
+
+TestDesignSpace
+
+Erzeugung Rewihenfolge anhand needed -> 
+über Queue
+Mit erkennen von Cyclen
+
+TypeRepo
+     Neu vom modell
+     Update vom Modell 
+     Existing vom Modell
+     Source Code ohne Modell (needed)
+     Not needed Source Code
+     Binary für refactoring...
+
+
+probably it makes sense to store everything here and not use multiple hash maps
+private final Map<ReferenceTypeHandle, CompilationUnit> handleToSource = new HashMap<>();
+TypeDescription contains info inside/outside project -> editable
+ReferenceTypeSource -> for LLM lookup
++ pattern + ...
+everything related to a Type
+large class (later context..)
+
+Reverse:
+Byte Code oder Source Code -> Pattern/Andere Technik
+für Refactoring, Doku/Modelle/Test/Usage
+klären braucht man sowohl source als auch bytecode?
+bytecode für struktur refactoring sollten nur kleine änderungen
+sein wie z.b. umbenennen 
+Themen wie z.B. methoden herausziehen basierend auf modell?
+e.g. auf byte code -> modell -> source?
+
+
+
+pattern:
+um von byte code -> modell zu kommen
+für refactoring
+nutzung von klassen 
+testfälle für klassen 
+und tests als pattern um auzsufüllen
+auch für vmlens
+pattern language
+builder 
+pattern langusge auch für code gen?
+für refactoring?
+
+
+
+uml bzw ontology models
+
+
 adt:
   array support
   generic support
 
-MethodHandle erweitern um  TypeHandles?
+
+
+methodhandle zu prompt wird man spätestens bei rule based techniques benötigen
 
 InheritanceTree ?
 
@@ -27,7 +207,15 @@ interface VariationOne extends Variation {
 implement: MethodHandle[name=method]
 create class
 
+do we need the default prompt for methods?
+or only when a prompt is available?
+do we need to order the classes?
+if we have a prompt for the super class does it make sense to add it 
+add the implementing class?
 
+
+uml/onology -> source
+reverse: source zu diagram
 
 
 config für StaticJavaParser (zentrale stelle, aus yaml)

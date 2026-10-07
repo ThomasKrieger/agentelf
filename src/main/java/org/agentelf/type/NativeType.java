@@ -1,23 +1,24 @@
 package org.agentelf.type;
 
+import com.palantir.javapoet.ArrayTypeName;
 import com.palantir.javapoet.TypeName;
+import lombok.EqualsAndHashCode;
 import org.agentelf.handle.TypeHandle;
 
-public enum NativeType implements Type, TypeHandle {
-    VOID(TypeName.VOID),
-    BOOLEAN(TypeName.BOOLEAN),
-    BYTE(TypeName.BYTE),
-    SHORT(TypeName.SHORT),
-    INT(TypeName.INT),
-    LONG(TypeName.LONG),
-    CHAR(TypeName.CHAR),
-    FLOAT(TypeName.FLOAT),
-    DOUBLE(TypeName.DOUBLE);
+import java.util.List;
 
-    private final TypeName typeName;
+@EqualsAndHashCode
+public class NativeType implements Type, TypeHandle {
 
-    NativeType(TypeName typeName) {
-        this.typeName = typeName;
+    private final NativeTypeEnum nativeTypeEnum;
+    private boolean isArray;
+
+    public static NativeType of(String name) {
+        return new NativeType(NativeTypeEnum.valueOf(name.toUpperCase()));
+    }
+
+    public NativeType(NativeTypeEnum nativeTypeEnum) {
+        this.nativeTypeEnum = nativeTypeEnum;
     }
 
     @Override
@@ -27,13 +28,26 @@ public enum NativeType implements Type, TypeHandle {
 
     @Override
     public TypeName toJavapoet() {
-        return typeName;
+        if(isArray) {
+            return ArrayTypeName.of(nativeTypeEnum.getTypeName());
+        } else {
+            return nativeTypeEnum.getTypeName();
+        }
     }
 
     @Override
     public String simpleName() {
-        return typeName.toString();
+        return nativeTypeEnum.getTypeName().toString();
     }
 
+    @Override
+    public void addGenerics(List<Type> generics) {
+        throw new RuntimeException("should not be called");
+    }
+
+    @Override
+    public void setIsArray() {
+        this.isArray = true;
+    }
 
 }

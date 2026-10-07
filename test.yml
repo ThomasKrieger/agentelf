@@ -1,4 +1,13 @@
 task:    createUnitTest
-prompt:  "create an unit test for FunctionWithPromptFunctional Include all edge cases"
-class:   FunctionWithPromptFunctionalTest
+prompt:  |
+            create an unit test for CreateFunction visitType
+            use this structure
+            CharStream chars = CharStreams.fromString(declaration);
+             FunctionDeclarationLexer lexer =
+             new FunctionDeclarationLexer(chars);
+             CommonTokenStream tokens =
+             new CommonTokenStream(lexer);
+             FunctionDeclarationParser parser = new FunctionDeclarationParser(tokens);
+             visitType(parser.type())
+class:   CreateFunctionTest
 package: org.agentelf.model.functional

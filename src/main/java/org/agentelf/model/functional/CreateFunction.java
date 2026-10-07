@@ -7,9 +7,9 @@ import org.agentelf.model.function.FunctionDeclarationParser;
 import org.agentelf.type.ReferenceType;
 import org.agentelf.type.Type;
 import org.agentelf.type.TypeRepo;
-import org.antlr.v4.runtime.tree.ParseTree;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -58,22 +58,25 @@ public class CreateFunction {
                 .build();
     }
 
-    private Type visitType(FunctionDeclarationParser.TypeContext typeContext) {
-        if(typeContext.IDENTIFIER().size() == 1) {
-           return typeRepo.getForSimpleName(currentPackage, typeContext.IDENTIFIER().get(0).getText());
+    public Type visitType(FunctionDeclarationParser.TypeContext typeContext) {
+        Type type;
+        if(typeContext.package_() == null) {
+            type =  typeRepo.getForSimpleName(currentPackage, typeContext.IDENTIFIER().getText());
+        } else {
+            type =  new ReferenceType(typeContext.package_().getText(),
+                    typeContext.IDENTIFIER().getText());
         }
-
-        // ToDo add array support and Generic support
-
-        List<String> names = typeContext.IDENTIFIER()
-                .stream()
-                .map(ParseTree::getText)
-                .toList();
-
-        int n = names.size() - 1;
-        String packageName = String.join(".", names.subList(0, n));
-        String className = names.get(n);
-        return new ReferenceType(packageName,className);
+        if(typeContext.generic() != null) {
+            List<Type> generics = new LinkedList<>();
+            for(FunctionDeclarationParser.TypeContext generic : typeContext.generic().type()) {
+                generics.add(visitType(generic));
+            }
+            type.addGenerics(generics);
+        }
+        if(typeContext.array() != null) {
+            type.setIsArray();
+        }
+        return type;
     }
 
     private String firstCharToLowerCase(String text) {

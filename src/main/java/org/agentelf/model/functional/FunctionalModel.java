@@ -1,26 +1,40 @@
 package org.agentelf.model.functional;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.palantir.javapoet.TypeSpec;
+import org.agentelf.handle.ReferenceTypeHandle;
 import org.agentelf.model.tosource.ToSourceModel;
 import org.agentelf.sourcebuilder.SourceBuilder;
+import org.agentelf.type.ReferenceTypeRepo;
 import org.agentelf.type.TypeRepo;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public record FunctionalModel(@JsonProperty("package") String packageName,
                               List<Variations> variations,
                               List<Immutable> immutables,
                               List<FunctionWithPromptFunctional> functions) {
 
-    public void addToBuilder(SourceBuilder sourceBuilder, FunctionalTypeToJavapoetType functionalTypeToJavapoetType) {
+    public void addToBuilder(SourceBuilder sourceBuilder,
+                             FunctionalTypeToJavapoetType functionalTypeToJavapoetType) {
+        Set<NotYetBuiltToInterface> notYetBuilt = new HashSet<>();
         if(immutables != null) {
             for(Immutable type : immutables) {
-                type.addToBuilder(packageName,sourceBuilder, functionalTypeToJavapoetType);
+                type.addToBuilder(packageName,sourceBuilder, functionalTypeToJavapoetType,notYetBuilt);
             }
         }
         if(variations != null) {
             for(Variations type : variations) {
-                type.addToBuilder(packageName,sourceBuilder, functionalTypeToJavapoetType);
+                type.addToBuilder(packageName,sourceBuilder, functionalTypeToJavapoetType,notYetBuilt);
+            }
+        }
+        for(NotYetBuiltToInterface notYet : notYetBuilt) {
+            TypeSpec.Builder impl = sourceBuilder.get(packageName, notYet.notYetBuilt());
+            if(impl == null){
+                impl = sourceBuilder.newClass(packageName, notYet.notYetBuilt());
+                impl.addSuperinterface(notYet.parent());
             }
         }
     }
@@ -33,4 +47,16 @@ public record FunctionalModel(@JsonProperty("package") String packageName,
         }
     }
 
+    public void addTypesToRepo(ReferenceTypeRepo referenceTypeRepo) {
+        if(immutables != null) {
+            for(Immutable type : immutables) {
+                 referenceTypeRepo.put(new ReferenceTypeHandle(packageName,type.name()));
+            }
+        }
+        if(variations != null) {
+            for(Variations type : variations) {
+                referenceTypeRepo.put(new ReferenceTypeHandle(packageName,type.name()));
+            }
+        }
+    }
 }

@@ -24,12 +24,25 @@ where to describe how to select
 state?
 
 
-activity:
-call
-call
-variation{
-case
-case
-}
-call
-call
+given
+statement
+prompt
+statement
+when
+statement
+prompt   
+statement
+then
+predicate
+loop?
+
+open java
+template ?
+activity oder elf
+what about assignment
+
+block:
+    predicate:
+    if:
+       activity
+    else:

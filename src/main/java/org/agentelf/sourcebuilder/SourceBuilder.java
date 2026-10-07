@@ -13,6 +13,13 @@ public class SourceBuilder {
 
     private final Map<ReferenceTypeHandle,TypeSpec.Builder> map = new HashMap<>();
 
+    public TypeSpec.Builder newClass(String packageName, String name) {
+        TypeSpec.Builder builder = TypeSpec.classBuilder(name);
+        ReferenceTypeHandle referenceTypeHandle = new ReferenceTypeHandle(packageName,name);
+        map.put(referenceTypeHandle,builder);
+        return builder;
+    }
+
     public TypeSpec.Builder newInterface(String packageName, String name) {
         TypeSpec.Builder builder = TypeSpec.interfaceBuilder(name);
         ReferenceTypeHandle referenceTypeHandle = new ReferenceTypeHandle(packageName,name);

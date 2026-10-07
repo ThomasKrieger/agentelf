@@ -15,8 +15,11 @@ argument
    ;
 
 type
-  : (IDENTIFIER generic? array?)
-  | (((POINT IDENTIFIER)+ IDENTIFIER) generic? array?)
+  : package? IDENTIFIER generic? array?
+  ;
+
+package
+  : (IDENTIFIER POINT)+
   ;
 
 generic

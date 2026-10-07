@@ -1,4 +1,6 @@
 package org.agentelf.handle;
 
-public record MethodHandle(String name) {
+import java.util.List;
+
+public record MethodHandle(String name, List<TypeHandle> argumentTypes, TypeHandle returnType) {
 }

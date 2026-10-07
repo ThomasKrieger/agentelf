@@ -9,7 +9,7 @@ public class TypeRepoTest {
     @Test
     public void nativeType() {
         Type type = new TypeRepo().getForSimpleName("xyz", "int");
-        assertEquals(NativeType.INT, type);
+        assertEquals(NativeType.of("int"), type);
     }
 
 }

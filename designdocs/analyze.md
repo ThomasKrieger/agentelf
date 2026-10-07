@@ -1,4 +1,32 @@
-productlines
+abstraction mechanism
+composition mechanism
+Space für abstractions techniken
+
+
+functionale Aufteilung
+    Design Space
+    Algebras..
+    Decison modell
+    Welche arten von modellen machen sinn
+
+
+Relations und algebra
+
+
+DSLs d.h. einschränkung der modellierung
+neue semantik
+neue regeln
+  
+
+pattern für struktur 
+objects, nouns
+wir haben einmal generics -> replacing types
+dann addition
+and removal
+addition bei functionen schwierig da poition eine rolle spielt
+bei klassrn einfacher einfaxch am ende hinzufügen
+abstact -> slots
+
 
 
 learning/reenforceemnt learning

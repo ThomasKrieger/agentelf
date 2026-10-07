@@ -3,6 +3,7 @@ package org.agentelf.taskandaction.action;
 import lombok.RequiredArgsConstructor;
 import org.agentelf.api.Action;
 import org.agentelf.handle.ReferenceTypeHandle;
+import org.agentelf.javaparser.JavaParserWrapper;
 import org.agentelf.model.tosource.ToSourceModel;
 import org.agentelf.model.tosource.TypeToSource;
 import org.agentelf.mustache.ApplyTemplate;
@@ -29,23 +30,22 @@ public class ForEachSourceModelCallCreateTest {
                                            TypeRepo typeRepo) throws Exception {
         for (ReferenceTypeHandle handle : toSourceModel.getAllTypeHandles()) {
             TypeToSource type = toSourceModel.getType(handle);
-            RunVariables runVariables = new RunVariables();
-            runVariables.setTypeRepo(typeRepo);
-            runVariables.setCurrentType(type);
-            runVariables.setToSourceModel(toSourceModel);
+            if( type.needsTest(new JavaParserWrapper())) {
+                RunVariables runVariables = new RunVariables();
+                runVariables.setTypeRepo(typeRepo);
+                runVariables.setCurrentType(type);
+                runVariables.setToSourceModel(toSourceModel);
 
-            Map<String,Object> context = new HashMap<>();
-            context.put("name" , handle.toString());
+                Map<String,Object> context = new HashMap<>();
+                context.put("name" , handle.fullQualifiedName());
+                String prompt = toSourceModel.asPrompt() +
+                        applyTemplate.apply(context,"promptUnitTest.mustache");
 
-            String prompt = toSourceModel.asPrompt() +
-                    applyTemplate.apply(context,"promptUnitTest.mustache");
+                runVariables.setPrompt(prompt);
+                runVariables.setClassName(handle.name() + "Test");
+                runVariables.setPackageName(handle.packageName());
 
-            runVariables.setPrompt(prompt);
-            runVariables.setClassName(handle.name() + "Test");
-            runVariables.setPackageName(handle.packageName());
-
-            TaskDescription taskDescription = taskMap.get("createUnitTestFromToSourceModel");
-            if (taskDescription != null) {
+                TaskDescription taskDescription = taskMap.get("createUnitTestFromToSourceModel");
                 Task task = taskDescription.build(taskAndActionFactory);
                 task.execute(runVariables);
             }

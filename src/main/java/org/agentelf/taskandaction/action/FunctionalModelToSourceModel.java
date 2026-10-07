@@ -21,7 +21,9 @@ public class FunctionalModelToSourceModel {
 
     @Action(arguments = {"model", "typeRepo"}, returnVariable = "toSourceModel")
     public ToSourceModel functionalModelToSourceModel(FunctionalModel model, TypeRepo typeRepo) throws IOException {
-        FunctionalTypeToJavapoetType functionalTypeToJavapoetType = new FunctionalTypeToJavapoetType();
+        model.addTypesToRepo(typeRepo.getReferenceTypeRepo());
+
+        FunctionalTypeToJavapoetType functionalTypeToJavapoetType = new FunctionalTypeToJavapoetType(typeRepo);
         SourceBuilder sourceBuilder = new SourceBuilder();
         model.addToBuilder(sourceBuilder, functionalTypeToJavapoetType);
 
@@ -32,6 +34,7 @@ public class FunctionalModelToSourceModel {
             handleToModel.put(elem.handle(),typeToSource);
             typeRepo.getReferenceTypeRepo().put(elem.handle(),typeToSource.getSourceAsString());
         }
+
         ToSourceModel toSourceModel =  new ToSourceModel(handleToModel);
         model.addFunctionsToSourceModel(typeRepo,toSourceModel);
         return toSourceModel;

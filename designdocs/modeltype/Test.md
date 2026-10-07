@@ -4,6 +4,27 @@ Test Types:
     Integration Tests
     E2E Tests
 
+Initial test structure
+
+given
+   statement
+   prompt
+   statement
+when
+   statement
+   prompt   
+   statement
+then
+predicate
+loop?
+
+open java
+template ?
+activity oder elf
+what about assignment
+
+
+
 Unit Tests:
 Always at the class/Unit it is used
     NoTest

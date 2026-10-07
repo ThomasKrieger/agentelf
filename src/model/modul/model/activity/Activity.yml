@@ -1,0 +1,31 @@
+package: "org.agentelf.model.activity"
+variations:
+  - name: Statement
+    either:
+      - Block
+      - Activity
+      - Prompt
+      - Java
+immutables:
+  - name: Block
+    fields:
+      - type: String
+        name: name
+      - type: String
+        name: predicate
+      - type: String
+        name: java
+      - type: List<Statement>
+        name: statements
+  - name: Activity
+    fields:
+      - type: String
+        name: value
+  - name: Prompt
+    fields:
+      - type: String
+        name: value
+  - name: Java
+    fields:
+      - type: String
+        name: value

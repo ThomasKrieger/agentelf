@@ -18,7 +18,7 @@ public class TypeRepo {
     public Type getForSimpleName(String currentPackage, String name) {
         try{
             if(name.equals(name.toLowerCase())) {
-                return NativeType.valueOf(name.toUpperCase());
+                return NativeType.of(name);
             }
         } catch (IllegalArgumentException  illegalArgumentException) {
 
@@ -38,7 +38,11 @@ public class TypeRepo {
 
     private ReferenceType resolve(String currentPackage, Set<ReferenceTypeHandle> candidates,String name) {
         for(ReferenceTypeHandle handle : candidates) {
-            if(currentPackage.startsWith(handle.packageName())) {
+            if(handle.packageName().startsWith(currentPackage)) {
+                return new ReferenceType(handle.packageName(),handle.name());
+            }
+            if(handle.packageName().startsWith("java.util") ||
+                    handle.packageName().startsWith("java.lang")) {
                 return new ReferenceType(handle.packageName(),handle.name());
             }
         }

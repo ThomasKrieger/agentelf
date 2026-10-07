@@ -3,10 +3,11 @@ package org.agentelf.model.tosource;
 import lombok.Data;
 import org.agentelf.handle.MethodHandle;
 import org.agentelf.handle.ReferenceTypeHandle;
+import org.agentelf.javaparser.JavaParserWrapper;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 @Data
 public class TypeToSource {
@@ -20,18 +21,12 @@ public class TypeToSource {
       this.referenceTypeHandle = referenceTypeHandle;
    }
 
-   public Optional<String> createPrompt() {
-      if(methodHandleToPrompt.isEmpty()) {
-         return Optional.empty();
-      }
-      StringBuilder builder = new StringBuilder();
-      for(Map.Entry<MethodHandle,String> elem : methodHandleToPrompt.entrySet()) {
-         builder.append("implement: " + elem.getKey());
-         builder.append(System.lineSeparator());
-         builder.append(elem.getValue());
-         builder.append(System.lineSeparator());
-      }
-      return Optional.of(builder.toString());
+   public boolean needsLLM(JavaParserWrapper javaParserWrapper) throws IOException {
+       return ! javaParserWrapper.parse(typeSource.asString()).isAbstract();
+   }
+
+   public boolean needsTest(JavaParserWrapper javaParserWrapper) throws IOException {
+      return ! javaParserWrapper.parse(typeSource.asString()).isAbstract();
    }
 
    public String getSourceAsString() {
