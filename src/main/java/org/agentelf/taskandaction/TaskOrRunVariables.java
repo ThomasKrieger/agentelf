@@ -13,7 +13,7 @@ public abstract class TaskOrRunVariables {
     private String className;
 
     // see https://github.com/resilience4j/resilience4j/issues/1966
-    @JsonProperty("model-path")
+    @JsonProperty("path")
     private String modelPath;
 
 

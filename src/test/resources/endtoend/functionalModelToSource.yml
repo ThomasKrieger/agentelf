@@ -1,2 +1,2 @@
 task:    functionalModelToSource
-model-path:  "model.yml"
+path:  "model.yml"

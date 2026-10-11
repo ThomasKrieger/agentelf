@@ -7,6 +7,15 @@ function bindings
 test für logik
 
 
+
+modell -> function -> builder für rule based
+templates für llm
+
+
+
+function model für model transformations
+
+
 vmlens:
 einlesen-> 
 klasse über java poet builder 
@@ -16,7 +25,12 @@ und kommentare erzeugen
    variable declaration
    concstructor call
    commentar
-erstmal über builder
+erstmal über builder ohne adt
+
+und über asm
+
+
+pattern vs template
 
 
 komplexität bezieht sich auf mehrere gebiete:

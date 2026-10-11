@@ -5,7 +5,6 @@ variations:
       - Block
       - Activity
       - Prompt
-      - Java
 immutables:
   - name: Block
     fields:
@@ -22,10 +21,6 @@ immutables:
       - type: String
         name: value
   - name: Prompt
-    fields:
-      - type: String
-        name: value
-  - name: Java
     fields:
       - type: String
         name: value

@@ -3,6 +3,7 @@ package org.agentelf.sourcebuilder;
 import com.palantir.javapoet.TypeSpec;
 import org.agentelf.handle.ReferenceTypeHandle;
 
+import javax.lang.model.element.Modifier;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -15,6 +16,7 @@ public class SourceBuilder {
 
     public TypeSpec.Builder newClass(String packageName, String name) {
         TypeSpec.Builder builder = TypeSpec.classBuilder(name);
+        builder.addModifiers(Modifier.PUBLIC);
         ReferenceTypeHandle referenceTypeHandle = new ReferenceTypeHandle(packageName,name);
         map.put(referenceTypeHandle,builder);
         return builder;
@@ -22,6 +24,7 @@ public class SourceBuilder {
 
     public TypeSpec.Builder newInterface(String packageName, String name) {
         TypeSpec.Builder builder = TypeSpec.interfaceBuilder(name);
+        builder.addModifiers(Modifier.PUBLIC);
         ReferenceTypeHandle referenceTypeHandle = new ReferenceTypeHandle(packageName,name);
         map.put(referenceTypeHandle,builder);
         return builder;
@@ -29,6 +32,7 @@ public class SourceBuilder {
 
     public TypeSpec.Builder newRecord(String packageName, String name) {
         TypeSpec.Builder builder = TypeSpec.recordBuilder(name);
+        builder.addModifiers(Modifier.PUBLIC);
         ReferenceTypeHandle referenceTypeHandle = new ReferenceTypeHandle(packageName,name);
         map.put(referenceTypeHandle,builder);
         return builder;

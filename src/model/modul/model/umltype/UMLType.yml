@@ -1,0 +1,38 @@
+package: "org.agentelf.model.umltype"
+immutables:
+  - name: UMLType
+    fields:
+      - type: String
+        name: name
+      - type: List<UMLField>
+        name: fields
+      - type: List<UMLConstructor>
+        name: constructors
+      - type: List<UMLMethod>
+        name: methods
+      - type: List<String>
+        name: extendTypes
+  - name: UMLField
+    fields:
+      - type: String
+        name: type
+      - type: String
+        name: name
+  - name: UMLConstructor
+    fields:
+      - type: List<UMLArgument>
+        name: arguments
+  - name: UMLMethod
+    fields:
+      - type: String
+        name: name
+      - type: List<UMLArgument>
+        name: arguments
+      - type: String
+        name: returnType
+  - name: UMLArgument
+    fields:
+      - type: String
+        name: type
+      - type: String
+        name: name

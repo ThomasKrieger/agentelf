@@ -22,11 +22,12 @@ public class TypeToSource {
    }
 
    public boolean needsLLM(JavaParserWrapper javaParserWrapper) throws IOException {
-       return ! javaParserWrapper.parse(typeSource.asString()).isAbstract();
+       return  ! javaParserWrapper.parse(typeSource.asString()).isAbstract() &&
+               ! methodHandleToPrompt.isEmpty();
    }
 
    public boolean needsTest(JavaParserWrapper javaParserWrapper) throws IOException {
-      return ! javaParserWrapper.parse(typeSource.asString()).isAbstract();
+      return needsLLM(javaParserWrapper);
    }
 
    public String getSourceAsString() {

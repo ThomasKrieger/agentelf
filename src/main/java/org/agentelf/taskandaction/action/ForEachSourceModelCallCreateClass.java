@@ -40,6 +40,8 @@ public class ForEachSourceModelCallCreateClass {
 
                 Map<String,Object> context = new HashMap<>();
                 context.put("name" , handle.fullQualifiedName());
+
+
                 String prompt = toSourceModel.asPrompt() +
                         applyTemplate.apply(context,"promptCreateClass.mustache");
                 runVariables.setPrompt(prompt);

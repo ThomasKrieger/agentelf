@@ -81,6 +81,21 @@
             <version>1.18.46</version>
         </dependency>
         <dependency>
+            <groupId>org.soot-oss</groupId>
+            <artifactId>sootup.core</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.soot-oss</groupId>
+            <artifactId>sootup.java.core</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.soot-oss</groupId>
+            <artifactId>sootup.java.bytecode.frontend</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
         </dependency>

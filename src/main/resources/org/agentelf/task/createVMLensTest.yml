@@ -1,0 +1,4 @@
+name: createVMLensTest
+actions:
+    - processJar
+    - forEachTypeCreateVMLensTest

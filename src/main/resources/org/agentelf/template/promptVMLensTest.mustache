@@ -1,0 +1,82 @@
+Write a unit test for {{name}}
+Use the following template:
+
+public class {{testName}} {
+
+@Test
+public void testUpdate() throws InterruptedException {
+new AtomicTestBuilder<>(AtomicCounter::new)
+.addUpdate(AtomicCounter::incrementAndGet)
+.addWrite(AtomicCounter::increment)
+.addReadOnly(AtomicCounter::getCount)
+.runTests();
+}
+}
+
+for each method with changes the state and does not return something add addWrite
+if the method with changes the state and does not return something has an method argument add two addWrite
+with different method arguments
+for each method with changes the state and does return a value add one addUpdate
+if the method with changes the state and does return a value  has an method argument add two addUpdate
+with different method arguments
+and for read only methods add addReadOnly
+
+use
+import org.junit.jupiter.api.Test;
+
+use this AtomicTestBuilder
+package com.vmlens.api.testbuilder;
+
+public class AtomicTestBuilder<CLASS_UNDER_TEST> {
+
+    private static final AtomicInteger AUTOMATIC_TEST_ID = new AtomicInteger();
+
+    private final Supplier<CLASS_UNDER_TEST> createClassUnderTest;
+        private final List<RecordUpdateFactory<CLASS_UNDER_TEST>> writeList = new LinkedList<>();
+            private final List<RecordReadOnlyFactory<CLASS_UNDER_TEST>> readOnlyList = new LinkedList<>();
+                private final int atomicTestId;
+                private int maximumIterations = 100;
+                private int parallelMethodCalls = 2;
+
+                private int addWritePosition = 0;
+                private int addUpdatePosition = 0;
+                private int addReadOnlyPosition = 0;
+                private int automaticTestMethodId = 0;
+
+                public AtomicTestBuilder(Supplier<CLASS_UNDER_TEST> createClassUnderTest) {
+                    this.createClassUnderTest = createClassUnderTest;
+                    this.atomicTestId =  AUTOMATIC_TEST_ID.getAndIncrement();
+                    }
+
+                    public <READ_VALUE> AtomicTestBuilder<CLASS_UNDER_TEST> addReadOnly(Function<CLASS_UNDER_TEST,READ_VALUE> function) {
+                        readOnlyList.add(new FunctionAndCompare<>(function,
+                        new CompareWithEquals<>(),
+                        new CallKeyReadOnly(addReadOnlyPosition),
+                        atomicTestId,
+                        automaticTestMethodId));
+                        addReadOnlyPosition++;
+                        return this;
+                        }
+
+                        public AtomicTestBuilder<CLASS_UNDER_TEST> addWrite(Consumer<CLASS_UNDER_TEST> consumer) {
+                            writeList.add(new ConsumerWrapper<>(consumer,new CallKeyWrite(addWritePosition), atomicTestId, automaticTestMethodId));
+                            automaticTestMethodId++;
+                            addWritePosition++;
+                            return this;
+                            }
+
+                            public <READ_VALUE> AtomicTestBuilder<CLASS_UNDER_TEST> addUpdate(Function<CLASS_UNDER_TEST,READ_VALUE> function) {
+                                writeList.add(new FunctionAndCompare<>(function,
+                                new CompareWithEquals<>(),
+                                new CallKeyUpdate(addUpdatePosition),
+                                atomicTestId,
+                                automaticTestMethodId));
+                                addUpdatePosition++;
+                                return this;
+                                }
+
+
+public void runTests() { new AutomaticTestImpl<>(createClassUnderTest,writeList,readOnlyList,atomicTestId,maximumIterations,parallelMethodCalls-1).runTests();
+                                }
+
+}
