@@ -69,12 +69,14 @@ public class ForEachTypeCreateVMLensTest {
                 Task task = taskDescription.build(taskAndActionFactory);
                 task.execute(runVariables);
 
+            writeSet(Path.of("alreadyProcessed.txt"),alreadyProcessed);
+
                 i++;
                 if(i > 1) {
                     break;
                 }
         }
-        writeSet(Path.of("alreadyProcessed.txt"),alreadyProcessed);
+
     }
 
     private static void writeSet(Path path, Set<String> strings) throws IOException {

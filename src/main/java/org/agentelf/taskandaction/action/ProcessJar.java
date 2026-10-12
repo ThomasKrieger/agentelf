@@ -43,6 +43,7 @@ public class ProcessJar {
         try (var paths = Files.walk(Path.of(modelPath))) {
             paths.filter(Files::isRegularFile)
                     .filter(path -> path.toString().endsWith(".jar"))
+                    .filter(path -> path.toString().contains("10.3.2"))
                     .filter(path -> ! path.toString().endsWith("-sources.jar"))
                     .flatMap( ( jar ) -> {
                         log.info(jar.toString());
@@ -93,6 +94,7 @@ public class ProcessJar {
         try (var paths = Files.walk(Path.of(modelPath))) {
             paths.filter(Files::isRegularFile)
                     .filter(path -> path.toString().endsWith("-sources.jar"))
+                    .filter(path -> path.toString().contains("10.3.2"))
                     .forEach( jarPath -> {
                         try (JarFile jar = new JarFile(jarPath.toFile())) {
                             var entries = jar.entries();

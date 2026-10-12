@@ -12,6 +12,13 @@ modell -> function -> builder für rule based
 templates für llm
 
 
+variatinen:
+welche bedeutung/priorität wenn sinnvoll
+
+warum wie dokumentieren
+
+
+
 
 function model für model transformations
 
