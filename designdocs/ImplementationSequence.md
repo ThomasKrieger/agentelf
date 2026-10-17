@@ -1,3 +1,185 @@
+Get all needed types in action (ForEachSourceModelCallCreateClass)
+last step after method calculation
+based on extensions,fields and methods
+MethodHandleAndPrompt not correct but rather with fields names
+
+modell für adt basiertes modell zu tosource model (wahrscheinlich uml basiert-ß)
+
+
+for createClassFromSource
+we expect all methods in the class
+and we aad the classes using bynary class code from class
+and jar
+need to get all needed classes
+
+
+
+
+Support für 5 use cases aufbauen
+create test for class
+implement class
+adt to source (mit function binding)
+create report
+end to end tests
+
+function binding adt
+
+-> 
+test modell (über adt für adt/functional modell)
+claude/chatgpt (llm configurierbar)
+update
+report 
+scope
+retry
+benötigte klassen berechnen
+maven project auswerten
+
+
+
+uml modellierung:
+activity diagram
+uml types
+(methods)
+activity diagram
+Subtask (zwischen speichern und wieder aufsetzen)
+
+
+
+ReferenceTypeRepo als refactoring example
+
+
+
+
+Spricht einiges für viele aufgaben an llm zu übergeben für hohe flexibiliät
+nicht unnötig resourcen zu verwenden
+auf der anderen seite ist code hoffentlich nicht mehr so aufwendig zu generieren ->
+spricht dafür viel über code zu lösen -> wo flexibilität, wo statische regeln?
+wobei man auch viel durch agent neu generieren lösen sollte
+selbe mechanismen wie für die eigentliche software entwicklung
+retry mechanism implementieren
+invoke function similar to
+https://github.com/swe-agent/mini-swe-agent
+allow generation of java tasks
+action calls from agent
+detecting and encoding mathematical structure
+mathematical structure -> mathematical structure
+defining of new models, new mathematicsl structure
+
+orthogonalität von prompt und modell
+llm sollte modell erzeugen können
+klären wie alternativen abbilden
+entweder/oder (eigener workspace oder selber workspace?
+
+spezifizieren welche regeln angewendet werden
+und editierbar machen
+wenn nicht funktioniert constraint öffnen
+oder explizit durch nutzer überschreiben
+scope einer regel z.B, in diesem modul
+oder für tests
+
+
+
+an welchen stellen flexibilität
+task struktur welche aktionen werden ausgeführt?
+wie wird context zusammengebaut
+
+self improvement:
+    potential to change
+    potential to measure success
+    rate success
+    benchmark erzeugen
+    wobei der agent genauso wie das ergebnis software ist
+    sollten selbe techniken verwendet werden?
+    würde für spezifische agenten für jedes softeare projekt sprechen
+    eigentlich keine anderen techniken notwendig, sinnvoll
+    d.h.agent sollte über modell erzeugt werden
+
+
+deka
+zurückübersetzen über modell?
+
+Design space (Problem,Solution) für Prompts
+Design Spacde für Combinatoric regeln und LLM (Sprache und Mathematic)
+Es ist nich alles als Sprache formulierbar
+Sprache <-> Mathematik
+(Übersetzung)
+-> Peüfung pb besethende regeln eingehlaten werden
+in welchen Teil der Mathematik übersetzrn?
+Mensch (explizit) LLM Regel werk
+user context erkennen
+wobei der context ja schon relativ vile ist und aus sehr viel spezieleln infos (source
+code modell) besteht
+user die möglichkeit geben den context zu definieren und zu gestalten 
+zu entwickenl
+z.B. version des libaries
+pattern für tests..
+
+
+support für experimente
+-> lernen was wurde ausprobiert
+auch menschen lernbar
+
+Vereinfachen:
+https://github.com/swe-agent/mini-swe-agent
+https://github.com/SWE-agent/SWE-ReX
+
+
+testen der methodik?
+llm sind nicht reproduzirbar,abhängig vom modell und auch zeitpunkt?
+
+mehrere durchläufe-> maven ausführen
+
+https://github.com/allanj/repo-level-codegen-papers
+
+
+
+prompt erzeugung
+fähigkeiten der einzelnen llms
+multiple llm class -> logging
+wiederaufsetzen/ändern
+explizite save points muss ja menschen lesbar sein und 
+änderbar
+serialisation points
+combination from n steps
+Wie soll prompt erzeugt werden:
+wovon hängt das ab
+welches infos
+Modell/Config
+
+llm konfigurierbar: typ + name (modell)
+ganz einfach
+
+
+vmlens report,
+ohne weiteren komplexen report
+mit source code
+nur fehler über config
+fehlende nicht testbare methoden
+fehler reporten
+auch race conditionsn auswerten und correct reporten
+gradle task
+
+
+
+1 was ist zu tun
+prompt bei modell/in klasse -> User
+unbekannte Klassen
+zusätzliche Dateien
+Template für Test
+n schritte
+algebraic data type
+functionales modell
+oder activity diagramm
+einschränken so dass nur eine methode/klasse erzeugt wird
+aufteilen der tasks
+wo daten speichern (caching)
+wie auswerten?
+werte zwischen speichern damit man nicht n mal llm fragen muss
+objecte über adt
+entweder services oer functionale modellierung
+
+
+
 extension point in activity aufnehem
 
 bestimmung wofür agent call
@@ -7,16 +189,14 @@ function bindings
 test für logik
 
 
-
 modell -> function -> builder für rule based
 templates für llm
 
 
-variatinen:
+variationen:
 welche bedeutung/priorität wenn sinnvoll
 
 warum wie dokumentieren
-
 
 
 
@@ -24,18 +204,16 @@ function model für model transformations
 
 
 vmlens:
-einlesen-> 
-klasse über java poet builder 
-bzw method body builder 
-und kommentare erzeugen
-   method call
-   variable declaration
-   concstructor call
-   commentar
-erstmal über builder ohne adt
-
-und über asm
-
+blog/fehler einstellen/bewerben
+pattern für art der testfälle
+wie erkennen ob multithreaded genutzt?
+-> abhängigkeiten der klassen
+reports/improvements über agentelf
+https://github.com/bucket4j/bucket4j
+prüfung korrektur verbeseerung prompt bei fehlerhaften tests
+include von klasses (abfrage an llm)
++ andere llm fragen
++ vielleicht patten detection
 
 pattern vs template
 

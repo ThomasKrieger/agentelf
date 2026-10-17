@@ -50,7 +50,8 @@ public class FunctionalModelToSourceTest extends AbstractEndToEndTest  {
         new RunTask( new LoadTasks().getYamlFilesFromClassPath(),
                 new TaskAndActionFactorySpring(applicationContext)).run(new StringReader(asString(functionalModelToSource)));
 
-    //  verify(callLLMList,times(2)).callLarge(promptCaptor.capture());
+      verify(callLLMList,times(2)).callLarge(promptCaptor.capture());
+      System.out.println(promptCaptor.getAllValues());
      /*   verify(fileOutput).writeFile(contentCaptor.capture(),
                 eq("TestClass.java") ,
                 eq(Path.of("src/main/java/org/agentelf/taskandaction/action")));

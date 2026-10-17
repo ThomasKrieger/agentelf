@@ -32,7 +32,7 @@ public class FunctionalModelToSourceModel {
             TypeToSource typeToSource = new TypeToSource(elem.handle());
             typeToSource.setTypeSource(new TypeSourceSourceBuilder(elem.handle(),elem.source()));
             handleToModel.put(elem.handle(),typeToSource);
-            typeRepo.getReferenceTypeRepo().put(elem.handle(),typeToSource.getSourceAsString());
+            typeRepo.getReferenceTypeRepo().put(elem.handle(),typeToSource);
         }
 
         ToSourceModel toSourceModel =  new ToSourceModel(handleToModel);

@@ -30,7 +30,7 @@ public class ForEachSourceModelCallCreateTest {
                                            TypeRepo typeRepo) throws Exception {
         for (ReferenceTypeHandle handle : toSourceModel.getAllTypeHandles()) {
             TypeToSource type = toSourceModel.getType(handle);
-            if(type.needsTest(new JavaParserWrapper())) {
+            if(type.needsUnitTest(new JavaParserWrapper())) {
                 RunVariables runVariables = new RunVariables();
                 runVariables.setTypeRepo(typeRepo);
                 runVariables.setCurrentType(type);

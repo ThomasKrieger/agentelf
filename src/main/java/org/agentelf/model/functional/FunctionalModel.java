@@ -56,6 +56,34 @@ public record FunctionalModel(@JsonProperty("package") String packageName,
         if(variations != null) {
             for(Variations type : variations) {
                 referenceTypeRepo.put(new ReferenceTypeHandle(packageName,type.name()));
+                for(String implementing : type.either()) {
+                    referenceTypeRepo.put(new ReferenceTypeHandle(packageName,implementing));
+                }
+            }
+        }
+        addInheritanceToRepo(referenceTypeRepo);
+    }
+
+    private void addInheritanceToRepo(ReferenceTypeRepo referenceTypeRepo) {
+        if(variations != null) {
+            for(Variations type : variations) {
+                for(String implementing : type.either()) {
+                    referenceTypeRepo.addInheritanceRelation(new ReferenceTypeHandle(packageName,type.name()),
+                            new ReferenceTypeHandle(packageName,implementing));
+                }
+            }
+        }
+    }
+
+    private void addUsageToRepo(ReferenceTypeRepo referenceTypeRepo) {
+        if(immutables != null) {
+            for(Immutable type : immutables) {
+                referenceTypeRepo.put(new ReferenceTypeHandle(packageName,type.name()));
+            }
+        }
+        if(variations != null) {
+            for(Variations type : variations) {
+                referenceTypeRepo.put(new ReferenceTypeHandle(packageName,type.name()));
             }
         }
     }

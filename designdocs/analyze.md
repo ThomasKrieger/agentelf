@@ -1,3 +1,42 @@
+Pattern/Templates
+
+
+extension of models 
+combination of models for example fluid interfaces 
+and state machines and abstract data types
+
+
+variations berechnen und für tests verwenden
+
+
+category theory for mapping between models
+
+
+normalized java code
+
+
+alternativen, wie auswerten n läufe
+
+
+Update mechanismus
+
+
+filter für prompt/context
+
+debugging
+traces auswerten
+
+
+mathematik für modelle
+
+
+functionen zwischen modellen als weitere abstraktion
+
+
+refactoring/model transformations
+
+
+
 abstraction mechanism
 composition mechanism
 Space für abstractions techniken

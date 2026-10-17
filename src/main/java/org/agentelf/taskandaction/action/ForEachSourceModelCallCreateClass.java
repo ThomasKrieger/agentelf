@@ -2,6 +2,7 @@ package org.agentelf.taskandaction.action;
 
 import lombok.RequiredArgsConstructor;
 import org.agentelf.api.Action;
+import org.agentelf.handle.MethodHandle;
 import org.agentelf.handle.ReferenceTypeHandle;
 import org.agentelf.javaparser.JavaParserWrapper;
 import org.agentelf.model.tosource.ToSourceModel;
@@ -32,7 +33,8 @@ public class ForEachSourceModelCallCreateClass {
                                             TypeRepo typeRepo) throws Exception {
         for (ReferenceTypeHandle handle : toSourceModel.getAllTypeHandles()) {
             TypeToSource type = toSourceModel.getType(handle);
-            if(type.needsLLM(new JavaParserWrapper())) {
+            Map<MethodHandle, String> allMethods = type.getAllMethodsToBeImplemented(typeRepo.getReferenceTypeRepo());
+            if(! type.isAbstract(new JavaParserWrapper()) && ! allMethods.isEmpty()) {
                 RunVariables runVariables = new RunVariables();
                 runVariables.setTypeRepo(typeRepo);
                 runVariables.setCurrentType(type);
@@ -40,7 +42,10 @@ public class ForEachSourceModelCallCreateClass {
 
                 Map<String,Object> context = new HashMap<>();
                 context.put("name" , handle.fullQualifiedName());
+                context.put("methods" , allMethods.values());
 
+                // Use get all used Types insted prompt
+                // Use all methods, fields, and extended classes
 
                 String prompt = toSourceModel.asPrompt() +
                         applyTemplate.apply(context,"promptCreateClass.mustache");

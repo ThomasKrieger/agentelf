@@ -1,6 +1,6 @@
 package: "org.agentelf.type"
 classes:
-  - name: InheritanceTree
+  - name: InheritanceGraph
     fields:
       - "int id;"
       - "String name;"

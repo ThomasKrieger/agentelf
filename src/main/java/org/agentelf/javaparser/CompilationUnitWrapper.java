@@ -1,6 +1,7 @@
 package org.agentelf.javaparser;
 
 import com.github.javaparser.ast.CompilationUnit;
+import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.body.TypeDeclaration;
 import lombok.AllArgsConstructor;
 
@@ -16,6 +17,12 @@ public class CompilationUnitWrapper {
             }
         }
         return false;
+    }
+
+    public boolean declaresMethods() {
+        return !compilationUnit
+                .findAll(MethodDeclaration.class)
+                .isEmpty();
     }
 
 }

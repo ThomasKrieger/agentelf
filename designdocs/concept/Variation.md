@@ -1,3 +1,12 @@
+a variation consists of 
+the variation name and the variants
+and than the extension ppints where the varianrts have different configuration
+
+variant 1 -> extensoin A = 0 , extension B = 1
+
+
+
+
 variations can appear in every model.
 abstract formulation so that the different models work together
 

@@ -1,3 +1,8 @@
+zwei fälle:
+    from source
+    from modell (description what to test)
+
+
 Test Types:
     Unit Tests
     Modul/Component Tests
